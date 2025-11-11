@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import React, { useState } from "react";
-import { z } from "zod"; // ✅ removed invalid `int` import
+import { z } from "zod";
 
 import { useForm } from "react-hook-form";
 import { Button } from "../ui/button";
