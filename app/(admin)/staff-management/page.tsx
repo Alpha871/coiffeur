@@ -1,16 +1,15 @@
 "use client";
 
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Search, Plus, ChevronRight, Trash2 } from "lucide-react";
+
+import { Search, Plus, ChevronRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -128,7 +127,6 @@ const scheduleSchema = z.object({
   sun: daySchema,
 });
 
-/* -------- Main Component -------- */
 export default function StaffManagementContent() {
   const [query, setQuery] = useState("");
   const [staff, setStaff] = useState<Staff[]>(INITIAL_STAFF);
@@ -147,7 +145,6 @@ export default function StaffManagementContent() {
     );
   }, [query, staff]);
 
-  /* -------- Handlers -------- */
   function handleAdd() {
     const newItem: Staff = {
       id: safeId(),

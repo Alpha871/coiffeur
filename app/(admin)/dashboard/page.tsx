@@ -15,10 +15,14 @@ import {
 } from "@/components/ui/select";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { StatCard } from "@/components/dashboard/stat-card";
+import { useSession } from "@/lib/auth-client";
 
 export default function SalonDashboardContent() {
   const [range, setRange] = React.useState("30");
   const [search, setSearch] = React.useState("");
+
+  const { data: session, isPending, error } = useSession();
+  console.log("Role", session?.user.role);
 
   return (
     <div className="flex min-h-screen flex-col bg-[#f8fbfc] dark:bg-[#101f22]">

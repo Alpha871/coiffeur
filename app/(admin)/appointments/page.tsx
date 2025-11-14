@@ -496,7 +496,7 @@ export default function AppointmentsPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Clock className="h-5 w-5" />
-                Today's Schedule
+                Today&rsquo;s Schedule
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">

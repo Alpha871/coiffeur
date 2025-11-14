@@ -1,0 +1,13 @@
+var R=require("../../../../chunks/[turbopack]_runtime.js")("server/app/api/auth/[...all]/route.js")
+R.c("server/chunks/2ae5e_8274d135._.js")
+R.c("server/chunks/2ae5e_next_dist_21674543._.js")
+R.c("server/chunks/2ae5e_@better-auth_core_dist_2be95946._.js")
+R.c("server/chunks/2ae5e_jose_dist_webapi_5aa3c60b._.js")
+R.c("server/chunks/2ae5e_zod_4d46f601._.js")
+R.c("server/chunks/2ae5e_better-auth_dist_2af47a8e._.js")
+R.c("server/chunks/2ae5e_kysely_dist_esm_2ceeca01._.js")
+R.c("server/chunks/2ae5e_346bd82b._.js")
+R.c("server/chunks/[root-of-the-server]__3cd6a84b._.js")
+R.c("server/chunks/3d860_coiffeur__next-internal_server_app_api_auth_[___all]_route_actions_5cc3ffe3.js")
+R.m("[project]/Desktop/coiffeur/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/Desktop/coiffeur/app/api/auth/[...all]/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)")
+module.exports=R.m("[project]/Desktop/coiffeur/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/Desktop/coiffeur/app/api/auth/[...all]/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)").exports

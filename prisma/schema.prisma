@@ -1,0 +1,185 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+enum Role {
+  CUSTOMER
+  EMPLOYEE
+  ADMIN
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+
+
+model User {
+  id            String    @id
+  name          String
+  email         String
+  emailVerified Boolean   @default(false)
+  image         String?
+  phone         String?   // ajouté pour le côté "Person"
+  role          Role      @default(CUSTOMER) // rôle métier (client, employé, admin)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now()) @updatedAt
+
+  sessions      Session[]
+  accounts      Account[]
+
+  // relations métier
+  employee      Employee?
+  customer      Customer?
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+
+  @@map("verification")
+}
+
+// =======================
+// Domaine Salon / Barber
+// =======================
+
+model Salon {
+  id        String   @id @default(cuid())
+  name      String
+  address   String?
+  openTime  String   // "09:00"
+  closeTime String   // "19:00"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  services     Service[]
+  employees    Employee[]
+  appointments Appointment[]
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  salonId     String
+  name        String
+  durationMin Int      // durée en minutes
+  priceCents  Int      // prix en centimes
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  salon       Salon       @relation(fields: [salonId], references: [id])
+  appointments Appointment[]
+
+  @@index([salonId])
+}
+
+model Customer {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  user        User         @relation(fields: [userId], references: [id])
+  appointments Appointment[]
+}
+
+model Employee {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  salonId     String
+  specialties String[] // ex: ["haircut", "color"]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  user          User           @relation(fields: [userId], references: [id])
+  salon         Salon          @relation(fields: [salonId], references: [id])
+  availabilities Availability[]
+  appointments   Appointment[]
+
+  @@index([salonId])
+}
+
+model Availability {
+  id         String   @id @default(cuid())
+  employeeId String
+  dayOfWeek  Int      // 1 (lundi) - 7 (dimanche)
+  startTime  String   // "09:00"
+  endTime    String   // "12:00"
+
+  employee   Employee @relation(fields: [employeeId], references: [id])
+
+  @@index([employeeId, dayOfWeek])
+}
+
+model Appointment {
+  id          String            @id @default(cuid())
+  salonId     String
+  serviceId   String
+  employeeId  String
+  customerId  String
+  startsAt    DateTime
+  endsAt      DateTime
+  status      AppointmentStatus @default(PENDING)
+  priceCents  Int               // prix figé au moment du RDV
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  salon       Salon     @relation(fields: [salonId], references: [id])
+  service     Service   @relation(fields: [serviceId], references: [id])
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+  customer    Customer  @relation(fields: [customerId], references: [id])
+
+  @@index([employeeId, startsAt, endsAt])
+  @@index([salonId])
+}

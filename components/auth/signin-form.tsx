@@ -15,6 +15,7 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { loginSchema } from "@/lib/validations/auth-form";
+import { signIn } from "@/lib/auth-client";
 
 interface AuthLoginFormProps {
   showPassword: boolean;
@@ -30,9 +31,18 @@ function AuthLoginForm({ showPassword, setShowPassword }: AuthLoginFormProps) {
   });
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
+    const { email, password } = values;
+
     try {
       setLoading(true);
-      // TODO: call your sign-in API here
+      const { data, error } = await signIn.email(
+        {
+          email,
+          password,
+        },
+        {}
+      );
+
       console.log(values);
     } finally {
       setLoading(false);

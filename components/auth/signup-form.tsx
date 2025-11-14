@@ -14,15 +14,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "@/lib/validations/auth-form";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
+import { signUp } from "@/lib/auth-client";
 
 interface AuthRegisterFormProps {
   showPassword: boolean;
   setShowPassword: React.Dispatch<React.SetStateAction<boolean>>;
+  onToggle: () => void;
 }
 
 function AuthRegisterForm({
   showPassword,
   setShowPassword,
+  onToggle,
 }: AuthRegisterFormProps) {
   const [loading, setLoading] = useState(false);
 
@@ -32,9 +35,17 @@ function AuthRegisterForm({
   });
 
   async function onSubmit(values: z.infer<typeof registerSchema>) {
+    const { name, email, password } = values;
     try {
       setLoading(true);
-      // TODO: call your signup API here
+
+      const { data, error } = await signUp.email({
+        email, // user email address
+        password, // user password -> min 8 characters by default
+        name,
+      });
+      if (!error) onToggle();
+
       console.log(values);
     } finally {
       setLoading(false);

@@ -72,6 +72,7 @@ export default function SalonAuth() {
                 <AuthRegisterForm
                   showPassword={showPassword}
                   setShowPassword={setShowPassword}
+                  onToggle={() => setTab("login")}
                 />
               </TabsContent>
             </Tabs>
