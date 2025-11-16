@@ -15,6 +15,7 @@ import { registerSchema } from "@/lib/validations/auth-form";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { signUp } from "@/lib/auth-client";
+import { toast } from "sonner";
 
 interface AuthRegisterFormProps {
   showPassword: boolean;
@@ -28,6 +29,7 @@ function AuthRegisterForm({
   onToggle,
 }: AuthRegisterFormProps) {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
@@ -39,96 +41,112 @@ function AuthRegisterForm({
     try {
       setLoading(true);
 
-      const { data, error } = await signUp.email({
-        email, // user email address
-        password, // user password -> min 8 characters by default
-        name,
-      });
-      if (!error) onToggle();
+      const { data, error } = await signUp.email(
+        {
+          email, // user email address
+          password, // user password -> min 8 characters by default
+          name,
+        },
+        {
+          onError: () => {
+            toast.error("Failed to sign up. Please check your credentials.");
+          },
+        }
+      );
+      if (!error) {
+        onToggle();
+        toast.success("Account created successfully! Please log in.");
+      }
 
-      console.log(values);
+      if (error) {
+        setError(error?.message || null);
+      }
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4"
-      >
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Full Name</FormLabel>
-              <FormControl>
-                <Input placeholder="e.g. John Doe" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email Address</FormLabel>
-              <FormControl>
-                <Input placeholder="example@email.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <div className="relative">
-                  <Input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="At least 8 characters"
-                    {...field}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-muted-foreground"
-                    aria-label={
-                      showPassword ? "Hide password" : "Show password"
-                    }
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-4 w-4" />
-                    ) : (
-                      <Eye className="h-4 w-4" />
-                    )}
-                  </button>
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <Button
-          className="h-12 w-full cursor-pointer"
-          type="submit"
-          disabled={loading}
+    <div>
+      {error && <p className="text-red-500 p-4 mb-2">{error}</p>}
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-4"
         >
-          {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />} Sign Up
-        </Button>
-      </form>
-    </Form>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Full Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g. John Doe" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email Address</FormLabel>
+                <FormControl>
+                  <Input placeholder="example@email.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <Input
+                      type={showPassword ? "text" : "password"}
+                      placeholder="At least 8 characters"
+                      {...field}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-muted-foreground"
+                      aria-label={
+                        showPassword ? "Hide password" : "Show password"
+                      }
+                    >
+                      {showPassword ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                    </button>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <Button
+            className="h-12 w-full cursor-pointer"
+            type="submit"
+            disabled={loading}
+          >
+            {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />} Sign
+            Up
+          </Button>
+        </form>
+      </Form>
+    </div>
   );
 }
 

@@ -8,16 +8,28 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Scissors } from "lucide-react";
 import { useState } from "react";
+import { signIn } from "../../lib/auth-client";
+import { toast } from "sonner";
 
 export default function SalonAuth() {
   const [tab, setTab] = useState<"login" | "register">("login");
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState<"login" | "register" | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(kind: "login" | "register") {
-    setLoading(kind);
-    setTimeout(() => setLoading(null), 900);
-  }
+  const signInWithGoogle = async () => {
+    const response = await signIn.social({
+      provider: "google",
+    });
+
+    if (response.error) {
+      setError(
+        response.error.message || "An error occurred during Google sign-in."
+      );
+      toast.error(
+        response.error.message || "An error occurred during Google sign-in."
+      );
+    }
+  };
 
   return (
     <div className="min-h-screen w-full bg-background lg:grid lg:grid-cols-2">
@@ -89,6 +101,7 @@ export default function SalonAuth() {
           variant="outline"
           className="h-12 w-full text-sm cursor-pointer"
           type="button"
+          onClick={signInWithGoogle}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

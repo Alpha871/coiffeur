@@ -58,7 +58,11 @@
 :root {
   --radius: 0.625rem;
 
-  --background: oklch(1 0 0);
+  /* Custom SalonApp background (light) */
+  --background-light: #f6f8f7;
+
+  /* Use custom background-light as Tailwind background token */
+  --background: var(--background-light);
   --foreground: oklch(0.145 0 0);
 
   --card: oklch(1 0 0);
@@ -104,7 +108,11 @@
 
 /* ---------- Dark tokens ---------- */
 .dark {
-  --background: oklch(0.145 0 0);
+  /* Custom SalonApp background (dark) */
+  --background-dark: #102219;
+
+  /* Use custom background-dark as Tailwind background token */
+  --background: var(--background-dark);
   --foreground: oklch(0.985 0 0);
 
   --card: oklch(0.205 0 0);

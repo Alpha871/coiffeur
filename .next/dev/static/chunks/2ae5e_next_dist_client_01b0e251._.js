@@ -3193,8 +3193,12 @@ function AppContainer({ children }) {
                                         "domains": ("TURBOPACK compile-time value", []),
                                         "remotePatterns": ("TURBOPACK compile-time value", [
                                             ("TURBOPACK compile-time value", {
+                                                "protocol": ("TURBOPACK compile-time value", "http"),
+                                                "hostname": ("TURBOPACK compile-time value", "**")
+                                            }),
+                                            ("TURBOPACK compile-time value", {
                                                 "protocol": ("TURBOPACK compile-time value", "https"),
-                                                "hostname": ("TURBOPACK compile-time value", "lh3.googleusercontent.com")
+                                                "hostname": ("TURBOPACK compile-time value", "**")
                                             })
                                         ]),
                                         "localPatterns": ("TURBOPACK compile-time value", [

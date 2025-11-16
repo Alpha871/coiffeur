@@ -8754,8 +8754,6 @@ function getCacheControlHeader({ revalidate, expire }) {
 "[project]/Desktop/coiffeur/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/Desktop/coiffeur/app/api/auth/[...all]/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-return __turbopack_context__.a(async (__turbopack_handle_async_dependencies__, __turbopack_async_result__) => { try {
-
 __turbopack_context__.s([
     "handler",
     ()=>handler,
@@ -8790,10 +8788,6 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$next$2f$dist$2f$shared$2f$
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$response$2d$cache$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/node_modules/next/dist/esm/server/response-cache/index.js [app-route] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$response$2d$cache$2f$types$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/node_modules/next/dist/esm/server/response-cache/types.js [app-route] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$app$2f$api$2f$auth$2f5b2e2e2e$all$5d2f$route$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/app/api/auth/[...all]/route.ts [app-route] (ecmascript)");
-var __turbopack_async_dependencies__ = __turbopack_handle_async_dependencies__([
-    __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$app$2f$api$2f$auth$2f5b2e2e2e$all$5d2f$route$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__
-]);
-[__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$app$2f$api$2f$auth$2f5b2e2e2e$all$5d2f$route$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__] = __turbopack_async_dependencies__.then ? (await __turbopack_async_dependencies__)() : __turbopack_async_dependencies__;
 ;
 ;
 ;
@@ -9134,8 +9128,7 @@ async function handler(req, res, ctx) {
         return null;
     }
 } //# sourceMappingURL=app-route.js.map
-__turbopack_async_result__();
-} catch(e) { __turbopack_async_result__(e); } }, false);}),
+}),
 ];
 
 //# sourceMappingURL=2ae5e_next_dist_21674543._.js.map

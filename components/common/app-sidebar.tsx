@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export default function AppSidebar() {
+export default function AppSidebar({ salonId }: { salonId: string }) {
   const pathname = usePathname();
   const isActive = (href: string) => pathname === href;
 
@@ -57,11 +57,16 @@ export default function AppSidebar() {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link
-                    href="/dashboard"
-                    aria-current={isActive("/dashboard") ? "page" : undefined}
+                    href={`/salon/${salonId}/dashboard`}
+                    aria-current={
+                      isActive(`/salon/${salonId}/dashboard`)
+                        ? "page"
+                        : undefined
+                    }
                     className={cn(
                       "sidebar-item",
-                      isActive("/dashboard") && "sidebar-item-active"
+                      isActive(`/salon/${salonId}/dashboard`) &&
+                        "sidebar-item-active"
                     )}
                   >
                     <LayoutDashboard className="h-5 w-5" />
@@ -75,13 +80,16 @@ export default function AppSidebar() {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link
-                    href="/appointments"
+                    href={`/salon/${salonId}/appointments`}
                     aria-current={
-                      isActive("/appointments") ? "page" : undefined
+                      isActive(`/salon/${salonId}/appointments`)
+                        ? "page"
+                        : undefined
                     }
                     className={cn(
                       "sidebar-item",
-                      isActive("/appointments") && "sidebar-item-active"
+                      isActive(`/salon/${salonId}/appointments`) &&
+                        "sidebar-item-active"
                     )}
                   >
                     <CalendarDays className="h-5 w-5" />
@@ -95,13 +103,16 @@ export default function AppSidebar() {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link
-                    href="/staff-management"
+                    href={`/salon/${salonId}/staff-management`}
                     aria-current={
-                      isActive("/staff-management") ? "page" : undefined
+                      isActive(`/salon/${salonId}/staff-management`)
+                        ? "page"
+                        : undefined
                     }
                     className={cn(
                       "sidebar-item",
-                      isActive("/staff-management") && "sidebar-item-active"
+                      isActive(`/salon/${salonId}/staff-management`) &&
+                        "sidebar-item-active"
                     )}
                   >
                     <IdCard className="h-5 w-5" />
@@ -113,11 +124,16 @@ export default function AppSidebar() {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link
-                    href="/services"
-                    aria-current={isActive("/services") ? "page" : undefined}
+                    href={`/salon/${salonId}/services`}
+                    aria-current={
+                      isActive(`/salon/${salonId}/services`)
+                        ? "page"
+                        : undefined
+                    }
                     className={cn(
                       "sidebar-item",
-                      isActive("/services") && "sidebar-item-active"
+                      isActive(`/salon/${salonId}/services`) &&
+                        "sidebar-item-active"
                     )}
                   >
                     <Scissors className="h-5 w-5" />
