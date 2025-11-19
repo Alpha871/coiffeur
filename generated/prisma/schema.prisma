@@ -253,6 +253,8 @@ model Member {
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  role String
+
   specialties String[] @default([])
 
   createdAt DateTime @default(now())

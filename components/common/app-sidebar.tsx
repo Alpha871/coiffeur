@@ -20,7 +20,6 @@ import {
   LayoutDashboard,
   Scissors,
   Settings,
-  Users,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

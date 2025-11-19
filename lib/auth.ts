@@ -2,6 +2,8 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 
 import { admin, organization } from "better-auth/plugins";
+import { APIError } from "better-auth/api";
+
 import prisma from "./prisma";
 
 export const auth = betterAuth({
@@ -18,5 +20,21 @@ export const auth = betterAuth({
     },
   },
 
-  plugins: [admin(), organization()],
+  plugins: [
+    admin(),
+    organization({
+      organizationHooks: {
+        // beforeCreateTeam: async ({ team, user, organization }) => {
+        //   const existingOrganization = await findOrganizationById(
+        //     organization.id
+        //   );
+        //   if (existingOrganization) {
+        //     throw new APIError("BAD_REQUEST", {
+        //       message: "Team name already exists in this organization",
+        //     });
+        //   }
+        // },
+      },
+    }),
+  ],
 });

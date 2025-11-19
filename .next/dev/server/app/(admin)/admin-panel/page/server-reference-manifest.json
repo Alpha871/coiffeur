@@ -1,0 +1,50 @@
+{
+  "node": {
+    "40261e91d9ab839ca4245fe5d93ba394e4df1d02e1": {
+      "workers": {
+        "app/(admin)/admin-panel/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(admin)/admin-panel/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "approveSalonRequest",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(admin)/admin-panel/page": "action-browser"
+      },
+      "exportedName": "approveSalonRequest",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+    },
+    "000d0b6cab33186c8977332b1a1cdeee022c270a5f": {
+      "workers": {
+        "app/(admin)/admin-panel/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(admin)/admin-panel/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPendingSalonRequests",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(admin)/admin-panel/page": "action-browser"
+      },
+      "exportedName": "getPendingSalonRequests",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+    },
+    "60f9569dc8342c603650610a584740c3e9c4d5271b": {
+      "workers": {
+        "app/(admin)/admin-panel/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(admin)/admin-panel/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "rejectSalonRequest",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(admin)/admin-panel/page": "action-browser"
+      },
+      "exportedName": "rejectSalonRequest",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+    }
+  },
+  "edge": {}
+}

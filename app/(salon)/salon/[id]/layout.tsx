@@ -5,20 +5,19 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 
-function layout({
+async function layout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   return (
     <div>
       <SidebarProvider>
-        <AppSidebar salonId={params.id} />
-
+        <AppSidebar salonId={id} />
         <SidebarInset>
-          {/* Topbar */}
           <div className="flex h-14 items-center gap-2 border-b px-4">
             <SidebarTrigger />
             <div className="font-semibold">Appointments</div>

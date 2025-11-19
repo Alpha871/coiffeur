@@ -1,57 +1,817 @@
-[00:00:00.618] Server  LOG      ✓ Ready in 450ms
-[00:00:03.321] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:04.754] Server  LOG     {}
-[00:00:04.763] Server  LOG     Role undefined
-[00:00:05.365] Browser LOG     {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:00:05.365] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:00:05.365] Browser LOG     Role undefined
-[00:00:05.365] Browser LOG     [2;38;2;124;124;124m%s[0m Role undefined
-[00:00:05.509] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.608] Browser LOG     Role user
-[00:00:06.608] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
-[00:02:47.083] Server  LOG     {}
-[00:02:47.090] Server  LOG     Role undefined
-[00:02:47.314] Browser LOG     {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:02:47.314] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:02:47.314] Browser LOG     Role undefined
-[00:02:47.314] Browser LOG     [2;38;2;124;124;124m%s[0m Role undefined
-[00:02:47.314] Browser LOG     Role user
-[00:02:47.314] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
-[00:03:05.124] Browser LOG     {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:03:05.124] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:03:05.124] Browser LOG     Role user
-[00:03:05.124] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
-[00:03:10.126] Browser LOG     {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:03:10.126] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:03:10.126] Browser LOG     Role user
-[00:03:10.126] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
-[00:03:17.672] Server  WARN    Error: Route "/salon/[id]/dashboard" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:03:18.124] Browser LOG     {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:03:18.124] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:03:18.124] Browser LOG     Role user
-[00:03:18.124] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
-[00:03:23.739] Server  LOG      ✓ Compiled in 25ms
-[00:03:24.123] Browser LOG     {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:03:24.123] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:04:13.265] Server  LOG      ✓ Compiled in 26ms
-[00:04:14.123] Browser LOG     {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:04:14.123] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
-[00:04:20.453] Server  WARN    Error: Route "/salon/[id]/appointments" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:04:20.591] Browser LOG     {"pathname":"/salon/undefined/appointments"}
-[00:04:20.591] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/appointments"}
-[00:04:20.591] Browser LOG     {"pathname":"/salon/undefined/appointments"}
-[00:04:20.591] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/appointments"}
-[00:04:20.591] Browser LOG     {"pathname":"/salon/undefined/appointments"}
-[00:04:20.591] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/appointments"}
-[00:04:28.502] Browser LOG     {"pathname":"/salon/undefined/staff-management"}
-[00:04:28.502] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/staff-management"}
-[00:04:28.502] Browser LOG     {"pathname":"/salon/undefined/staff-management"}
-[00:04:28.502] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/staff-management"}
-[00:04:28.502] Browser LOG     {"pathname":"/salon/undefined/staff-management"}
-[00:04:28.502] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/staff-management"}
-[00:04:38.240] Browser LOG     {"pathname":"/salon/undefined/services"}
-[00:04:38.240] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/services"}
-[00:04:38.240] Browser LOG     {"pathname":"/salon/undefined/services"}
-[00:04:38.240] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/services"}
-[00:04:38.240] Browser LOG     {"pathname":"/salon/undefined/services"}
-[00:04:38.240] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/services"}
+[00:00:00.486] Server  LOG      ✓ Ready in 370ms
+[00:00:05.726] Server  WARN    Error: Route "/request-salon-management/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:00:05.726] Server  LOG     id undefined
+[00:00:08.298] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/request-s..." tree={[...]} params={{id:"cmi1xh..."}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="/Desktop/c...">
+          <SegmentTrieNode>
+          <ApplicationStatusPage>
+            <div className="bg-backgro...">
+              <div className="mx-auto ma...">
+                <StatusCard name="The modern..." status="APPROVED" salonId="cmi1xhpgj0..." createdAt={Date}>
+                  <ConfirmDialog>
+                  <Card className="shadow-sm ...">
+                    <div data-slot="card" className="text-card-...">
+                      <CardHeader>
+                      <CardContent className="border-t d...">
+                        <div data-slot="card-content" className="border-t d...">
+                          <h2>
+                          <dl className="mt-4 grid ...">
+                            <div>
+                            <div>
+                              <dt>
+                              <dd className="mt-1 text-...">
++                               16/11/2025
+-                               11/16/2025
+                                ...
+                      ...
+        ...
+      ...
+
+[00:01:05.018] Server  WARN    Error: Route "/request-salon-management/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:01:05.018] Server  LOG     id undefined
+[00:01:05.817] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/request-s..." tree={[...]} params={{id:"cmi1xh..."}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="/Desktop/c...">
+          <SegmentTrieNode>
+          <ApplicationStatusPage>
+            <div className="bg-backgro...">
+              <div className="mx-auto ma...">
+                <StatusCard name="The modern..." status="APPROVED" salonId="cmi1xhpgj0..." createdAt={Date}>
+                  <ConfirmDialog>
+                  <Card className="shadow-sm ...">
+                    <div data-slot="card" className="text-card-...">
+                      <CardHeader>
+                      <CardContent className="border-t d...">
+                        <div data-slot="card-content" className="border-t d...">
+                          <h2>
+                          <dl className="mt-4 grid ...">
+                            <div>
+                            <div>
+                              <dt>
+                              <dd className="mt-1 text-...">
++                               16/11/2025
+-                               11/16/2025
+                                ...
+                      ...
+        ...
+      ...
+
+[00:01:28.750] Server  WARN    Error: Route "/salon/[id]/dashboard" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:01:28.888] Browser LOG     {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
+[00:01:28.888] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
+[00:01:28.888] Browser LOG     Role user
+[00:01:28.888] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
+[00:02:13.476] Server  WARN    Error: Route "/request-salon-management/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:02:13.476] Server  LOG     id undefined
+[00:02:14.271] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/request-s..." tree={[...]} params={{id:"cmi1xh..."}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="/Desktop/c...">
+          <SegmentTrieNode>
+          <ApplicationStatusPage>
+            <div className="bg-backgro...">
+              <div className="mx-auto ma...">
+                <StatusCard name="The modern..." status="APPROVED" salonId="cmi1xhpgj0..." createdAt={Date}>
+                  <ConfirmDialog>
+                  <Card className="shadow-sm ...">
+                    <div data-slot="card" className="text-card-...">
+                      <CardHeader>
+                      <CardContent className="border-t d...">
+                        <div data-slot="card-content" className="border-t d...">
+                          <h2>
+                          <dl className="mt-4 grid ...">
+                            <div>
+                            <div>
+                              <dt>
+                              <dd className="mt-1 text-...">
++                               16/11/2025
+-                               11/16/2025
+                                ...
+                      ...
+        ...
+      ...
+
+[00:02:31.564] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:16.895] Server  LOG      ✓ Compiled in 38ms
+[00:03:18.766] Server  LOG      ✓ Compiled in 43ms
+[00:03:27.032] Server  WARN    Error: Route "/request-salon-management/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:03:27.032] Server  LOG     id undefined
+[00:03:28.059] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/request-s..." tree={[...]} params={{id:"cmi1xh..."}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="/Desktop/c...">
+          <SegmentTrieNode>
+          <ApplicationStatusPage>
+            <div className="bg-backgro...">
+              <div className="mx-auto ma...">
+                <StatusCard name="The modern..." status="APPROVED" salonId="cmi1xhpgj0..." createdAt={Date}>
+                  <ConfirmDialog>
+                  <Card className="shadow-sm ...">
+                    <div data-slot="card" className="text-card-...">
+                      <CardHeader>
+                      <CardContent className="border-t d...">
+                        <div data-slot="card-content" className="border-t d...">
+                          <h2>
+                          <dl className="mt-4 grid ...">
+                            <div>
+                            <div>
+                              <dt>
+                              <dd className="mt-1 text-...">
++                               16/11/2025
+-                               11/16/2025
+                                ...
+                      ...
+        ...
+      ...
+
+[00:03:53.124] Server  LOG      ✓ Compiled in 32ms
+[00:03:53.208] Browser LOG     {}
+[00:03:53.208] Browser LOG     [2;38;2;124;124;124m%s[0m {}
+[00:05:05.454] Server  WARN    Error: Route "/request-salon-management/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:05:05.454] Server  LOG     id undefined
+[00:05:06.047] Server  LOG     {}
+[00:05:06.183] Browser LOG     {}
+[00:05:06.183] Browser LOG     [2;38;2;124;124;124m%s[0m {}
+[00:05:55.126] Browser ERROR   ./Desktop/coiffeur/app/(salon)/request-salon-management/[id]/page.tsx:17:31
+Parsing ecmascript source code failed
+  15 |   );
+  16 |
+> 17 |   console.log({ requestedSalon.organizationId });
+     |                               ^
+  18 |
+  19 |   return (
+  20 |     <div className="bg-background-light dark:bg-background-dark min-h-screen text-gray-800 dark:text-gray-200">
+
+Expected a semicolon
+[00:05:55.126] Browser ERROR   ./Desktop/coiffeur/app/(salon)/request-salon-management/[id]/page.tsx:17:31
+Parsing ecmascript source code failed
+  15 |   );
+  16 |
+> 17 |   console.log({ requestedSalon.organizationId });
+     |                               ^
+  18 |
+  19 |   return (
+  20 |     <div className="bg-background-light dark:bg-background-dark min-h-screen text-gray-800 dark:text-gray-200">
+
+Expected a semicolon
+[00:06:25.141] Server  WARN    Error: Route "/request-salon-management/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:06:25.141] Server  LOG     id undefined
+[00:06:27.097] Server  LOG     requestedSalon "wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"
+[00:06:27.228] Browser LOG     {}
+[00:06:27.228] Browser LOG     [2;38;2;124;124;124m%s[0m {}
+[00:07:05.264] Server  WARN    Error: Route "/request-salon-management/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:07:05.264] Server  LOG     id undefined
+[00:07:05.871] Server  LOG     requestedSalon "wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"
+[00:07:05.995] Browser LOG     {}
+[00:07:05.995] Browser LOG     [2;38;2;124;124;124m%s[0m {}
+[00:07:11.462] Server  WARN    Error: Route "/request-salon-management/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:07:11.462] Server  LOG     id undefined
+[00:07:11.922] Server  LOG     requestedSalon "wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"
+[00:07:12.038] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:07:12.038] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:07:20.412] Server  WARN    Error: Route "/salon/[id]/dashboard" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:07:20.574] Browser LOG     {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
+[00:07:20.574] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
+[00:07:20.574] Browser LOG     Role user
+[00:07:20.574] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
+[00:07:23.102] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:07:23.102] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:07:33.592] Server  WARN    Error: Route "/salon/[id]/dashboard" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:07:33.721] Browser LOG     {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
+[00:07:33.721] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
+[00:07:33.721] Browser LOG     Role user
+[00:07:33.721] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
+[00:07:40.434] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:07:40.435] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:13:53.013] Server  LOG     requestedSalon "wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"
+[00:13:53.141] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:13:53.141] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:14:07.673] Server  LOG     pageId "cmi1xhpgj0009z3w93ajl08g9"
+[00:14:08.340] Server  LOG     requestedSalon "wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"
+[00:14:08.467] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:14:08.467] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:14:21.930] Server  LOG     pageId "cmi1xhpgj0009z3w93ajl08g9"
+[00:14:22.420] Server  LOG     requestedSalon "wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"
+[00:14:22.451] Server  LOG     {}
+[00:14:22.797] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:14:22.797] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:14:22.797] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:14:22.797] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:14:22.797] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/request-s..." tree={[...]} params={{id:"cmi1xh..."}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="/Desktop/c...">
+          <SegmentTrieNode>
+          <ApplicationStatusPage>
+            <div className="bg-backgro...">
+              <div className="mx-auto ma...">
+                <StatusCard name="The modern..." organizationId="wyCet9STfM..." status="APPROVED" salonId="cmi1xhpgj0..." ...>
+                  <ConfirmDialog>
+                  <Card className="shadow-sm ...">
+                    <div data-slot="card" className="text-card-...">
+                      <CardHeader>
+                      <CardContent className="border-t d...">
+                        <div data-slot="card-content" className="border-t d...">
+                          <h2>
+                          <dl className="mt-4 grid ...">
+                            <div>
+                            <div>
+                              <dt>
+                              <dd className="mt-1 text-...">
++                               16/11/2025
+-                               11/16/2025
+                                ...
+                      ...
+        ...
+      ...
+
+[00:14:56.275] Server  LOG     pageId "cmi1xhpgj0009z3w93ajl08g9"
+[00:14:56.874] Server  LOG     requestedSalon "wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"
+[00:14:57.003] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:14:57.003] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:15:06.639] Server  LOG     requestedSalon "wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"
+[00:15:06.778] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:15:06.778] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:15:29.604] Server  LOG     requestedSalon "wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"
+[00:15:29.738] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:15:29.738] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:15:33.595] Server  LOG     requestedSalon "wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"
+[00:15:33.704] Server  LOG     {}
+[00:15:34.029] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:15:34.029] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:15:34.029] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:15:34.029] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:15:34.029] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/request-s..." tree={[...]} params={{id:"cmi1xh..."}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="/Desktop/c...">
+          <SegmentTrieNode>
+          <ApplicationStatusPage>
+            <div className="bg-backgro...">
+              <div className="mx-auto ma...">
+                <StatusCard name="The modern..." organizationId="wyCet9STfM..." status="APPROVED" salonId="cmi1xhpgj0..." ...>
+                  <ConfirmDialog>
+                  <Card className="shadow-sm ...">
+                    <div data-slot="card" className="text-card-...">
+                      <CardHeader>
+                      <CardContent className="border-t d...">
+                        <div data-slot="card-content" className="border-t d...">
+                          <h2>
+                          <dl className="mt-4 grid ...">
+                            <div>
+                            <div>
+                              <dt>
+                              <dd className="mt-1 text-...">
++                               16/11/2025
+-                               11/16/2025
+                                ...
+                      ...
+        ...
+      ...
+
+[00:16:19.423] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:16:19.423] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:17:41.358] Server  LOG      ✓ Compiled in 118ms
+[00:17:42.294] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:17:42.294] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:18:25.485] Server  ERROR    ⨯ ReferenceError: format is not defined
+[00:18:25.609] Browser ERROR   uncaughtError: ReferenceError: format is not defined
+[00:18:34.904] Server  LOG     {}
+[00:18:35.158] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:18:35.158] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:18:35.158] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:18:35.158] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:18:35.158] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/request-s..." tree={[...]} params={{id:"cmi1xh..."}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="/Desktop/c...">
+          <SegmentTrieNode>
+          <ApplicationStatusPage>
+            <div className="bg-backgro...">
+              <div className="mx-auto ma...">
+                <StatusCard name="The modern..." organizationId="wyCet9STfM..." status="APPROVED" salonId="cmi1xhpgj0..." ...>
+                  <ConfirmDialog>
+                  <Card className="shadow-sm ...">
+                    <div data-slot="card" className="text-card-...">
+                      <CardHeader>
+                      <CardContent className="border-t d...">
+                        <div data-slot="card-content" className="border-t d...">
+                          <h2>
+                          <dl className="mt-4 grid ...">
+                            <div>
+                            <div>
+                              <dt>
+                              <dd className="mt-1 text-...">
++                               16/11/2025
+-                               11/16/2025
+                                ...
+                      ...
+        ...
+      ...
+
+[00:18:38.311] Server  LOG     {}
+[00:18:38.507] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:18:38.507] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:18:38.507] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:18:38.507] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:18:38.507] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/request-s..." tree={[...]} params={{id:"cmi1xh..."}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="/Desktop/c...">
+          <SegmentTrieNode>
+          <ApplicationStatusPage>
+            <div className="bg-backgro...">
+              <div className="mx-auto ma...">
+                <StatusCard name="The modern..." organizationId="wyCet9STfM..." status="APPROVED" salonId="cmi1xhpgj0..." ...>
+                  <ConfirmDialog>
+                  <Card className="shadow-sm ...">
+                    <div data-slot="card" className="text-card-...">
+                      <CardHeader>
+                      <CardContent className="border-t d...">
+                        <div data-slot="card-content" className="border-t d...">
+                          <h2>
+                          <dl className="mt-4 grid ...">
+                            <div>
+                            <div>
+                              <dt>
+                              <dd className="mt-1 text-...">
++                               16/11/2025
+-                               11/16/2025
+                                ...
+                      ...
+        ...
+      ...
+
+[00:19:07.272] Browser ERROR   ./Desktop/coiffeur/app/(salon)/request-salon-management/[id]/page.tsx:22:3
+Parsing ecmascript source code failed
+  20 |     
+  21 |
+> 22 |   return (
+     |   ^^^^^^
+  23 |     <div className="bg-background-light dark:bg-background-dark min-h-screen text-gray-800 dark:text-gray-200">
+  24 |       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+  25 |         {/* =========================================================
+
+Expected ':', got 'return'
+[00:19:07.274] Browser ERROR   ./Desktop/coiffeur/app/(salon)/request-salon-management/[id]/page.tsx:22:3
+Parsing ecmascript source code failed
+  20 |     
+  21 |
+> 22 |   return (
+     |   ^^^^^^
+  23 |     <div className="bg-background-light dark:bg-background-dark min-h-screen text-gray-800 dark:text-gray-200">
+  24 |       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+  25 |         {/* =========================================================
+
+Expected ':', got 'return'
+[00:19:52.997] Browser ERROR   ./Desktop/coiffeur/app/(salon)/request-salon-management/[id]/page.tsx:30:3
+Parsing ecmascript source code failed
+  28 |     
+  29 |
+> 30 |   return (
+     |   ^^^^^^
+  31 |     <div className="bg-background-light dark:bg-background-dark min-h-screen text-gray-800 dark:text-gray-200">
+  32 |       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+  33 |         {/* =========================================================
+
+Expected ':', got 'return'
+[00:19:52.998] Browser ERROR   ./Desktop/coiffeur/app/(salon)/request-salon-management/[id]/page.tsx:30:3
+Parsing ecmascript source code failed
+  28 |     
+  29 |
+> 30 |   return (
+     |   ^^^^^^
+  31 |     <div className="bg-background-light dark:bg-background-dark min-h-screen text-gray-800 dark:text-gray-200">
+  32 |       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+  33 |         {/* =========================================================
+
+Expected ':', got 'return'
+[00:20:05.121] Server  LOG      ✓ Compiled in 28ms
+[00:20:07.414] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:20:07.415] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:20:46.485] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:20:46.485] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:21:43.511] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:21:43.511] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:24:47.527] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:24:47.527] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:24:58.242] Browser LOG     {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:24:58.242] Browser LOG     [2;38;2;124;124;124m%s[0m {"organizationId":"wyCet9STfMlwCeGSkqSaKbd3r7FJ8hrP"}
+[00:25:03.333] Server  LOG      ✓ Compiled in 23ms
+[00:25:06.299] Server  LOG      ✓ Compiled in 26ms
+[00:25:06.382] Browser ERROR   uncaughtError: ReferenceError: format is not defined
+[00:25:17.722] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:25:17.983] Server  LOG      ✓ Compiled in 88ms
+[00:25:20.185] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/request-s..." tree={[...]} params={{id:"cmi1xh..."}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="/Desktop/c...">
+          <SegmentTrieNode>
+          <ApplicationStatusPage>
+            <div className="bg-backgro...">
+              <div className="mx-auto ma...">
+                <StatusCard name="The modern..." organizationId="wyCet9STfM..." status="APPROVED" salonId="cmi1xhpgj0..." ...>
+                  <ConfirmDialog>
+                  <Card className="shadow-sm ...">
+                    <div data-slot="card" className="text-card-...">
+                      <CardHeader>
+                      <CardContent className="border-t d...">
+                        <div data-slot="card-content" className="border-t d...">
+                          <h2>
+                          <dl className="mt-4 grid ...">
+                            <div>
+                            <div>
+                              <dt>
+                              <dd className="mt-1 text-...">
++                               16/11/2025
+-                               11/16/2025
+                                ...
+                      ...
+        ...
+      ...
+
+[00:26:52.034] Server  LOG      ✓ Compiled in 30ms
+[00:26:52.093] Browser ERROR   uncaughtError: ReferenceError: format is not defined
+[00:26:57.100] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:26:57.357] Server  LOG      ✓ Compiled in 35ms
+[00:26:58.215] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/request-s..." tree={[...]} params={{id:"cmi1xh..."}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="/Desktop/c...">
+          <SegmentTrieNode>
+          <ApplicationStatusPage>
+            <div className="bg-backgro...">
+              <div className="mx-auto ma...">
+                <StatusCard name="The modern..." organizationId="wyCet9STfM..." status="APPROVED" salonId="cmi1xhpgj0..." ...>
+                  <ConfirmDialog>
+                  <Card className="shadow-sm ...">
+                    <div data-slot="card" className="text-card-...">
+                      <CardHeader>
+                      <CardContent className="border-t d...">
+                        <div data-slot="card-content" className="border-t d...">
+                          <h2>
+                          <dl className="mt-4 grid ...">
+                            <div>
+                            <div>
+                              <dt>
+                              <dd className="mt-1 text-...">
++                               16/11/2025
+-                               11/16/2025
+                                ...
+                      ...
+        ...
+      ...
+
+[00:27:17.276] Server  LOG      ✓ Compiled in 26ms
+[00:27:28.553] Server  WARN    Error: Route "/salon/[id]/dashboard" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:27:28.695] Browser LOG     {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
+[00:27:28.695] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
+[00:27:28.695] Browser LOG     Role user
+[00:27:28.695] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
+[00:27:38.166] Server  WARN    Error: Route "/salon/[id]/appointments" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:27:38.306] Browser LOG     {"pathname":"/salon/undefined/appointments"}
+[00:27:38.306] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/appointments"}
+[00:27:38.306] Browser LOG     {"pathname":"/salon/undefined/appointments"}
+[00:27:38.306] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/appointments"}
+[00:27:38.306] Browser LOG     {"pathname":"/salon/undefined/appointments"}
+[00:27:38.306] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/appointments"}
+[00:27:40.718] Browser LOG     {"pathname":"/salon/undefined/staff-management"}
+[00:27:40.718] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/staff-management"}
+[00:27:40.718] Browser LOG     {"pathname":"/salon/undefined/staff-management"}
+[00:27:40.718] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/staff-management"}
+[00:27:41.451] Browser LOG     {"pathname":"/salon/undefined/services"}
+[00:27:41.451] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/services"}
+[00:27:41.451] Browser LOG     {"pathname":"/salon/undefined/services"}
+[00:27:41.451] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/services"}
+[00:27:41.451] Browser LOG     {"pathname":"/salon/undefined/services"}
+[00:27:41.451] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/services"}
+[00:28:12.515] Browser LOG     {"pathname":"/salon/undefined/staff-management"}
+[00:28:12.515] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/staff-management"}
+[00:28:13.464] Browser LOG     {"pathname":"/salon/undefined/appointments"}
+[00:28:13.464] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/undefined/appointments"}
+[00:28:14.440] Browser LOG     {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
+[00:28:14.440] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi1xhpgj0009z3w93ajl08g9/dashboard"}
+[00:28:14.440] Browser LOG     Role user
+[00:28:14.440] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
+[00:30:39.962] Server  LOG      ✓ Compiled in 32ms
+[00:30:40.065] Browser ERROR   ./Desktop/coiffeur/components/request-management/status-card.tsx:245:2
+Parsing ecmascript source code failed
+  243 |     </>
+  244 |   );
+> 245 | }
+      |  ^
+  246 |
+
+Expected '}', got '<eof>'
+
+Import trace:
+  Server Component:
+    ./Desktop/coiffeur/components/request-management/status-card.tsx
+    ./Desktop/coiffeur/app/(salon)/request-salon-management/[id]/page.tsx
+[00:30:40.067] Browser ERROR   ./Desktop/coiffeur/components/request-management/status-card.tsx:245:2
+Parsing ecmascript source code failed
+  243 |     </>
+  244 |   );
+> 245 | }
+      |  ^
+  246 |
+
+Expected '}', got '<eof>'
+
+Import trace:
+  Server Component:
+    ./Desktop/coiffeur/components/request-management/status-card.tsx
+    ./Desktop/coiffeur/app/(salon)/request-salon-management/[id]/page.tsx
+[00:33:23.344] Server  LOG      ✓ Compiled in 27ms
+[00:35:06.092] Server  LOG      ✓ Compiled in 45ms
+[00:35:30.577] Server  LOG      ✓ Compiled in 27ms
+[00:35:39.331] Server  LOG      ✓ Compiled in 22ms
+[00:37:00.273] Server  LOG      ✓ Compiled in 26ms
+[00:42:11.253] Server  LOG      ✓ Compiled in 24ms
+[00:42:14.281] Server  LOG      ✓ Compiled in 43ms
+[00:42:48.759] Server  LOG      ✓ Compiled in 24ms
+[00:43:32.410] Server  LOG      ✓ Compiled in 27ms
+[00:43:39.110] Server  LOG      ✓ Compiled in 27ms
+[00:44:22.418] Server  LOG      ✓ Compiled in 33ms
+[00:44:46.155] Server  LOG      ✓ Compiled in 26ms
+[00:45:24.641] Server  LOG      ✓ Compiled in 33ms
+[00:46:04.344] Server  LOG      ✓ Compiled in 44ms
+[00:46:21.508] Server  LOG      ✓ Compiled in 26ms
+[00:46:27.078] Server  LOG      ✓ Compiled in 24ms
+[00:46:59.769] Server  LOG      ✓ Compiled in 39ms
+[00:47:15.250] Server  LOG      ✓ Compiled in 31ms
+[00:47:41.364] Server  LOG      ✓ Compiled in 26ms
+[00:47:50.442] Server  LOG      ✓ Compiled in 24ms
+[00:47:55.860] Server  LOG      ✓ Compiled in 24ms
+[00:48:50.141] Server  LOG      ✓ Compiled in 53ms
+[00:49:20.893] Server  LOG      ✓ Compiled in 30ms
+[00:49:28.984] Server  LOG      ✓ Compiled in 23ms
+[00:49:46.886] Server  LOG      ✓ Compiled in 29ms
+[00:49:46.988] Browser ERROR   ./Desktop/coiffeur/components/request-management/status-card.tsx:111:13
+Parsing ecmascript source code failed
+  109 |               <WholeWord
+  110 |               Explore
+> 111 |             </Link>
+      |             ^
+  112 |           </Button>
+  113 |         </div>
+  114 |       ),
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./Desktop/coiffeur/components/request-management/status-card.tsx
+    ./Desktop/coiffeur/app/(salon)/request-salon-management/[id]/page.tsx
+[00:49:46.988] Browser ERROR   ./Desktop/coiffeur/components/request-management/status-card.tsx:111:14
+Parsing ecmascript source code failed
+  109 |               <WholeWord
+  110 |               Explore
+> 111 |             </Link>
+      |              ^^^^^^
+  112 |           </Button>
+  113 |         </div>
+  114 |       ),
+
+Unterminated regexp literal
+
+Import trace:
+  Server Component:
+    ./Desktop/coiffeur/components/request-management/status-card.tsx
+    ./Desktop/coiffeur/app/(salon)/request-salon-management/[id]/page.tsx
+[00:49:46.992] Browser ERROR   ./Desktop/coiffeur/components/request-management/status-card.tsx:111:13
+Parsing ecmascript source code failed
+  109 |               <WholeWord
+  110 |               Explore
+> 111 |             </Link>
+      |             ^
+  112 |           </Button>
+  113 |         </div>
+  114 |       ),
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./Desktop/coiffeur/components/request-management/status-card.tsx
+    ./Desktop/coiffeur/app/(salon)/request-salon-management/[id]/page.tsx
+[00:49:46.992] Browser ERROR   ./Desktop/coiffeur/components/request-management/status-card.tsx:111:14
+Parsing ecmascript source code failed
+  109 |               <WholeWord
+  110 |               Explore
+> 111 |             </Link>
+      |              ^^^^^^
+  112 |           </Button>
+  113 |         </div>
+  114 |       ),
+
+Unterminated regexp literal
+
+Import trace:
+  Server Component:
+    ./Desktop/coiffeur/components/request-management/status-card.tsx
+    ./Desktop/coiffeur/app/(salon)/request-salon-management/[id]/page.tsx
+[00:50:10.076] Server  LOG      ✓ Compiled in 48ms
+[00:50:41.323] Server  LOG      ✓ Compiled in 24ms
+[00:50:49.227] Server  LOG      ✓ Compiled in 30ms
+[00:51:05.550] Server  LOG      ✓ Compiled in 26ms
+[00:51:10.788] Server  LOG      ✓ Compiled in 25ms
+[00:51:19.517] Server  LOG      ✓ Compiled in 23ms
+[05:12:13.724] Server  ERROR   TimeoutError: The operation was aborted due to timeout
+[05:12:13.732] Server  ERROR   TimeoutError: The operation was aborted due to timeout
+[05:12:13.735] Server  ERROR   TimeoutError: The operation was aborted due to timeout
+[05:12:13.736] Server  ERROR    ⨯ "upstream image response timed out for" "https://lh3.googleusercontent.com/aida-public/AB6AXuDhL--XWbawHCNwtkXYpXNtnkvbW4hItw2MUIzB4_M4S6jYtn8krnMWDQOlYWmgNZxpFg3fTRRbIae9WVT1onmVEdYV2wfLqVZELD8nUMzmp4BLgFrcDyIJVVr0ZM8aGoF3x4adPOqzrVo4Diwi1o23BR0XPrRVGJ9Lu3lkKBUVN2YSFVMmOYAmRYwgPIOa5t_DlDyG5XDg6KF6vcGLUA1D4A_5EyF-YzGcORciFCpOChRpR0KMQ3AR678EA0uVz7jkOoA7flg0Uxc"
+[05:12:21.345] Browser ERROR   uncaughtError: TypeError: Cannot destructure property 'index' of 'ascDiffsToSnaps[0]' as it is undefined.
+[05:12:23.500] Browser ERROR   uncaughtError: TypeError: Cannot destructure property 'index' of 'ascDiffsToSnaps[0]' as it is undefined.
+[05:12:24.235] Browser ERROR   uncaughtError: TypeError: Cannot destructure property 'index' of 'ascDiffsToSnaps[0]' as it is undefined.
+[05:12:28.436] Browser WARN    Image with src "https://lh3.googleusercontent.com/aida-public/AB6AXuDhL--XWbawHCNwtkXYpXNtnkvbW4hItw2MUIzB4_M4S6jYtn8krnMWDQOlYWmgNZxpFg3fTRRbIae9WVT1onmVEdYV2wfLqVZELD8nUMzmp4BLgFrcDyIJVVr0ZM8aGoF3x4adPOqzrVo4Diwi1o23BR0XPrRVGJ9Lu3lkKBUVN2YSFVMmOYAmRYwgPIOa5t_DlDyG5XDg6KF6vcGLUA1D4A_5EyF-YzGcORciFCpOChRpR0KMQ3AR678EA0uVz7jkOoA7flg0Uxc" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[05:13:54.291] Server  LOG      ✓ Compiled in 27ms
+[05:14:36.359] Server  WARN    Error: Route "/salon/[id]/dashboard" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[05:14:36.506] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/dashboard"}
+[05:14:36.506] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/dashboard"}
+[05:14:36.506] Browser LOG     Role user
+[05:14:36.506] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
+[05:14:36.830] Browser LOG     Role user
+[05:14:36.830] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
+[05:15:25.238] Browser ERROR   ./Desktop/coiffeur/app/(salon)/salon/[id]/layout.tsx:15:18
+Parsing ecmascript source code failed
+  13 |   params: Promise<{ id: string }>;
+  14 | }) {
+> 15 |   const { id } = await params;
+     |                  ^^^^^
+  16 |   return (
+  17 |     <div>
+  18 |       <SidebarProvider>
+
+await isn't allowed in non-async function
+[05:15:25.554] Browser ERROR   ./Desktop/coiffeur/app/(salon)/salon/[id]/layout.tsx:15:18
+Parsing ecmascript source code failed
+  13 |   params: Promise<{ id: string }>;
+  14 | }) {
+> 15 |   const { id } = await params;
+     |                  ^^^^^
+  16 |   return (
+  17 |     <div>
+  18 |       <SidebarProvider>
+
+await isn't allowed in non-async function
+[05:15:29.820] Server  WARN    Error: Route "/salon/[id]/dashboard" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[05:15:29.869] Server  WARN    Error: Route "/salon/[id]/dashboard" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[05:15:29.905] Server  WARN    Error: Route "/salon/[id]/dashboard" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[05:15:29.925] Server  WARN    Error: Route "/salon/[id]/dashboard" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[05:15:30.555] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/dashboard"}
+[05:15:30.555] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/dashboard"}
+[05:15:30.555] Browser LOG     Role user
+[05:15:30.555] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
+[05:15:37.557] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/dashboard"}
+[05:15:37.557] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/dashboard"}
+[05:15:37.557] Browser LOG     Role user
+[05:15:37.557] Browser LOG     [2;38;2;124;124;124m%s[0m Role user
+[05:15:46.713] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/appointments"}
+[05:15:46.713] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/appointments"}
+[05:15:46.713] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/appointments"}
+[05:15:46.713] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/appointments"}
+[05:15:46.713] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/appointments"}
+[05:15:46.713] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/appointments"}
+[05:15:49.214] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/staff-management"}
+[05:15:49.214] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/staff-management"}
+[05:15:49.214] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/staff-management"}
+[05:15:49.214] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/staff-management"}
+[05:15:49.215] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/staff-management"}
+[05:15:49.215] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/staff-management"}
+[05:15:50.993] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/services"}
+[05:15:50.993] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/services"}
+[05:15:50.993] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/services"}
+[05:15:50.993] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/services"}
+[05:15:50.993] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/services"}
+[05:15:50.993] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/services"}
+[05:15:58.901] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[05:15:58.902] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[05:16:37.556] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/services"}
+[05:16:37.556] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/services"}
+[05:16:41.555] Browser LOG     {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/services"}
+[05:16:41.555] Browser LOG     [2;38;2;124;124;124m%s[0m {"pathname":"/salon/cmi5mn0ra000jz3q84zb00jm6/services"}

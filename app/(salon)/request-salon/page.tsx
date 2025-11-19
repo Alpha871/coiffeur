@@ -29,11 +29,15 @@ import { Salon } from "@/oop/domain/salon";
 
 import { openingHoursConfig } from "@/utils/constant";
 import { requestSalon } from "@/oop/infrastructure/salon-actions";
+import { organization } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 type FormValues = z.infer<typeof requestSchema>;
 
 export default function CreateSalonForm() {
   const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(requestSchema),
@@ -59,6 +63,21 @@ export default function CreateSalonForm() {
     setIsLoading(true);
     const openingHours = convertOpeningHoursToDatabase(values.openingHours);
 
+    const slug = values.salonName
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-");
+
+    const { data, error } = await organization.checkSlug({
+      slug,
+    });
+
+    if (!data) {
+      toast.error(error?.message || "name already exists");
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const salonData = new Salon(
         values.salonName,
@@ -73,15 +92,18 @@ export default function CreateSalonForm() {
         throw new Error("Please fill in all required fields correctly.");
       }
 
-      const { success, message } = await requestSalon(salonData.toJSON());
+      const { success, message, salonId } = await requestSalon(
+        salonData.toJSON()
+      );
 
       if (!success) {
         throw new Error(message);
       }
 
-      toast.success(message);
+      toast.success("Salon successfully requested!");
 
       form.reset();
+      router.push(`/request-salon-management/${salonId}`);
     } catch (error) {
       console.error("Error:", error);
       toast.error(
@@ -106,7 +128,6 @@ export default function CreateSalonForm() {
           </p>
         </div>
 
-        {/* Card + form */}
         <Card className="w-full max-w-2xl border-gray-200 dark:border-[#234836] bg-white dark:bg-background-dark">
           <CardContent className="p-6 sm:p-8">
             <Form {...form}>
@@ -114,7 +135,6 @@ export default function CreateSalonForm() {
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-8"
               >
-                {/* Salon details */}
                 <div className="space-y-6">
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                     Salon Details
@@ -332,7 +352,7 @@ export default function CreateSalonForm() {
                   <Button
                     type="button"
                     variant="ghost"
-                    className="text-sm font-semibold text-gray-900 dark:text-white"
+                    className="text-sm font-semibold text-gray-900 dark:text-white cursor-pointer"
                     onClick={() => form.reset()}
                   >
                     Cancel
@@ -340,7 +360,7 @@ export default function CreateSalonForm() {
 
                   <Button
                     type="submit"
-                    className="bg-primary text-background-dark hover:bg-primary/90"
+                    className="bg-primary text-background-dark hover:bg-primary/90 cursor-pointer"
                   >
                     {isLoading ? "Requesting..." : "Request Salon"}
                   </Button>

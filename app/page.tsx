@@ -41,7 +41,7 @@ const testimonials = [
 ];
 
 export default async function Page() {
-  const pendingSalonRequest = await getPendingSalonRequestByUserId(); // to prefetch the data on server side
+  const pendingSalonRequest = await getPendingSalonRequestByUserId();
 
   if (pendingSalonRequest === null) {
     return (

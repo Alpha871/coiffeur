@@ -6,11 +6,36 @@ import { OpeningHours, userRole } from "../domain/salon";
 import { auth } from "@/lib/auth";
 
 import { headers } from "next/headers";
-import { clear } from "console";
 
 export type GetPendingSalonRequestByUserId = Awaited<
   ReturnType<typeof getPendingSalonRequestByUserId>
 >;
+
+export const updateSalonOrganizationId = async (
+  salonId: string,
+  organizationId: string
+) => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (!session) {
+    throw new Error("Unauthorized");
+  }
+
+  try {
+    await prisma.salon.update({
+      where: { id: salonId },
+      data: {
+        organizationId: organizationId,
+      },
+    });
+
+    return { success: true, message: "Salon updated successfully" };
+  } catch (error) {
+    console.log("error", error);
+    return { success: false, message: "Failed to update salon" };
+  }
+};
 
 export async function getPendingSalonRequestByUserId() {
   const session = await auth.api.getSession({
@@ -43,7 +68,7 @@ export async function requestSalon(salon: {
   }
 
   try {
-    await prisma.salon.create({
+    const newSalon = await prisma.salon.create({
       data: {
         name: salon.name,
         address: salon.address,
@@ -64,7 +89,11 @@ export async function requestSalon(salon: {
       },
     });
 
-    return { success: true, message: "Salon created successfully" };
+    return {
+      success: true,
+      message: "Salon created successfully",
+      salonId: newSalon.id,
+    };
   } catch (error) {
     console.log("error", error);
     throw new Error("Failed to create salon");

@@ -119,6 +119,8 @@ function Button({ className, variant, size, asChild = false, ...props }) {
 __turbopack_context__.s([
     "authClient",
     ()=>authClient,
+    "organization",
+    ()=>organization,
     "signIn",
     ()=>signIn,
     "signOut",
@@ -139,7 +141,7 @@ const authClient = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$better$2d$auth$2f$dist$2f$client$2f$plugins$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["organizationClient"])()
     ]
 });
-const { signIn, signUp, useSession, signOut } = authClient;
+const { signIn, signUp, useSession, signOut, organization } = authClient;
 }),
 "[project]/Desktop/coiffeur/components/common/header.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";

@@ -256,6 +256,7 @@ exports.Prisma.MemberScalarFieldEnum = {
   id: 'id',
   organizationId: 'organizationId',
   userId: 'userId',
+  role: 'role',
   specialties: 'specialties',
   createdAt: 'createdAt'
 };

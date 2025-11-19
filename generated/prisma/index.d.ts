@@ -14978,6 +14978,7 @@ export namespace Prisma {
     id: string | null
     organizationId: string | null
     userId: string | null
+    role: string | null
     createdAt: Date | null
   }
 
@@ -14985,6 +14986,7 @@ export namespace Prisma {
     id: string | null
     organizationId: string | null
     userId: string | null
+    role: string | null
     createdAt: Date | null
   }
 
@@ -14992,6 +14994,7 @@ export namespace Prisma {
     id: number
     organizationId: number
     userId: number
+    role: number
     specialties: number
     createdAt: number
     _all: number
@@ -15002,6 +15005,7 @@ export namespace Prisma {
     id?: true
     organizationId?: true
     userId?: true
+    role?: true
     createdAt?: true
   }
 
@@ -15009,6 +15013,7 @@ export namespace Prisma {
     id?: true
     organizationId?: true
     userId?: true
+    role?: true
     createdAt?: true
   }
 
@@ -15016,6 +15021,7 @@ export namespace Prisma {
     id?: true
     organizationId?: true
     userId?: true
+    role?: true
     specialties?: true
     createdAt?: true
     _all?: true
@@ -15097,6 +15103,7 @@ export namespace Prisma {
     id: string
     organizationId: string
     userId: string
+    role: string
     specialties: string[]
     createdAt: Date
     _count: MemberCountAggregateOutputType | null
@@ -15122,6 +15129,7 @@ export namespace Prisma {
     id?: boolean
     organizationId?: boolean
     userId?: boolean
+    role?: boolean
     specialties?: boolean
     createdAt?: boolean
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
@@ -15135,6 +15143,7 @@ export namespace Prisma {
     id?: boolean
     organizationId?: boolean
     userId?: boolean
+    role?: boolean
     specialties?: boolean
     createdAt?: boolean
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
@@ -15145,6 +15154,7 @@ export namespace Prisma {
     id?: boolean
     organizationId?: boolean
     userId?: boolean
+    role?: boolean
     specialties?: boolean
     createdAt?: boolean
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
@@ -15155,11 +15165,12 @@ export namespace Prisma {
     id?: boolean
     organizationId?: boolean
     userId?: boolean
+    role?: boolean
     specialties?: boolean
     createdAt?: boolean
   }
 
-  export type MemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "organizationId" | "userId" | "specialties" | "createdAt", ExtArgs["result"]["member"]>
+  export type MemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "organizationId" | "userId" | "role" | "specialties" | "createdAt", ExtArgs["result"]["member"]>
   export type MemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -15188,6 +15199,7 @@ export namespace Prisma {
       id: string
       organizationId: string
       userId: string
+      role: string
       specialties: string[]
       createdAt: Date
     }, ExtArgs["result"]["member"]>
@@ -15620,6 +15632,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Member", 'String'>
     readonly organizationId: FieldRef<"Member", 'String'>
     readonly userId: FieldRef<"Member", 'String'>
+    readonly role: FieldRef<"Member", 'String'>
     readonly specialties: FieldRef<"Member", 'String[]'>
     readonly createdAt: FieldRef<"Member", 'DateTime'>
   }
@@ -17358,6 +17371,7 @@ export namespace Prisma {
     id: 'id',
     organizationId: 'organizationId',
     userId: 'userId',
+    role: 'role',
     specialties: 'specialties',
     createdAt: 'createdAt'
   };
@@ -18387,6 +18401,7 @@ export namespace Prisma {
     id?: StringFilter<"Member"> | string
     organizationId?: StringFilter<"Member"> | string
     userId?: StringFilter<"Member"> | string
+    role?: StringFilter<"Member"> | string
     specialties?: StringNullableListFilter<"Member">
     createdAt?: DateTimeFilter<"Member"> | Date | string
     organization?: XOR<OrganizationScalarRelationFilter, OrganizationWhereInput>
@@ -18399,6 +18414,7 @@ export namespace Prisma {
     id?: SortOrder
     organizationId?: SortOrder
     userId?: SortOrder
+    role?: SortOrder
     specialties?: SortOrder
     createdAt?: SortOrder
     organization?: OrganizationOrderByWithRelationInput
@@ -18414,6 +18430,7 @@ export namespace Prisma {
     NOT?: MemberWhereInput | MemberWhereInput[]
     organizationId?: StringFilter<"Member"> | string
     userId?: StringFilter<"Member"> | string
+    role?: StringFilter<"Member"> | string
     specialties?: StringNullableListFilter<"Member">
     createdAt?: DateTimeFilter<"Member"> | Date | string
     organization?: XOR<OrganizationScalarRelationFilter, OrganizationWhereInput>
@@ -18426,6 +18443,7 @@ export namespace Prisma {
     id?: SortOrder
     organizationId?: SortOrder
     userId?: SortOrder
+    role?: SortOrder
     specialties?: SortOrder
     createdAt?: SortOrder
     _count?: MemberCountOrderByAggregateInput
@@ -18440,6 +18458,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Member"> | string
     organizationId?: StringWithAggregatesFilter<"Member"> | string
     userId?: StringWithAggregatesFilter<"Member"> | string
+    role?: StringWithAggregatesFilter<"Member"> | string
     specialties?: StringNullableListFilter<"Member">
     createdAt?: DateTimeWithAggregatesFilter<"Member"> | Date | string
   }
@@ -19478,6 +19497,7 @@ export namespace Prisma {
 
   export type MemberCreateInput = {
     id: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
     organization: OrganizationCreateNestedOneWithoutMembersInput
@@ -19490,6 +19510,7 @@ export namespace Prisma {
     id: string
     organizationId: string
     userId: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
     availabilities?: SalonAvailabilityUncheckedCreateNestedManyWithoutMemberInput
@@ -19498,6 +19519,7 @@ export namespace Prisma {
 
   export type MemberUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organization?: OrganizationUpdateOneRequiredWithoutMembersNestedInput
@@ -19510,6 +19532,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     organizationId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     availabilities?: SalonAvailabilityUncheckedUpdateManyWithoutMemberNestedInput
@@ -19520,12 +19543,14 @@ export namespace Prisma {
     id: string
     organizationId: string
     userId: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
   }
 
   export type MemberUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19534,6 +19559,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     organizationId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -20391,6 +20417,7 @@ export namespace Prisma {
     id?: SortOrder
     organizationId?: SortOrder
     userId?: SortOrder
+    role?: SortOrder
     specialties?: SortOrder
     createdAt?: SortOrder
   }
@@ -20399,6 +20426,7 @@ export namespace Prisma {
     id?: SortOrder
     organizationId?: SortOrder
     userId?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -20406,6 +20434,7 @@ export namespace Prisma {
     id?: SortOrder
     organizationId?: SortOrder
     userId?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -21742,6 +21771,7 @@ export namespace Prisma {
 
   export type MemberCreateWithoutUserInput = {
     id: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
     organization: OrganizationCreateNestedOneWithoutMembersInput
@@ -21752,6 +21782,7 @@ export namespace Prisma {
   export type MemberUncheckedCreateWithoutUserInput = {
     id: string
     organizationId: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
     availabilities?: SalonAvailabilityUncheckedCreateNestedManyWithoutMemberInput
@@ -21963,6 +21994,7 @@ export namespace Prisma {
     id?: StringFilter<"Member"> | string
     organizationId?: StringFilter<"Member"> | string
     userId?: StringFilter<"Member"> | string
+    role?: StringFilter<"Member"> | string
     specialties?: StringNullableListFilter<"Member">
     createdAt?: DateTimeFilter<"Member"> | Date | string
   }
@@ -22611,6 +22643,7 @@ export namespace Prisma {
 
   export type MemberCreateWithoutAvailabilitiesInput = {
     id: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
     organization: OrganizationCreateNestedOneWithoutMembersInput
@@ -22622,6 +22655,7 @@ export namespace Prisma {
     id: string
     organizationId: string
     userId: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
     appointments?: AppointmentUncheckedCreateNestedManyWithoutMemberInput
@@ -22698,6 +22732,7 @@ export namespace Prisma {
 
   export type MemberUpdateWithoutAvailabilitiesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organization?: OrganizationUpdateOneRequiredWithoutMembersNestedInput
@@ -22709,6 +22744,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     organizationId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointments?: AppointmentUncheckedUpdateManyWithoutMemberNestedInput
@@ -23194,6 +23230,7 @@ export namespace Prisma {
 
   export type MemberCreateWithoutAppointmentsInput = {
     id: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
     organization: OrganizationCreateNestedOneWithoutMembersInput
@@ -23205,6 +23242,7 @@ export namespace Prisma {
     id: string
     organizationId: string
     userId: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
     availabilities?: SalonAvailabilityUncheckedCreateNestedManyWithoutMemberInput
@@ -23333,6 +23371,7 @@ export namespace Prisma {
 
   export type MemberUpdateWithoutAppointmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organization?: OrganizationUpdateOneRequiredWithoutMembersNestedInput
@@ -23344,6 +23383,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     organizationId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     availabilities?: SalonAvailabilityUncheckedUpdateManyWithoutMemberNestedInput
@@ -23376,6 +23416,7 @@ export namespace Prisma {
 
   export type MemberCreateWithoutOrganizationInput = {
     id: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutMembersInput
@@ -23386,6 +23427,7 @@ export namespace Prisma {
   export type MemberUncheckedCreateWithoutOrganizationInput = {
     id: string
     userId: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
     availabilities?: SalonAvailabilityUncheckedCreateNestedManyWithoutMemberInput
@@ -24002,6 +24044,7 @@ export namespace Prisma {
   export type MemberCreateManyUserInput = {
     id: string
     organizationId: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
   }
@@ -24116,6 +24159,7 @@ export namespace Prisma {
 
   export type MemberUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organization?: OrganizationUpdateOneRequiredWithoutMembersNestedInput
@@ -24126,6 +24170,7 @@ export namespace Prisma {
   export type MemberUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     organizationId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     availabilities?: SalonAvailabilityUncheckedUpdateManyWithoutMemberNestedInput
@@ -24135,6 +24180,7 @@ export namespace Prisma {
   export type MemberUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     organizationId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -24489,6 +24535,7 @@ export namespace Prisma {
   export type MemberCreateManyOrganizationInput = {
     id: string
     userId: string
+    role: string
     specialties?: MemberCreatespecialtiesInput | string[]
     createdAt?: Date | string
   }
@@ -24504,6 +24551,7 @@ export namespace Prisma {
 
   export type MemberUpdateWithoutOrganizationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutMembersNestedInput
@@ -24514,6 +24562,7 @@ export namespace Prisma {
   export type MemberUncheckedUpdateWithoutOrganizationInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     availabilities?: SalonAvailabilityUncheckedUpdateManyWithoutMemberNestedInput
@@ -24523,6 +24572,7 @@ export namespace Prisma {
   export type MemberUncheckedUpdateManyWithoutOrganizationInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     specialties?: MemberUpdatespecialtiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
