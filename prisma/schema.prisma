@@ -20,7 +20,7 @@ enum AppointmentStatus {
 
 enum CreationStatus {
   PENDING
-  ACCEPTED
+  APPROVED
   CANCELLED
   REJECTED
   COMPLETED

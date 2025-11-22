@@ -11,7 +11,8 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 
-import { getPendingSalonRequestByUserId } from "@/oop/infrastructure/salon-actions";
+import { getSalonByUserId } from "@/oop/infrastructure/salon-actions";
+import { CreationStatus } from "@/generated/prisma";
 
 const HERO_BG =
   "linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDaXYkTtVzFz8Pp6wAhjTT-oy5WuEvJC3a2Gx0RBsoAggSEntXpYlOdYwwtdlaVFbljLKMHmcxqob_rW4novTRfa1dUJKKHC0Ov892n6BiED2uoolo3g9L4sCXDQelZwE_AMZb6hpwWHcOCdvxEHm7oVGpS0ht-h4nEqMpWLVd2cwH5HhbKzx3pCRsdckRERwQlqxC6jm8lJsqfHXpG7LmXs08CyQFkmcfYTaQPoyVP0nwa4PsO4eT03HKvZmkxNmmG2Lft0i2fNIo')";
@@ -41,15 +42,7 @@ const testimonials = [
 ];
 
 export default async function Page() {
-  const pendingSalonRequest = await getPendingSalonRequestByUserId();
-
-  if (pendingSalonRequest === null) {
-    return (
-      <div className="p-10 text-center text-red-500">
-        Failed to load salon request data.
-      </div>
-    );
-  }
+  const salon = await getSalonByUserId();
 
   return (
     <div className="bg-background-light dark:bg-background-dark min-h-screen text-gray-800 dark:text-gray-200 font-display">
@@ -88,20 +81,19 @@ export default async function Page() {
                             variant="outline"
                             className="h-10 px-4 @[480px]:h-12 @[480px]:px-5 rounded-xl border border-white/20 bg-white/10 dark:bg-[#234836] text-white text-sm @[480px]:text-base font-bold tracking-[0.015em]"
                           >
-                            {pendingSalonRequest.creationStatus === "PENDING" ||
-                            "ACCEPTED" ||
-                            "REJECTED" ||
-                            "CANCELLED" ? (
+                            {salon &&
+                            salon.creationStatus !==
+                              CreationStatus.COMPLETED ? (
                               <Link
-                                href={`/request-salon-management/${pendingSalonRequest.id}`}
+                                href={`/request-salon-management/${salon.id}`}
                                 className="cursor-pointer"
                               >
                                 Check Application Status
                               </Link>
-                            ) : pendingSalonRequest?.creationStatus ===
-                              "COMPLETED" ? (
+                            ) : salon?.creationStatus ===
+                              CreationStatus.COMPLETED ? (
                               <Link
-                                href={`/salon/${pendingSalonRequest.id}`}
+                                href={`/salon/${salon.id}/dashboard`}
                                 className="cursor-pointer"
                               >
                                 Go to My Salon Page
@@ -111,7 +103,7 @@ export default async function Page() {
                                 href="/request-salon"
                                 className="cursor-pointer"
                               >
-                                Create Your Salon
+                                Create Your Own Salon
                               </Link>
                             )}
                           </Button>

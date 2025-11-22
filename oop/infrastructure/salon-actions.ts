@@ -1,4 +1,3 @@
-// infrastructure/SalonRepository.ts
 "use server";
 
 import prisma from "@/lib/prisma";
@@ -6,10 +5,116 @@ import { OpeningHours, userRole } from "../domain/salon";
 import { auth } from "@/lib/auth";
 
 import { headers } from "next/headers";
+import { FormValues } from "@/components/request-management/request-form";
+import { revalidatePath } from "next/cache";
+import { CreationStatus } from "@/generated/prisma";
+import { redirect } from "next/navigation";
 
-export type GetPendingSalonRequestByUserId = Awaited<
-  ReturnType<typeof getPendingSalonRequestByUserId>
+export async function ActiveCurrentSalonOrganizationId(
+  organizationId: string,
+  organizationSlug: string
+) {
+  try {
+    await auth.api.setActiveOrganization({
+      body: {
+        organizationId,
+        organizationSlug,
+      },
+      headers: await headers(),
+    });
+  } catch (error) {
+    console.log("error", error);
+  }
+}
+
+export async function DeleteSalonById(organizationId: string) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (session === null) redirect("/authentication");
+
+  if (session.user.role !== userRole.admin) {
+    throw new Error("Unauthorized");
+  }
+
+  try {
+    await auth.api.deleteOrganization({
+      body: {
+        organizationId: organizationId,
+      },
+      // This endpoint requires session cookies.
+      headers: await headers(),
+    });
+    revalidatePath("/admin-panel");
+
+    return { success: true, message: "Salon deleted successfully" };
+  } catch (error) {
+    console.log("error", error);
+    return { success: false, message: "Failed to delete salon" };
+  }
+}
+
+export async function updateSalon(
+  salonId: string,
+  changedValues: Partial<FormValues>
+) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (session === null) {
+    redirect("/authentication");
+  }
+
+  try {
+    const updateData: Record<string, string> = {};
+
+    if (changedValues.salonName) updateData.name = changedValues.salonName;
+    if (changedValues.address) updateData.address = changedValues.address;
+    if (changedValues.description)
+      updateData.description = changedValues.description;
+    if (changedValues.phone) updateData.phone = changedValues.phone;
+    if (changedValues.email) updateData.email = changedValues.email;
+
+    updateData.creationStatus = "PENDING";
+
+    await prisma.salon.update({
+      where: { id: salonId },
+      data: updateData,
+    });
+
+    return { success: true, message: "Salon updated successfully" };
+  } catch (error) {
+    console.log("error", error);
+    return { success: false, message: "Failed to update salon" };
+  }
+}
+
+export type getSalonByUserId = Awaited<ReturnType<typeof getSalonByUserId>>;
+
+export type getSalonByIdwithUserId = Awaited<
+  ReturnType<typeof getSalonByIdwithUserId>
 >;
+
+export async function getSalonByIdwithUserId(salonId: string) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (!session) {
+    redirect(
+      "/authentication?callbackUrl=" +
+        encodeURIComponent(`/request-salon-management/${salonId}`)
+    );
+  }
+
+  const requestedSalon = await prisma.salon.findFirst({
+    where: { id: salonId, userId: session.user.id },
+    include: {
+      availabilities: true,
+    },
+  });
+
+  return requestedSalon;
+}
 
 export const updateSalonOrganizationId = async (
   salonId: string,
@@ -18,8 +123,8 @@ export const updateSalonOrganizationId = async (
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-  if (!session) {
-    throw new Error("Unauthorized");
+  if (session === null) {
+    redirect("/authentication");
   }
 
   try {
@@ -27,9 +132,11 @@ export const updateSalonOrganizationId = async (
       where: { id: salonId },
       data: {
         organizationId: organizationId,
+        creationStatus: CreationStatus.COMPLETED,
       },
     });
-
+    revalidatePath(`/request-salon-management/${salonId}`);
+    revalidatePath("/admin-panel");
     return { success: true, message: "Salon updated successfully" };
   } catch (error) {
     console.log("error", error);
@@ -37,7 +144,7 @@ export const updateSalonOrganizationId = async (
   }
 };
 
-export async function getPendingSalonRequestByUserId() {
+export async function getSalonByUserId() {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -51,6 +158,8 @@ export async function getPendingSalonRequestByUserId() {
 
   return requestedSalon;
 }
+
+export type RequestedSalonType = Awaited<ReturnType<typeof requestSalon>>;
 
 export async function requestSalon(salon: {
   name: string;
@@ -88,12 +197,8 @@ export async function requestSalon(salon: {
         },
       },
     });
-
-    return {
-      success: true,
-      message: "Salon created successfully",
-      salonId: newSalon.id,
-    };
+    revalidatePath("/admin-panel");
+    return newSalon;
   } catch (error) {
     console.log("error", error);
     throw new Error("Failed to create salon");
@@ -112,11 +217,15 @@ export async function approveSalonRequest(salonId: string) {
     await prisma.salon.update({
       where: { id: salonId },
       data: {
-        creationStatus: "ACCEPTED",
+        creationStatus: CreationStatus.APPROVED,
         acceptedAt: new Date(),
         acceptedBy: session.user.id,
       },
     });
+
+    revalidatePath("/admin-panel");
+    revalidatePath(`/request-salon-management/${salonId}`);
+
     return { success: true, message: "Salon request approved." };
   } catch (error) {
     console.error("Error approving salon request:", error);
@@ -124,15 +233,11 @@ export async function approveSalonRequest(salonId: string) {
   }
 }
 
-export async function rejectSalonRequest(
-  salonId: string,
-
-  reason: string
-) {
+export async function rejectSalonRequest(salonId: string, reason: string) {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-  if (!session) {
+  if (!session || session.user.role !== userRole.admin) {
     throw new Error("Unauthorized");
   }
 
@@ -140,12 +245,16 @@ export async function rejectSalonRequest(
     await prisma.salon.update({
       where: { id: salonId },
       data: {
-        creationStatus: "REJECTED",
+        creationStatus: CreationStatus.REJECTED,
         rejectionReason: reason,
         rejectedAt: new Date(),
         rejectedBy: session.user.id,
       },
     });
+
+    revalidatePath("/admin-panel");
+    revalidatePath(`/request-salon-management/${salonId}`);
+
     return { success: true, message: "Salon request rejected." };
   } catch (error) {
     console.error("Error rejecting salon request:", error);
@@ -161,11 +270,11 @@ export async function getPendingSalonRequests() {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-  if (!session?.session && session?.user.role !== userRole.admin) {
+  if (!session || session.user.role !== userRole.admin) {
     throw new Error("Unauthorized");
   }
   return await prisma.salon.findMany({
-    where: { creationStatus: "PENDING" },
+    where: { creationStatus: CreationStatus.PENDING },
     include: {
       availabilities: true,
       user: true,
@@ -173,23 +282,72 @@ export async function getPendingSalonRequests() {
   });
 }
 
-export async function getSalonByIdwithUserId(salonId: string) {
+export async function getSalonById(salonId: string) {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
   if (!session) {
-    throw new Error("Unauthorized");
+    redirect("/authentication");
   }
 
   return await prisma.salon.findUnique({
     where: { id: salonId },
+    include: {
+      availabilities: true,
+      organization: true,
+      services: {
+        include: {
+          service: true,
+        },
+      },
+      user: true,
+    },
   });
 }
 
+export type SalonType = Awaited<ReturnType<typeof getAllSalons>>[number];
+
 export async function getAllSalons() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (!session || session.user.role !== userRole.admin) {
+    throw new Error("Unauthorized");
+  }
+
   return await prisma.salon.findMany({
     include: {
       availabilities: true,
+      user: true,
+      services: {
+        include: {
+          service: true,
+        },
+      },
+      organization: true,
+    },
+  });
+}
+
+export async function getCompleteSalons() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (!session || session.user.role !== userRole.admin) {
+    throw new Error("Unauthorized");
+  }
+
+  return await prisma.salon.findMany({
+    where: { creationStatus: CreationStatus.COMPLETED },
+    include: {
+      availabilities: true,
+      user: true,
+      services: {
+        include: {
+          service: true,
+        },
+      },
+      organization: true,
     },
   });
 }

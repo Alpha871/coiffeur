@@ -362,7 +362,7 @@ function AuthLoginForm({ showPassword, setShowPassword }) {
             const { data, error } = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$auth$2d$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["signIn"].email({
                 email,
                 password,
-                callbackURL: "/dashboard"
+                callbackURL: "/"
             }, {
                 onError: ()=>{
                     __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error("Failed to sign in. Please check your credentials.");

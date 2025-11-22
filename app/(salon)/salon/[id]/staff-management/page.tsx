@@ -4,25 +4,36 @@ import * as React from "react";
 import { useState } from "react";
 import { z } from "zod";
 
-import { Search, Plus, ChevronRight } from "lucide-react";
+import { ChevronRight, Search } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CreateInviteButton } from "@/components/management/create-invitation-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { PersonalInfoForm } from "@/components/management/personal-form";
-import { SpecialtiesForm } from "@/components/management/specialties-form";
-import { ScheduleForm } from "@/components/management/schedule-form";
+import { authClient } from "@/lib/auth-client";
+import { StaffDetailContent } from "./_component/staff-detail-content";
+
+export type PendingInvites =
+  | {
+      id: string;
+      organizationId: string;
+      email: string;
+      role: string;
+      status: "pending" | "accepted" | "rejected" | "canceled";
+      inviterId: string;
+      expiresAt: Date;
+      teamId?: string | null | undefined;
+    }[]
+  | undefined;
 
 /* -------- Types & Constants -------- */
 type DayKey = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
 type ScheduleDay = { enabled: boolean; start: string; end: string };
 type Schedule = Record<DayKey, ScheduleDay>;
 
-type Staff = {
+export type Staff = {
   id: string;
   name: string;
   role: string;
@@ -132,6 +143,11 @@ export default function StaffManagementContent() {
   const [staff, setStaff] = useState<Staff[]>(INITIAL_STAFF);
   const [activeId, setActiveId] = useState<string>(INITIAL_STAFF[0]?.id ?? "");
 
+  const { data: activeOrganization } = authClient.useActiveOrganization();
+  const pendingInvites = activeOrganization?.invitations?.filter(
+    (invite) => invite.status === "pending"
+  );
+
   const active = staff.find((s) => s.id === activeId);
 
   const filtered = React.useMemo(() => {
@@ -144,66 +160,6 @@ export default function StaffManagementContent() {
         s.email?.toLowerCase().includes(q)
     );
   }, [query, staff]);
-
-  function handleAdd() {
-    const newItem: Staff = {
-      id: safeId(),
-      name: "New Staff",
-      role: "Role",
-      avatar: "https://ui-avatars.com/api/?name=NS&background=137fec&color=fff",
-      email: "new.staff@example.com",
-      phone: "",
-      skills: [],
-      primarySkill: "",
-      notes: "",
-      schedule: defaultSchedule(),
-    };
-    setStaff((prev) => [newItem, ...prev]);
-    setActiveId(newItem.id);
-  }
-
-  function handleDelete(id: string) {
-    setStaff((prev) => prev.filter((s) => s.id !== id));
-    if (id === activeId) {
-      const next = staff.find((s) => s.id !== id);
-      setActiveId(next?.id ?? "");
-    }
-  }
-
-  function handleSaveInfo(values: z.infer<typeof infoSchema>) {
-    if (!active) return;
-    const fullName = `${values.firstName} ${values.lastName}`.trim();
-    setStaff((prev) =>
-      prev.map((s) =>
-        s.id === active.id
-          ? { ...s, name: fullName, phone: values.phone, email: values.email }
-          : s
-      )
-    );
-  }
-
-  function handleSaveSpecialties(values: z.infer<typeof specialtiesSchema>) {
-    if (!active) return;
-    setStaff((prev) =>
-      prev.map((s) =>
-        s.id === active.id
-          ? {
-              ...s,
-              skills: values.skills,
-              primarySkill: values.primarySkill,
-              notes: values.notes,
-            }
-          : s
-      )
-    );
-  }
-
-  function handleSaveSchedule(values: z.infer<typeof scheduleSchema>) {
-    if (!active) return;
-    setStaff((prev) =>
-      prev.map((s) => (s.id === active.id ? { ...s, schedule: values } : s))
-    );
-  }
 
   return (
     <div className="p-8">
@@ -224,15 +180,36 @@ export default function StaffManagementContent() {
                 onChange={(e) => setQuery(e.target.value)}
               />
             </div>
-            <Button className="h-12 px-4" onClick={handleAdd}>
-              <Plus className="mr-2 h-4 w-4" />
-              Add
-            </Button>
+            <CreateInviteButton type="plus" />
           </div>
 
           <Card className="overflow-hidden">
             <CardContent className="p-0">
               <ScrollArea className="h-[516px]">
+                <div className="px-2 py-2">
+                  <button
+                    className={cn(
+                      "w-full px-4 py-3 flex items-center justify-between gap-4 text-left transition-colors",
+                      activeId === "invites"
+                        ? "bg-primary/10"
+                        : "hover:bg-muted/60 dark:hover:bg-muted/40"
+                    )}
+                    onClick={() => setActiveId("invites")}
+                  >
+                    <div className="flex items-center justify-start gap-4">
+                      Invites ({pendingInvites?.length || 0})
+                    </div>
+                    <ChevronRight
+                      className={cn(
+                        "h-4 w-4",
+                        activeId === "invites"
+                          ? "text-primary"
+                          : "text-muted-foreground"
+                      )}
+                    />
+                  </button>
+                </div>
+
                 <div className="divide-y">
                   {filtered.map((s) => {
                     const selected = s.id === activeId;
@@ -297,54 +274,22 @@ export default function StaffManagementContent() {
         <Card className="lg:col-span-2">
           <CardHeader className="pb-2">
             <CardTitle className="text-xl">
-              {active ? `Edit ${active.name}` : "Select a staff member"}
+              {activeId === "invites"
+                ? "Sent Invitations"
+                : active
+                ? `Edit ${active.name}`
+                : "Select a staff member"}
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {active ? (
-              <Tabs defaultValue="profile" className="w-full">
-                <TabsList className="grid w-full grid-cols-3">
-                  <TabsTrigger value="profile">Personal Info</TabsTrigger>
-                  <TabsTrigger value="skills">Specialties</TabsTrigger>
-                  <TabsTrigger value="schedule">Work Schedule</TabsTrigger>
-                </TabsList>
-
-                {/* Personal Info Tab */}
-                <TabsContent value="profile" className="mt-6">
-                  <PersonalInfoForm
-                    staffId={active.id}
-                    name={active.name}
-                    avatar={active.avatar}
-                    phone={active.phone}
-                    email={active.email}
-                    onSave={handleSaveInfo}
-                    onDelete={handleDelete}
-                  />
-                </TabsContent>
-
-                {/* Specialties Tab */}
-                <TabsContent value="skills" className="mt-6">
-                  <SpecialtiesForm
-                    skills={active.skills}
-                    primarySkill={active.primarySkill}
-                    notes={active.notes}
-                    onSave={handleSaveSpecialties}
-                  />
-                </TabsContent>
-
-                {/* Schedule Tab */}
-                <TabsContent value="schedule" className="mt-6">
-                  <ScheduleForm
-                    schedule={active.schedule}
-                    onSave={handleSaveSchedule}
-                  />
-                </TabsContent>
-              </Tabs>
-            ) : (
-              <p className="text-sm text-muted-foreground">
-                Choose a staff member to edit details.
-              </p>
-            )}
+            <StaffDetailContent
+              activeId={activeId}
+              active={active}
+              setStaff={setStaff}
+              staff={staff}
+              setActiveId={setActiveId}
+              pendingInvites={pendingInvites}
+            />
           </CardContent>
         </Card>
       </div>

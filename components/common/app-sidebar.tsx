@@ -22,27 +22,37 @@ import {
   Settings,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Avatar, AvatarImage } from "../ui/avatar";
+import { AvatarFallback } from "@radix-ui/react-avatar";
 
-export default function AppSidebar({ salonId }: { salonId: string }) {
+interface AppSidebarProps {
+  salonId: string;
+  salonName: string;
+  salonLogoUrl: string | undefined | null;
+}
+
+export default function AppSidebar({
+  salonId,
+  salonName,
+  salonLogoUrl,
+}: AppSidebarProps) {
   const pathname = usePathname();
   const isActive = (href: string) => pathname === href;
-
-  console.log({ pathname });
 
   return (
     <Sidebar className="w-64 sidebar-surface">
       <SidebarHeader className="border-r-0 px-4 pb-2 pt-4">
-        <div className="sidebar-cap">
+        <div className="">
           <div className="flex items-center gap-3">
-            <div
-              className="size-10 rounded-full bg-center bg-cover bg-no-repeat"
-              style={{
-                backgroundImage:
-                  'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDv2ZBxgWu0yPfGzF5mA0kr0nZSj6DBsP9uwkdEfHTa3g6INPTAW9XJrfQ8B58jhWXhGNwdRU0yJbU31TZW0eNu8BMhqw0Mhp2RG_arnZp2rBLHtAsaM1gs5aVXRIeJouv3lDfc4Yv5bx2CAA66OEa90bNf49r0LUI2msOFMBPOdnuiOzze15VYRkgxa4QxfD-XrNIYLwnK_sA6p9JwYSVH7cl3SEiIuRENL7Sszr3I-NGfx54RZG_cxbiyfOxnCR9Aqce63j791S4")',
-              }}
-            />
+            <Avatar>
+              <AvatarImage src={salonLogoUrl || undefined} alt={salonName} />
+              <AvatarFallback className="bg-orange-200 text-orange-800 w-14 h-14 rounded-full inline-flex items-center justify-center font-bold z-100">
+                {salonName.charAt(0).toUpperCase() +
+                  salonName.charAt(1).toLowerCase()}
+              </AvatarFallback>
+            </Avatar>
             <div className="flex flex-col">
-              <h1 className="text-base font-bold">Glamour Salon</h1>
+              <h1 className="text-base font-bold">{salonName}</h1>
               <p className="text-sm text-muted-foreground">Admin Panel</p>
             </div>
           </div>

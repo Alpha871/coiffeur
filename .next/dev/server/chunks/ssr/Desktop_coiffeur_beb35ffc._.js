@@ -124,7 +124,10 @@ const badgeVariants = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Deskto
             default: "border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
             secondary: "border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
             destructive: "border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-            outline: "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground"
+            outline: "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+            activeStatus: "border-green-500 bg-green-100 text-green-700 dark:bg-green-200 dark:text-green-800",
+            inactiveStatus: "border-gray-300 bg-gray-100 text-gray-700 dark:bg-gray-200 dark:text-gray-800",
+            orange: "border-orange-500 bg-orange-100 text-orange-700 dark:bg-orange-200 dark:text-orange-800"
         }
     },
     defaultVariants: {
@@ -141,7 +144,7 @@ function Badge({ className, variant, asChild = false, ...props }) {
         ...props
     }, void 0, false, {
         fileName: "[project]/Desktop/coiffeur/components/ui/badge.tsx",
-        lineNumber: 38,
+        lineNumber: 44,
         columnNumber: 5
     }, this);
 }

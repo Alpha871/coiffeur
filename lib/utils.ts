@@ -55,3 +55,68 @@ export function convertOpeningHoursToDatabase(
     };
   });
 }
+
+export function convertOpeningHoursFromDatabase(
+  openingHoursArray: Array<{
+    dayOfWeek: number;
+    startTime: Date;
+    endTime: Date;
+    isClosed: boolean;
+  }>
+): Record<
+  OpeningHoursDayKey,
+  {
+    dayOfWeek: number;
+    start?: string;
+    end?: string;
+    closed?: boolean;
+  }
+> {
+  const dayKeys: OpeningHoursDayKey[] = [
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri",
+    "sat",
+    "sun",
+  ];
+
+  const result = {} as Record<
+    OpeningHoursDayKey,
+    {
+      dayOfWeek: number;
+      start?: string;
+      end?: string;
+      closed?: boolean;
+    }
+  >;
+
+  dayKeys.forEach((key, index) => {
+    // Find the day data by matching dayOfWeek
+    const dayData = openingHoursArray.find((day) => day.dayOfWeek === index);
+
+    result[key] = {
+      dayOfWeek: index,
+      start: dayData?.isClosed
+        ? "09:00"
+        : dayData
+        ? timeToString(dayData.startTime)
+        : "09:00",
+      end: dayData?.isClosed
+        ? "18:00"
+        : dayData
+        ? timeToString(dayData.endTime)
+        : "18:00",
+      closed: dayData?.isClosed ?? false,
+    };
+  });
+
+  return result;
+}
+// Helper function to convert Date to time string (HH:mm)
+function timeToString(date: Date): string {
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  return `${hours}:${minutes}`;
+}

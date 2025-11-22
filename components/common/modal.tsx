@@ -99,9 +99,7 @@ export default function Modal({
             </DialogHeader>
           )}
 
-          <Card>
-            <CardContent>{children}</CardContent>
-          </Card>
+          {children}
 
           {footer ? <DialogFooter>{footer}</DialogFooter> : null}
         </DialogContent>

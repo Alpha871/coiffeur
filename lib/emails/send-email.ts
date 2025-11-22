@@ -1,0 +1,23 @@
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.EMAIL_RESEND_KEY!);
+
+export function sendEmail({
+  to,
+  subject,
+  html,
+  text,
+}: {
+  to: string;
+  subject: string;
+  html: string;
+  text: string;
+}) {
+  return resend.emails.send({
+    from: "onboarding@resend.dev",
+    to: to,
+    subject: subject,
+    html: html,
+    text: text,
+  });
+}

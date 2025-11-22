@@ -287,7 +287,7 @@ exports.Prisma.NullsOrder = {
 };
 exports.CreationStatus = exports.$Enums.CreationStatus = {
   PENDING: 'PENDING',
-  ACCEPTED: 'ACCEPTED',
+  APPROVED: 'APPROVED',
   CANCELLED: 'CANCELLED',
   REJECTED: 'REJECTED',
   COMPLETED: 'COMPLETED'

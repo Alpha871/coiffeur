@@ -95,7 +95,7 @@ export type AppointmentStatus = (typeof AppointmentStatus)[keyof typeof Appointm
 
 export const CreationStatus: {
   PENDING: 'PENDING',
-  ACCEPTED: 'ACCEPTED',
+  APPROVED: 'APPROVED',
   CANCELLED: 'CANCELLED',
   REJECTED: 'REJECTED',
   COMPLETED: 'COMPLETED'

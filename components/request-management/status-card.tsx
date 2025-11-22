@@ -2,12 +2,12 @@
 
 import {
   AlertCircle,
-  RefreshCcw,
   XCircle,
   Hourglass,
   CheckCircle2,
   LayoutDashboard,
   Globe,
+  Pencil,
 } from "lucide-react";
 
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
@@ -18,60 +18,51 @@ import Link from "next/link";
 import { useState } from "react";
 import { organization } from "@/lib/auth-client";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { updateSalonOrganizationId } from "@/oop/infrastructure/salon-actions";
+import { redirect, useRouter } from "next/navigation";
+import {
+  getSalonByIdwithUserId,
+  updateSalonOrganizationId,
+} from "@/oop/infrastructure/salon-actions";
 import { useConfirm } from "@/hooks/use-confirm";
 import { format } from "date-fns";
+import Modal from "../common/modal";
+import RequestSalonForm from "./request-form";
+import { convertOpeningHoursFromDatabase } from "@/lib/utils";
 
 interface StatusCardProps {
-  status: "PENDING" | "REJECTED" | "APPROVED";
-  name: string;
-  reason?: string;
-  organizationId?: string | null;
-  salonId: string;
-  createdAt: Date;
+  salon: getSalonByIdwithUserId;
 }
 
-export default function StatusCard({
-  status,
-  name,
-  reason,
-  organizationId,
-  salonId,
-  createdAt,
-}: StatusCardProps) {
+export default function StatusCard({ salon }: StatusCardProps) {
+  const [openConfirmationModal, setOpenConfirmationModal] = useState(false);
   const [isConfirming, setIsConfirming] = useState(false);
-  const [ConfirmDialog, confirm] = useConfirm(
-    "Confirm Your Application",
-    "Your salon application has been approved. To complete the process, please create an organization for your salon. This will allow you to manage your salon's settings and access the dashboard."
-  );
 
   const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  if (!salonId) {
-    router.push("/request-salon");
+  if (!salon || !salon?.id) {
+    redirect("/request-salon");
   }
 
-  const formattedDate = format(new Date(createdAt), "dd/MM/yyyy");
-  const formattedTime = format(new Date(createdAt), "HH:mm:ss");
+  const formattedDate =
+    salon && format(new Date(salon?.createdAt), "dd/MM/yyyy");
+  const formattedTime = salon && format(new Date(salon?.createdAt), "HH:mm:ss");
 
   const handleOrganizationCreationApproved = async () => {
-    const ok = await confirm();
-    if (!ok) {
-      return;
-    }
+    if (!salon) return;
+    setIsConfirming(true);
 
-    const slug = name
+    const slug = salon?.name
       .trim()
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-");
 
-    if (organizationId) {
+    if (salon.organizationId) {
       return;
     }
 
     const res = await organization.create({
-      name,
+      name: salon.name,
       slug,
     });
 
@@ -79,11 +70,13 @@ export default function StatusCard({
       toast.error(res.error.message || "Failed to create organization");
     } else {
       // setIsModalOpen(false);
-      await updateSalonOrganizationId(salonId, res.data.id);
+      await updateSalonOrganizationId(salon.id, res.data.id);
       await organization.setActive({ organizationId: res.data.id });
+
       toast.success("Organization created successfully!");
-      setIsConfirming(true);
-      router.push(`/salon/${salonId}/dashboard`);
+      router.push(`/salon/${salon.id}/dashboard`);
+      setIsConfirming(false);
+      setOpenConfirmationModal(false);
     }
   };
 
@@ -123,9 +116,12 @@ export default function StatusCard({
       showAlert: true,
       footer: (
         <div className="flex items-center justify-end w-full">
-          <Button className="gap-2 bg-primary text-white hover:bg-primary/90">
-            <RefreshCcw className="h-4 w-4" />
-            Submit New Application
+          <Button
+            onClick={() => setIsModalOpen(true)}
+            className="cursor-pointer gap-2 bg-primary text-white hover:bg-primary/90"
+          >
+            <Pencil className="h-4 w-4" />
+            Edit and Reapply
           </Button>
         </div>
       ),
@@ -140,23 +136,36 @@ export default function StatusCard({
       showAlert: false,
       footer: (
         <div className="flex items-center justify-end w-full">
-          {organizationId ? (
+          {
+            <Button
+              className="gap-2 bg-primary text-white hover:bg-primary/90 cursor-pointer"
+              onClick={() => setOpenConfirmationModal(true)}
+              disabled={openConfirmationModal}
+            >
+              {isConfirming ? "Confirming..." : "Confirm Your Application"}
+            </Button>
+          }
+        </div>
+      ),
+    },
+    COMPLETED: {
+      iconBg: "bg-green-100 dark:bg-green-500/20",
+      icon: <CheckCircle2 className="h-8 w-8 text-green-500" />,
+      title: "Your Application Is Completed!",
+      description:
+        "Congratulations! You are now part of our platform. You can access your dashboard.",
+      showAlert: false,
+      footer: (
+        <div className="flex items-center justify-end w-full">
+          {salon?.organizationId && (
             <Button className="gap-2 bg-primary text-white hover:bg-primary/90">
               <Link
-                href={`/salon/${salonId}/dashboard`}
+                href={`/salon/${salon.id}/dashboard`}
                 className="flex items-center gap-2 "
               >
                 <LayoutDashboard className="h-4 w-4" />
                 Go to Dashboard
               </Link>
-            </Button>
-          ) : (
-            <Button
-              className="gap-2 bg-primary text-white hover:bg-primary/90 cursor-pointer"
-              onClick={handleOrganizationCreationApproved}
-              disabled={isConfirming}
-            >
-              {isConfirming ? "Confirming..." : "Confirm Your Application"}
             </Button>
           )}
         </div>
@@ -164,21 +173,65 @@ export default function StatusCard({
     },
   };
 
-  const cfg = STATUS_CONFIG[status];
+  const cfg =
+    STATUS_CONFIG[salon?.creationStatus as keyof typeof STATUS_CONFIG];
 
   return (
     <>
-      {/* <Modal
+      <Modal
         open={isModalOpen}
         onOpenChange={setIsModalOpen}
-        title="Approved Salon Application"
-        description="Your salon application has been approved. To complete the process, please create an organization for your salon. This will allow you to manage your salon's settings and access the dashboard."
+        title="Edit Your Application"
+        size="xl"
+        description="Please make the necessary changes to your salon application and resubmit it for review."
       >
-        <Button onClick={handleOrganizationCreationApproved}>
-          Confirm your application
-        </Button>
-      </Modal> */}
-      <ConfirmDialog />
+        <Card>
+          <CardContent>
+            <RequestSalonForm
+              salonId={salon.id}
+              setIsModalOpen={setIsModalOpen}
+              type="edit"
+              defaultValues={{
+                name: salon.name,
+                address: salon.address,
+                phone: salon.phone,
+                email: salon.email,
+                description: salon.description || "",
+                openingHours: salon.availabilities
+                  ? convertOpeningHoursFromDatabase(salon.availabilities)
+                  : undefined,
+              }}
+            />
+          </CardContent>
+        </Card>
+      </Modal>
+      <Modal
+        open={openConfirmationModal}
+        onOpenChange={setOpenConfirmationModal}
+        title="Confirm Your Application"
+        description="Your salon application has been approved. To complete the process, please create an organization for your salon. This will allow you to manage your salon's settings and access the dashboard."
+        footer={
+          <div className="flex items-center justify-end w-full gap-3">
+            <Button
+              disabled={isConfirming}
+              onClick={() => setOpenConfirmationModal(false)}
+              className="cursor-pointermr-3 bg-muted-foreground/10 hover:bg-muted-foreground/20 text-foreground"
+            >
+              Cancel
+            </Button>
+            <Button
+              disabled={isConfirming}
+              className="cursor-pointer gap-2 bg-green-500 text-white hover:bg-green-600/90"
+              onClick={handleOrganizationCreationApproved}
+            >
+              {isConfirming ? "Confirming..." : "Confirm Your Application"}
+            </Button>
+          </div>
+        }
+      >
+        <div />
+      </Modal>
+
       <Card className="shadow-sm border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/50 rounded-xl">
         <CardHeader className="p-6 sm:p-8">
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
@@ -213,7 +266,7 @@ export default function StatusCard({
                 </AlertTitle>
 
                 <AlertDescription className="mt-2 text-red-700 dark:text-red-300/80 text-sm">
-                  {reason ||
+                  {salon.rejectionReason ||
                     "Your tax document is missing. Please complete the required documents and apply again."}
                 </AlertDescription>
               </div>
@@ -229,7 +282,7 @@ export default function StatusCard({
           <dl className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <dt className="text-sm text-gray-500">Application ID</dt>
-              <dd className="mt-1 text-gray-900 dark:text-white">{salonId}</dd>
+              <dd className="mt-1 text-gray-900 dark:text-white">{salon.id}</dd>
             </div>
 
             <div>

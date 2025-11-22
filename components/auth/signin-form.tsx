@@ -42,7 +42,7 @@ function AuthLoginForm({ showPassword, setShowPassword }: AuthLoginFormProps) {
         {
           email,
           password,
-          callbackURL: "/dashboard",
+          callbackURL: "/",
         },
         {
           onError: () => {
