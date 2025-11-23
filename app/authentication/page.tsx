@@ -8,13 +8,21 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Scissors } from "lucide-react";
 import { useState } from "react";
-import { signIn } from "../../lib/auth-client";
+import { signIn, useSession } from "../../lib/auth-client";
 import { toast } from "sonner";
+import { redirect, useSearchParams } from "next/navigation";
 
 export default function SalonAuth() {
   const [tab, setTab] = useState<"login" | "register">("login");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const session = useSession();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
+
+  if (session && session.data?.user) {
+    redirect(callbackUrl);
+  }
 
   const signInWithGoogle = async () => {
     const response = await signIn.social({

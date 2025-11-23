@@ -29,8 +29,12 @@ import { LoadingSwap } from "../common/loading-swap";
 import Modal from "../common/modal";
 import { Plus } from "lucide-react";
 import { useParams, useSearchParams } from "next/navigation";
-import { sendInvitation } from "@/oop/infrastructure/user-action";
+import {
+  getInvitations,
+  sendInvitation,
+} from "@/oop/infrastructure/user-action";
 import { authClient } from "@/lib/auth-client";
+import { PendingInvites } from "./staff-management-client";
 
 const createInviteSchema = z.object({
   email: z.email().min(1).trim(),
@@ -41,16 +45,18 @@ type CreateInviteForm = z.infer<typeof createInviteSchema>;
 
 interface CreateInviteButtonProps {
   type?: "plus" | "default";
+  setPendingInvites: React.Dispatch<React.SetStateAction<PendingInvites[]>>;
+  setActiveId?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export function CreateInviteButton({
   type = "default",
+  setPendingInvites,
+  setActiveId,
 }: CreateInviteButtonProps) {
   const [open, setOpen] = useState(false);
 
   const { id } = useParams();
-
-  // const organizationId = searchParams.get("orgId");
 
   const { data: activeOrganization } = authClient.useActiveOrganization();
 
@@ -66,12 +72,22 @@ export function CreateInviteButton({
 
   async function handleCreateInvite(data: CreateInviteForm) {
     try {
-      await sendInvitation(
+      const result = await sendInvitation(
         data.email,
         data.role,
         id as string,
         activeOrganization?.id as string
       );
+
+      if (!result) {
+        toast.error("Failed to invite user");
+        return;
+      }
+      setPendingInvites((prev) => [...prev, result as PendingInvites]);
+      if (setActiveId) {
+        setActiveId("invites");
+      }
+
       toast.success("Invitation sent successfully");
       form.reset();
       setOpen(false);

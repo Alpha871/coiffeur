@@ -207,8 +207,10 @@ exports.Prisma.ServiceScalarFieldEnum = {
   id: 'id',
   name: 'name',
   durationMin: 'durationMin',
-  priceCents: 'priceCents',
+  price: 'price',
+  category: 'category',
   description: 'description',
+  image: 'image',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -217,6 +219,7 @@ exports.Prisma.SalonServiceScalarFieldEnum = {
   id: 'id',
   salonId: 'salonId',
   serviceId: 'serviceId',
+  memberId: 'memberId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -257,7 +260,6 @@ exports.Prisma.MemberScalarFieldEnum = {
   organizationId: 'organizationId',
   userId: 'userId',
   role: 'role',
-  specialties: 'specialties',
   createdAt: 'createdAt'
 };
 
@@ -291,6 +293,17 @@ exports.CreationStatus = exports.$Enums.CreationStatus = {
   CANCELLED: 'CANCELLED',
   REJECTED: 'REJECTED',
   COMPLETED: 'COMPLETED'
+};
+
+exports.ServiceCategory = exports.$Enums.ServiceCategory = {
+  HAIRCUT: 'HAIRCUT',
+  COLORING: 'COLORING',
+  STYLING: 'STYLING',
+  TREATMENTS: 'TREATMENTS',
+  EXTENSIONS: 'EXTENSIONS',
+  BARBERING: 'BARBERING',
+  NAILS: 'NAILS',
+  KIDS: 'KIDS'
 };
 
 exports.AppointmentStatus = exports.$Enums.AppointmentStatus = {

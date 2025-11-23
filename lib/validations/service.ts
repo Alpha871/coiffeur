@@ -2,11 +2,13 @@ import z from "zod";
 
 export const CATEGORIES = [
   "All",
-  "Haircuts",
+  "Haircut",
   "Coloring",
   "Styling",
   "Treatments",
-  "Care",
+  "Extensions",
+  "Barbering",
+  "Nails",
   "Kids",
 ] as const;
 
@@ -25,6 +27,7 @@ export const addServiceSchema = z.object({
     .number()
     .min(0)
     .max(10000, { message: "Price must be less than $10,000" }),
+  description: z.string().min(10).max(1000).optional(),
 
   image: z.union([z.literal(""), z.url()]).optional(),
 });

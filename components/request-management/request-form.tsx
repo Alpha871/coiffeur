@@ -17,10 +17,10 @@ import {
   OpeningHoursDayKey,
   requestSchema,
 } from "@/lib/validations/request-salon";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
 import { convertOpeningHoursToDatabase } from "@/lib/utils";
-import { organization } from "@/lib/auth-client";
+import { organization, useSession } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { Salon } from "@/oop/domain/salon";
 import { requestSalon, updateSalon } from "@/oop/infrastructure/salon-actions";
@@ -97,6 +97,7 @@ function RequestSalonForm({
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
+  const session = useSession();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(requestSchema),
@@ -117,6 +118,10 @@ function RequestSalonForm({
       },
     },
   });
+
+  if (!session || !session.data?.user) {
+    redirect("/authentication");
+  }
 
   async function onSubmit(values: FormValues) {
     setIsLoading(true);

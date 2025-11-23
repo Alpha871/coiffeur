@@ -24,14 +24,6 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
-const specialtiesSchema = z.object({
-  skills: z.array(z.string()).min(1, "Select at least one specialty"),
-  primarySkill: z.string().min(1, "Select a primary specialty"),
-  notes: z.string().max(500, "Max 500 characters").optional().or(z.literal("")),
-});
-
-type SpecialtiesFormValues = z.infer<typeof specialtiesSchema>;
-
 const SKILL_OPTIONS = [
   "Haircut",
   "Hair Color",
@@ -44,25 +36,35 @@ const SKILL_OPTIONS = [
   "Skincare",
 ];
 
-type SpecialtiesFormProps = {
-  skills?: string[];
-  primarySkill?: string;
-  notes?: string;
+const skillSchema = z.object({
+  name: z.string(),
+  id: z.string(),
+  specialty: z.boolean(),
+});
+
+const specialtiesSchema = z.object({
+  skills: z.array(skillSchema).min(1, "Select at least one specialty"),
+  notes: z.string().max(500, "Max 500 characters").optional().or(z.literal("")),
+});
+
+type SpecialtiesFormValues = z.infer<typeof specialtiesSchema>;
+
+interface SpecialtiesFormProps {
+  skills: { name: string; id: string; specialty: boolean }[] | null | undefined;
+  // notes: string | null | undefined;
   onSave: (values: SpecialtiesFormValues) => void;
-};
+}
 
 export function SpecialtiesForm({
   skills,
-  primarySkill,
-  notes,
+  // notes,
   onSave,
 }: SpecialtiesFormProps) {
   const form = useForm<SpecialtiesFormValues>({
     resolver: zodResolver(specialtiesSchema),
     defaultValues: {
       skills: skills ?? [],
-      primarySkill: primarySkill ?? "",
-      notes: notes ?? "",
+      notes: "",
     },
     mode: "onBlur",
   });
@@ -77,40 +79,42 @@ export function SpecialtiesForm({
             <FormItem>
               <FormLabel>Specialties</FormLabel>
               <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {SKILL_OPTIONS.map((s) => {
-                  const checked = field.value?.includes(s);
-                  return (
-                    <label
-                      key={s}
-                      className={cn(
-                        "flex items-center gap-3 rounded-lg border p-3 cursor-pointer transition-colors",
-                        checked
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/50"
-                      )}
-                    >
-                      <Checkbox
-                        checked={!!checked}
-                        onCheckedChange={(v) => {
-                          const isOn = Boolean(v);
-                          if (isOn) field.onChange([...(field.value ?? []), s]);
-                          else
-                            field.onChange(
-                              (field.value ?? []).filter((x) => x !== s)
-                            );
-                        }}
-                      />
-                      <span className="text-sm font-medium">{s}</span>
-                    </label>
-                  );
-                })}
+                {skills &&
+                  skills.map((s) => {
+                    const checked = field.value?.includes(s);
+                    return (
+                      <label
+                        key={s.id}
+                        className={cn(
+                          "flex items-center gap-3 rounded-lg border p-3 cursor-pointer transition-colors",
+                          checked
+                            ? "border-primary bg-primary/5"
+                            : "border-border hover:border-primary/50"
+                        )}
+                      >
+                        <Checkbox
+                          checked={!!checked}
+                          onCheckedChange={(v) => {
+                            const isOn = Boolean(v);
+                            if (isOn)
+                              field.onChange([...(field.value ?? []), s]);
+                            else
+                              field.onChange(
+                                (field.value ?? []).filter((x) => x !== s)
+                              );
+                          }}
+                        />
+                        <span className="text-sm font-medium">{s.name}</span>
+                      </label>
+                    );
+                  })}
               </div>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="primarySkill"
           render={({ field }) => (
@@ -142,7 +146,7 @@ export function SpecialtiesForm({
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
 
         <FormField
           control={form.control}

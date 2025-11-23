@@ -13,6 +13,10 @@ import Link from "next/link";
 
 import { getSalonByUserId } from "@/oop/infrastructure/salon-actions";
 import { CreationStatus } from "@/generated/prisma";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import HeroSection from "@/components/common/hero-section";
 
 const HERO_BG =
   "linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDaXYkTtVzFz8Pp6wAhjTT-oy5WuEvJC3a2Gx0RBsoAggSEntXpYlOdYwwtdlaVFbljLKMHmcxqob_rW4novTRfa1dUJKKHC0Ov892n6BiED2uoolo3g9L4sCXDQelZwE_AMZb6hpwWHcOCdvxEHm7oVGpS0ht-h4nEqMpWLVd2cwH5HhbKzx3pCRsdckRERwQlqxC6jm8lJsqfHXpG7LmXs08CyQFkmcfYTaQPoyVP0nwa4PsO4eT03HKvZmkxNmmG2Lft0i2fNIo')";
@@ -44,6 +48,8 @@ const testimonials = [
 export default async function Page() {
   const salon = await getSalonByUserId();
 
+  console.log({ salon });
+
   return (
     <div className="bg-background-light dark:bg-background-dark min-h-screen text-gray-800 dark:text-gray-200 font-display">
       <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
@@ -71,43 +77,10 @@ export default async function Page() {
                           </h2>
                         </div>
 
-                        <div className="flex flex-wrap justify-center gap-3">
-                          <Button className=" h-10 px-4 @[480px]:h-12 @[480px]:px-5 rounded-xl bg-primary text-background-dark text-sm @[480px]:text-base font-bold tracking-[0.015em]">
-                            <Link href="/salons" className="cursor-pointer">
-                              Browse &amp; Book Appointment
-                            </Link>
-                          </Button>
-                          <Button
-                            variant="outline"
-                            className="h-10 px-4 @[480px]:h-12 @[480px]:px-5 rounded-xl border border-white/20 bg-white/10 dark:bg-[#234836] text-white text-sm @[480px]:text-base font-bold tracking-[0.015em]"
-                          >
-                            {salon &&
-                            salon.creationStatus !==
-                              CreationStatus.COMPLETED ? (
-                              <Link
-                                href={`/request-salon-management/${salon.id}`}
-                                className="cursor-pointer"
-                              >
-                                Check Application Status
-                              </Link>
-                            ) : salon?.creationStatus ===
-                              CreationStatus.COMPLETED ? (
-                              <Link
-                                href={`/salon/${salon.id}/dashboard`}
-                                className="cursor-pointer"
-                              >
-                                Go to My Salon Page
-                              </Link>
-                            ) : (
-                              <Link
-                                href="/request-salon"
-                                className="cursor-pointer"
-                              >
-                                Create Your Own Salon
-                              </Link>
-                            )}
-                          </Button>
-                        </div>
+                        <HeroSection
+                          salonId={salon?.id}
+                          salonCreationStatus={salon?.creationStatus}
+                        />
                       </div>
                     </div>
                   </div>

@@ -1,5 +1,4 @@
-"use client";
-
+"'use server';";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -12,21 +11,37 @@ import {
 import { authClient } from "@/lib/auth-client";
 import { BetterAuthActionButton } from "../common/beter-auth-action-button";
 import { CreateInviteButton } from "./create-invitation-button";
-import { PendingInvites } from "@/app/(salon)/salon/[id]/staff-management/page";
+
+import {
+  cancelInvitation,
+  getInvitations,
+} from "@/oop/infrastructure/user-action";
+import { InvitationStatus } from "better-auth/plugins";
+import { PendingInvites } from "./staff-management-client";
 
 interface InvitesTabProps {
-  pendingInvites: PendingInvites;
+  pendingInvites: PendingInvites[];
+  // organizationId: string;
+  setPendingInvites: React.Dispatch<React.SetStateAction<PendingInvites[]>>;
 }
 
-export function InvitesTab({ pendingInvites }: InvitesTabProps) {
+export function InvitesTab({
+  pendingInvites,
+  setPendingInvites,
+}: InvitesTabProps) {
   function cancelInvitation(invitationId: string) {
-    return authClient.organization.cancelInvitation({ invitationId });
+    const data = authClient.organization.cancelInvitation({ invitationId });
+    const updatedInvites = pendingInvites?.filter(
+      (invite) => invite.id !== invitationId
+    );
+    setPendingInvites(updatedInvites);
+    return data;
   }
 
   return (
     <div className="space-y-8">
       <div className="justify-end flex">
-        <CreateInviteButton />
+        <CreateInviteButton setPendingInvites={setPendingInvites} />
       </div>
 
       <Table>

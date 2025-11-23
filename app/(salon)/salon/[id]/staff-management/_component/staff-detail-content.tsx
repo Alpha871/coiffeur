@@ -1,35 +1,51 @@
 import { InvitesTab } from "@/components/management/invite-tab";
 import { StaffDetailTabs } from "./staff-detail-tabs";
-import { PendingInvites, Staff } from "../page";
-import { authClient } from "@/lib/auth-client";
+
+import {
+  Member,
+  PendingInvites,
+} from "@/components/management/staff-management-client";
 
 export function StaffDetailContent({
   activeId,
   active,
-  setStaff,
-  staff,
-  setActiveId,
+  // setStaff,
+  // staff,
+  // setActiveId,
   pendingInvites,
+  organizationId,
+  setPendingInvites,
+  salonServices,
 }: {
   activeId: string;
-  active: Staff | undefined;
-  setStaff: React.Dispatch<React.SetStateAction<Staff[]>>;
-  staff: Staff[];
-  setActiveId: React.Dispatch<React.SetStateAction<string>>;
-  pendingInvites: PendingInvites;
+  active: Member | undefined;
+  // setStaff: React.Dispatch<React.SetStateAction<Member[]>>;
+  // staff: Member[];
+  // setActiveId: React.Dispatch<React.SetStateAction<string>>;
+  pendingInvites: PendingInvites[];
+  organizationId: string;
+  setPendingInvites: React.Dispatch<React.SetStateAction<PendingInvites[]>>;
+  salonServices: string[];
 }) {
   if (activeId === "invites") {
-    return <InvitesTab pendingInvites={pendingInvites} />;
+    return (
+      <InvitesTab
+        pendingInvites={pendingInvites}
+        setPendingInvites={setPendingInvites}
+      />
+    );
   }
 
   if (active) {
     return (
       <StaffDetailTabs
+        key={active.id}
+        salonServices={salonServices}
         active={active}
-        staff={staff}
-        setStaff={setStaff}
-        activeId={activeId}
-        setActiveId={setActiveId}
+        // staff={staff}
+        // setStaff={setStaff}
+        // activeId={activeId}
+        // setActiveId={setActiveId}
       />
     );
   }

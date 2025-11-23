@@ -1,6 +1,7 @@
 "use server";
 
 import { auth } from "@/lib/auth";
+import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 
@@ -113,19 +114,17 @@ export async function sendInvitation(
   organizationId: string
 ) {
   try {
-    console.log({ email, role, organizationId });
-
-    const data = await auth.api.createInvitation({
+    const result = await auth.api.createInvitation({
       body: {
         email,
         role,
         organizationId,
-        // resend: true,
       },
       headers: await headers(),
     });
-    console.log("Invitation sent:", data);
+
     revalidatePath(`/salon/${salonId}/staff-management`);
+    return result;
   } catch (error) {
     console.log(error);
   }
@@ -143,5 +142,32 @@ export async function getInvitations(organizationId: string) {
   } catch (error) {
     console.log(error);
     return null;
+  }
+}
+
+export async function cancelInvitation(
+  invitationId: string
+): Promise<{ error: null | { message?: string } }> {
+  try {
+    const data = await auth.api.cancelInvitation({
+      body: {
+        invitationId,
+      },
+      headers: await headers(),
+    });
+
+    if (!data) {
+      return { error: { message: "Cancellation failed" } };
+    }
+
+    revalidatePath("/management/invites");
+    return { error: null }; // ← Add this return
+  } catch (error) {
+    console.log(error);
+    return {
+      error: {
+        message: error instanceof Error ? error.message : "Unknown error",
+      },
+    };
   }
 }

@@ -14,12 +14,13 @@ import {
   FormControl,
   FormMessage,
 } from "@/components/ui/form";
+import { convertOpeningHoursToDatabase, OpeningHours } from "@/lib/utils";
 
-type DayKey = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
-type ScheduleDay = { enabled: boolean; start: string; end: string };
-type Schedule = Record<DayKey, ScheduleDay>;
+// ---- Types & constants ----
 
-const DAY_ORDER: DayKey[] = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const DAY_ORDER = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
+type DayKey = (typeof DAY_ORDER)[number];
+
 const DAY_LABEL: Record<DayKey, string> = {
   mon: "Monday",
   tue: "Tuesday",
@@ -30,8 +31,14 @@ const DAY_LABEL: Record<DayKey, string> = {
   sun: "Sunday",
 };
 
+const DEFAULT_START = "09:00";
+const DEFAULT_END = "18:00";
+
+// ---- Schema ----
+
 const daySchema = z.object({
-  enabled: z.boolean(),
+  dayOfWeek: z.number().min(0).max(6),
+  closed: z.boolean(),
   start: z.string(),
   end: z.string(),
 });
@@ -49,7 +56,9 @@ const scheduleSchema = z
   .superRefine((val, ctx) => {
     for (const d of DAY_ORDER) {
       const day = val[d];
-      if (day.enabled) {
+
+      // In this codebase `closed === true` actually means "open"
+      if (day.closed) {
         if (!day.start) {
           ctx.addIssue({
             code: z.ZodIssueCode.custom,
@@ -77,6 +86,8 @@ const scheduleSchema = z
 
 type ScheduleFormValues = z.infer<typeof scheduleSchema>;
 
+// ---- Helpers ----
+
 function compareHHMM(a: string, b: string) {
   const toMin = (t: string) => {
     const [h, m] = t.split(":").map((x) => parseInt(x, 10));
@@ -85,24 +96,31 @@ function compareHHMM(a: string, b: string) {
   return toMin(a) - toMin(b);
 }
 
-function defaultSchedule(): Schedule {
+function defaultSchedule(): OpeningHours {
   return {
-    mon: { enabled: true, start: "09:00", end: "18:00" },
-    tue: { enabled: true, start: "09:00", end: "18:00" },
-    wed: { enabled: true, start: "09:00", end: "18:00" },
-    thu: { enabled: true, start: "09:00", end: "18:00" },
-    fri: { enabled: true, start: "09:00", end: "18:00" },
-    sat: { enabled: true, start: "09:00", end: "18:00" },
-    sun: { enabled: false, start: "09:00", end: "18:00" },
+    mon: { dayOfWeek: 0, closed: true, start: DEFAULT_START, end: DEFAULT_END },
+    tue: { dayOfWeek: 1, closed: true, start: DEFAULT_START, end: DEFAULT_END },
+    wed: { dayOfWeek: 2, closed: true, start: DEFAULT_START, end: DEFAULT_END },
+    thu: { dayOfWeek: 3, closed: true, start: DEFAULT_START, end: DEFAULT_END },
+    fri: { dayOfWeek: 4, closed: true, start: DEFAULT_START, end: DEFAULT_END },
+    sat: { dayOfWeek: 5, closed: true, start: DEFAULT_START, end: DEFAULT_END },
+    sun: {
+      dayOfWeek: 6,
+      closed: false,
+      start: DEFAULT_START,
+      end: DEFAULT_END,
+    },
   };
 }
 
+// ---- Component ----
+
 type ScheduleFormProps = {
-  schedule?: Schedule;
-  onSave: (values: ScheduleFormValues) => void;
+  schedule?: OpeningHours;
+  // onSave: (values: ScheduleFormValues) => void;
 };
 
-export function ScheduleForm({ schedule, onSave }: ScheduleFormProps) {
+export function ScheduleForm({ schedule }: ScheduleFormProps) {
   const form = useForm<ScheduleFormValues>({
     resolver: zodResolver(scheduleSchema),
     defaultValues: schedule ?? defaultSchedule(),
@@ -110,31 +128,46 @@ export function ScheduleForm({ schedule, onSave }: ScheduleFormProps) {
   });
 
   const setAllClosed = () => {
-    const cur = form.getValues();
-    const next: ScheduleFormValues = { ...cur };
-    for (const d of DAY_ORDER) next[d] = { ...next[d], enabled: false };
+    const current = form.getValues();
+    const next: ScheduleFormValues = { ...current };
+
+    for (const d of DAY_ORDER) {
+      next[d] = {
+        ...next[d],
+        closed: false, // switch OFF → not open
+      };
+    }
+
     form.reset(next);
   };
 
   const setAllNineToSix = () => {
-    const cur = form.getValues();
-    const next: ScheduleFormValues = { ...cur };
-    for (const d of DAY_ORDER)
-      next[d] = { enabled: true, start: "09:00", end: "18:00" };
+    const current = form.getValues();
+    const next: ScheduleFormValues = { ...current };
+
+    for (const d of DAY_ORDER) {
+      next[d] = {
+        dayOfWeek: DAY_ORDER.indexOf(d),
+        closed: true, // switch ON → open
+        start: DEFAULT_START,
+        end: DEFAULT_END,
+      };
+    }
+
     form.reset(next);
   };
 
-  const copyMondayToAll = () => {
-    const cur = form.getValues();
-    const mon = cur.mon;
-    const next: ScheduleFormValues = { ...cur };
-    for (const d of DAY_ORDER) next[d] = d === "mon" ? mon : { ...mon };
-    form.reset(next);
+  const onSubmit = (values: ScheduleFormValues) => {
+    console.log({ values });
+
+    const availabilities = convertOpeningHoursToDatabase(values);
+
+    console.log({ availabilities });
   };
 
   return (
     <Form {...form}>
-      <form className="space-y-5" onSubmit={form.handleSubmit(onSave)}>
+      <form className="space-y-5" onSubmit={form.handleSubmit(onSubmit)}>
         {/* Quick actions */}
         <div className="flex flex-wrap gap-2">
           <Button type="button" variant="outline" onClick={setAllNineToSix}>
@@ -143,11 +176,9 @@ export function ScheduleForm({ schedule, onSave }: ScheduleFormProps) {
           <Button type="button" variant="outline" onClick={setAllClosed}>
             Set All Closed
           </Button>
-          <Button type="button" variant="outline" onClick={copyMondayToAll}>
-            Copy Monday to All
-          </Button>
         </div>
 
+        {/* Table header */}
         <div className="rounded-lg border">
           <div className="grid grid-cols-12 items-center gap-2 border-b px-4 py-2 text-xs text-muted-foreground font-medium">
             <div className="col-span-5 sm:col-span-4">Day</div>
@@ -156,13 +187,14 @@ export function ScheduleForm({ schedule, onSave }: ScheduleFormProps) {
             <div className="col-span-2 sm:col-span-2">End</div>
           </div>
 
+          {/* Rows */}
           {DAY_ORDER.map((d) => {
-            const enabledName = `${d}.enabled` as keyof ScheduleFormValues &
+            const closedName = `${d}.closed` as keyof ScheduleFormValues &
               string;
             const startName = `${d}.start` as keyof ScheduleFormValues & string;
             const endName = `${d}.end` as keyof ScheduleFormValues & string;
 
-            const enabled = form.watch(enabledName as any) as boolean;
+            const isOpen = form.watch(closedName as any) as boolean;
 
             return (
               <div
@@ -176,7 +208,7 @@ export function ScheduleForm({ schedule, onSave }: ScheduleFormProps) {
                 <div className="col-span-3 sm:col-span-3">
                   <FormField
                     control={form.control}
-                    name={enabledName}
+                    name={closedName}
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
@@ -198,7 +230,7 @@ export function ScheduleForm({ schedule, onSave }: ScheduleFormProps) {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <Input type="time" disabled={!enabled} {...field} />
+                          <Input type="time" disabled={!isOpen} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -209,11 +241,11 @@ export function ScheduleForm({ schedule, onSave }: ScheduleFormProps) {
                 <div className="col-span-2 sm:col-span-2">
                   <FormField
                     control={form.control}
-                    name={endName as any}
+                    name={endName}
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <Input type="time" disabled={!enabled} {...field} />
+                          <Input type="time" disabled={!isOpen} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

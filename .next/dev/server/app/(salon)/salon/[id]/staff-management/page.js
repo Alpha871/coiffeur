@@ -1,6 +1,6 @@
 var R=require("../../../../../chunks/ssr/[turbopack]_runtime.js")("server/app/(salon)/salon/[id]/staff-management/page.js")
-R.c("server/chunks/ssr/2ae5e_next_dist_2a993720._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__5d906d01._.js")
+R.c("server/chunks/ssr/2ae5e_2f5611c8._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__29e52384._.js")
 R.c("server/chunks/ssr/2ae5e_0dd790bf._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__e8a2741f._.js")
 R.c("server/chunks/ssr/Desktop_coiffeur_app_02167e89._.js")

@@ -1,7 +1,7 @@
 (globalThis.TURBOPACK_CHUNK_LISTS || (globalThis.TURBOPACK_CHUNK_LISTS = [])).push({
     script: typeof document === "object" ? document.currentScript : undefined,
     chunks: [
-  "static/chunks/Desktop_coiffeur_96b8430a._.js"
+  "static/chunks/Desktop_coiffeur_7f92cea2._.js"
 ],
     source: "dynamic"
 });

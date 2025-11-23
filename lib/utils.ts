@@ -56,6 +56,16 @@ export function convertOpeningHoursToDatabase(
   });
 }
 
+export type OpeningHours = Record<
+  OpeningHoursDayKey,
+  {
+    dayOfWeek: number;
+    start?: string;
+    end?: string;
+    closed?: boolean;
+  }
+>;
+
 export function convertOpeningHoursFromDatabase(
   openingHoursArray: Array<{
     dayOfWeek: number;

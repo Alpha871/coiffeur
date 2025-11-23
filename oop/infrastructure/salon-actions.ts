@@ -7,7 +7,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { FormValues } from "@/components/request-management/request-form";
 import { revalidatePath } from "next/cache";
-import { CreationStatus } from "@/generated/prisma";
+import { CreationStatus, Prisma } from "@/generated/prisma";
 import { redirect } from "next/navigation";
 
 export async function ActiveCurrentSalonOrganizationId(
@@ -282,6 +282,33 @@ export async function getPendingSalonRequests() {
   });
 }
 
+export type SalonById = Prisma.SalonGetPayload<{
+  include: {
+    availabilities: true;
+    organization: {
+      include: {
+        members: {
+          include: {
+            user: true;
+            availabilities: true;
+            specialties: {
+              include: {
+                service: true;
+              };
+            };
+          };
+        };
+      };
+    };
+    salonServices: {
+      include: {
+        service: true;
+      };
+    };
+  };
+}>;
+// export type SalonById = Awaited<ReturnType<typeof getSalonById>>;
+
 export async function getSalonById(salonId: string) {
   const session = await auth.api.getSession({
     headers: await headers(),
@@ -294,13 +321,26 @@ export async function getSalonById(salonId: string) {
     where: { id: salonId },
     include: {
       availabilities: true,
-      organization: true,
-      services: {
+      organization: {
+        include: {
+          members: {
+            include: {
+              user: true,
+              availabilities: true,
+              specialties: {
+                include: {
+                  service: true,
+                },
+              },
+            },
+          },
+        },
+      },
+      salonServices: {
         include: {
           service: true,
         },
       },
-      user: true,
     },
   });
 }
@@ -312,14 +352,14 @@ export async function getAllSalons() {
     headers: await headers(),
   });
   if (!session || session.user.role !== userRole.admin) {
-    throw new Error("Unauthorized");
+    redirect("/authentication");
   }
 
   return await prisma.salon.findMany({
     include: {
       availabilities: true,
       user: true,
-      services: {
+      salonServices: {
         include: {
           service: true,
         },
@@ -342,7 +382,7 @@ export async function getCompleteSalons() {
     include: {
       availabilities: true,
       user: true,
-      services: {
+      salonServices: {
         include: {
           service: true,
         },

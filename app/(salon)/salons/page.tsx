@@ -14,6 +14,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useSession } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
 
 type Salon = {
   id: string;
@@ -64,6 +66,10 @@ const salons: Salon[] = [
 ];
 
 export default function BrowseSalonsPage() {
+  const session = useSession();
+
+  if (!session || !session.data?.user) redirect("/authentication");
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
