@@ -9037,6 +9037,8 @@ __turbopack_context__.s([
     ()=>MAX_TIME,
     "MIN_TIME",
     ()=>MIN_TIME,
+    "STATUS_COLORS",
+    ()=>STATUS_COLORS,
     "capitalize",
     ()=>capitalize,
     "changedValues",
@@ -9065,6 +9067,34 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_
 function cn(...inputs) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$tailwind$2d$merge$2f$dist$2f$bundle$2d$mjs$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["twMerge"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$clsx$2f$dist$2f$clsx$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["clsx"])(inputs));
 }
+const STATUS_COLORS = {
+    APPROVED: {
+        bg: "#E3F2FD",
+        border: "#2196F3",
+        text: "#1976D2"
+    },
+    // APPROVED: { bg: "#E8F5E8", border: "#4CAF50", text: "#388E3C" },
+    PENDING: {
+        bg: "#FFF3E0",
+        border: "#FF9800",
+        text: "#F57C00"
+    },
+    COMPLETED: {
+        bg: "#E8F5E8",
+        border: "#4CAF50",
+        text: "#388E3C"
+    },
+    CANCELLED: {
+        bg: "#FFEBEE",
+        border: "#F44336",
+        text: "#D32F2F"
+    },
+    REJECTED: {
+        bg: "#FCE4EC",
+        border: "#E91E63",
+        text: "#C2185B"
+    }
+};
 function randomValues() {
     return Math.random() * 360;
 }
@@ -9222,11 +9252,13 @@ function defaultSchedule() {
 "[project]/Desktop/coiffeur/oop/infrastructure/appointment-actions.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-/* __next_internal_action_entry_do_not_use__ [{"00edba2f31c9a778f32e7e41b067764d691e8be4fc":"getAllAppointments","4070d56e0b2e696589236abafcfa4a92ec1b09f869":"bookAppointment","4074944f8d19ea130e0041fcd2e5e1867bda8cf63e":"getAppointmentsByMemberId","6002f0159214a6f4ad8488fbdd868d36ff43b23d44":"RejectAppointment","606713b3d1bcfeb004f3a5cfc49a91bea64c6cdc13":"ApproveAppointment","606a9319bd6569522ccb42f0b77bdf0c00f91b7ee6":"CancelAppointment","607be1b9083a1719895edaf65d4ae03346ad966d6f":"rescheduleAppointment"},"",""] */ __turbopack_context__.s([
+/* __next_internal_action_entry_do_not_use__ [{"00edba2f31c9a778f32e7e41b067764d691e8be4fc":"getAllAppointments","4070d56e0b2e696589236abafcfa4a92ec1b09f869":"bookAppointment","4074944f8d19ea130e0041fcd2e5e1867bda8cf63e":"getAppointmentsByMemberId","6002f0159214a6f4ad8488fbdd868d36ff43b23d44":"RejectAppointment","606713b3d1bcfeb004f3a5cfc49a91bea64c6cdc13":"ApproveAppointment","606a9319bd6569522ccb42f0b77bdf0c00f91b7ee6":"CancelAppointment","607be1b9083a1719895edaf65d4ae03346ad966d6f":"rescheduleAppointment","60962bf5ea7d6215f3a194242d9a94214ef20b8aad":"CompleteAppointment","70f7f62bb902b3c4db57ef6adc2752857d99600f27":"updateBookedAppointment"},"",""] */ __turbopack_context__.s([
     "ApproveAppointment",
     ()=>ApproveAppointment,
     "CancelAppointment",
     ()=>CancelAppointment,
+    "CompleteAppointment",
+    ()=>CompleteAppointment,
     "RejectAppointment",
     ()=>RejectAppointment,
     "bookAppointment",
@@ -9236,7 +9268,9 @@ function defaultSchedule() {
     "getAppointmentsByMemberId",
     ()=>getAppointmentsByMemberId,
     "rescheduleAppointment",
-    ()=>rescheduleAppointment
+    ()=>rescheduleAppointment,
+    "updateBookedAppointment",
+    ()=>updateBookedAppointment
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/node_modules/next/dist/build/webpack/loaders/next-flight-loader/server-reference.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$generated$2f$prisma$2f$index$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/generated/prisma/index.js [app-rsc] (ecmascript)");
@@ -9283,6 +9317,27 @@ async function getAllAppointments() {
     });
     return appointments;
 }
+async function CompleteAppointment(appointmentId, salonId) {
+    const session = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$auth$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["auth"].api.getSession({
+        headers: await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$headers$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["headers"])()
+    });
+    if (!session) {
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/authentication");
+    }
+    const appointment = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].appointment.update({
+        where: {
+            id: appointmentId
+        },
+        data: {
+            status: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$generated$2f$prisma$2f$index$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["AppointmentStatus"].COMPLETED
+        }
+    });
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/worker/" + salonId);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/profil/" + session.user.id);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/book-appointment/" + salonId);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/salon/" + salonId + "/appointments");
+    return appointment;
+}
 async function ApproveAppointment(appointmentId, salonId) {
     const session = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$auth$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["auth"].api.getSession({
         headers: await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$headers$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["headers"])()
@@ -9299,6 +9354,9 @@ async function ApproveAppointment(appointmentId, salonId) {
         }
     });
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/worker/" + salonId);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/profil/" + session.user.id);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/book-appointment/" + salonId);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/salon/" + salonId + "/appointments");
     return appointment;
 }
 async function RejectAppointment(appointmentId, salonId) {
@@ -9317,6 +9375,9 @@ async function RejectAppointment(appointmentId, salonId) {
         }
     });
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/worker/" + salonId);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/profil/" + session.user.id);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/book-appointment/" + salonId);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/salon/" + salonId + "/appointments");
     return appointment;
 }
 async function CancelAppointment(appointmentId, salonId) {
@@ -9336,6 +9397,8 @@ async function CancelAppointment(appointmentId, salonId) {
     });
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/worker/" + salonId);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/profil/" + session.user.id);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/book-appointment/" + salonId);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/salon/" + salonId + "/appointments");
     return appointment;
 }
 async function getAppointmentsByMemberId(memberId) {
@@ -9377,7 +9440,7 @@ async function bookAppointment(data) {
         }).then((customer)=>customer.id);
     }
     const appointmentStart = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$utils$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["stringToTime"])(data.time, data.date);
-    const appointmentEnd = new Date(new Date(appointmentStart).getTime() + (data.duration ? data.duration * 60000 : 0)).toISOString();
+    const appointmentEnd = new Date(new Date(appointmentStart).getTime() + (data.duration ? data.duration * 60000 : 0));
     const existingAppointment = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].appointment.findFirst({
         where: {
             memberId: data.memberId,
@@ -9410,7 +9473,8 @@ async function bookAppointment(data) {
         }
     });
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(`/book-appointment/${data.salonId}`);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(`/profil/${session.user.id}`);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(`/profil/${userId}`);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/salon/" + data.salonId + "/appointments");
     return {
         success: true,
         appointment
@@ -9453,23 +9517,68 @@ async function rescheduleAppointment(appointmentId, data) {
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(`/book-appointment/${data.salonId}`);
     return appointment;
 }
+async function updateBookedAppointment(appointmentId, data, salonId) {
+    const session = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$auth$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["auth"].api.getSession({
+        headers: await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$headers$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["headers"])()
+    });
+    if (!session || !session.user) {
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/authentication?callbackUrl=" + encodeURIComponent("/salons"));
+    }
+    // if (!data.salonId || !data.memberId) {
+    //   throw new Error("Missing required appointment information.");
+    // }
+    const userId = session.user.id;
+    const updatedValues = Object.fromEntries(Object.entries({
+        memberId: data.memberId,
+        serviceId: data.serviceId,
+        startsAt: data.date,
+        endsAt: data.time,
+        notes: data.notes,
+        salonId: data.salonId,
+        duration: data.duration,
+        price: data.price
+    }).filter(([_, value])=>value !== undefined));
+    console.log({
+        updatedValues
+    });
+    const appointment = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].appointment.update({
+        where: {
+            id: appointmentId
+        },
+        data: {
+            ...updatedValues
+        }
+    });
+    console.log("salon id", salonId);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(`/book-appointment/${data.salonId}`);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(`/profil/${userId}`);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(`/salon/${salonId}/appointments`);
+    return {
+        success: true,
+        appointment
+    };
+}
 ;
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$action$2d$validate$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ensureServerEntryExports"])([
     getAllAppointments,
+    CompleteAppointment,
     ApproveAppointment,
     RejectAppointment,
     CancelAppointment,
     getAppointmentsByMemberId,
     bookAppointment,
-    rescheduleAppointment
+    rescheduleAppointment,
+    updateBookedAppointment
 ]);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAllAppointments, "00edba2f31c9a778f32e7e41b067764d691e8be4fc", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(CompleteAppointment, "60962bf5ea7d6215f3a194242d9a94214ef20b8aad", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(ApproveAppointment, "606713b3d1bcfeb004f3a5cfc49a91bea64c6cdc13", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(RejectAppointment, "6002f0159214a6f4ad8488fbdd868d36ff43b23d44", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(CancelAppointment, "606a9319bd6569522ccb42f0b77bdf0c00f91b7ee6", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAppointmentsByMemberId, "4074944f8d19ea130e0041fcd2e5e1867bda8cf63e", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(bookAppointment, "4070d56e0b2e696589236abafcfa4a92ec1b09f869", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(rescheduleAppointment, "607be1b9083a1719895edaf65d4ae03346ad966d6f", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(updateBookedAppointment, "70f7f62bb902b3c4db57ef6adc2752857d99600f27", null);
 }),
 "[project]/Desktop/coiffeur/.next-internal/server/app/(client)/profil/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/appointment-actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript) <locals>", ((__turbopack_context__) => {
 "use strict";

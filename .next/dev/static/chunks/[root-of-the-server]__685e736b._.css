@@ -1343,6 +1343,10 @@
     margin-right: calc(var(--spacing) * 3);
   }
 
+  .mr-4 {
+    margin-right: calc(var(--spacing) * 4);
+  }
+
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
@@ -1373,6 +1377,10 @@
 
   .-ml-4 {
     margin-left: calc(var(--spacing) * -4);
+  }
+
+  .ml-2 {
+    margin-left: calc(var(--spacing) * 2);
   }
 
   .ml-4 {

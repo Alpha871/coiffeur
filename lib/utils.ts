@@ -1,10 +1,23 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import type { OpeningHoursDayKey } from "@/oop/domain/salon";
+import { AppointmentStatus } from "@/generated/prisma";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export const STATUS_COLORS: Record<
+  AppointmentStatus,
+  { bg: string; border: string; text: string }
+> = {
+  APPROVED: { bg: "#E3F2FD", border: "#2196F3", text: "#1976D2" },
+  // APPROVED: { bg: "#E8F5E8", border: "#4CAF50", text: "#388E3C" },
+  PENDING: { bg: "#FFF3E0", border: "#FF9800", text: "#F57C00" },
+  COMPLETED: { bg: "#E8F5E8", border: "#4CAF50", text: "#388E3C" },
+  CANCELLED: { bg: "#FFEBEE", border: "#F44336", text: "#D32F2F" },
+  REJECTED: { bg: "#FCE4EC", border: "#E91E63", text: "#C2185B" },
+};
 
 export function randomValues() {
   return Math.random() * 360;

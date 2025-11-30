@@ -21,6 +21,8 @@ __turbopack_context__.s([
     ()=>MAX_TIME,
     "MIN_TIME",
     ()=>MIN_TIME,
+    "STATUS_COLORS",
+    ()=>STATUS_COLORS,
     "capitalize",
     ()=>capitalize,
     "changedValues",
@@ -49,6 +51,34 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_
 function cn(...inputs) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$tailwind$2d$merge$2f$dist$2f$bundle$2d$mjs$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["twMerge"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$clsx$2f$dist$2f$clsx$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["clsx"])(inputs));
 }
+const STATUS_COLORS = {
+    APPROVED: {
+        bg: "#E3F2FD",
+        border: "#2196F3",
+        text: "#1976D2"
+    },
+    // APPROVED: { bg: "#E8F5E8", border: "#4CAF50", text: "#388E3C" },
+    PENDING: {
+        bg: "#FFF3E0",
+        border: "#FF9800",
+        text: "#F57C00"
+    },
+    COMPLETED: {
+        bg: "#E8F5E8",
+        border: "#4CAF50",
+        text: "#388E3C"
+    },
+    CANCELLED: {
+        bg: "#FFEBEE",
+        border: "#F44336",
+        text: "#D32F2F"
+    },
+    REJECTED: {
+        bg: "#FCE4EC",
+        border: "#E91E63",
+        text: "#C2185B"
+    }
+};
 function randomValues() {
     return Math.random() * 360;
 }

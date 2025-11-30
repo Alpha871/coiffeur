@@ -1280,7 +1280,7 @@
       },
       "layer": {
         "app/(salon)/book-appointment/[id]/page": "action-browser",
-        "app/(salon)/salon/[id]/appointments/page": "rsc",
+        "app/(salon)/salon/[id]/appointments/page": "action-browser",
         "app/(salon)/salon/[id]/dashboard/page": "rsc"
       },
       "filename": "Desktop/coiffeur/oop/infrastructure/appointment-actions.ts",
@@ -1346,7 +1346,7 @@
         }
       },
       "layer": {
-        "app/(salon)/salon/[id]/appointments/page": "rsc",
+        "app/(salon)/salon/[id]/appointments/page": "action-browser",
         "app/(salon)/salon/[id]/dashboard/page": "rsc"
       },
       "filename": "Desktop/coiffeur/oop/infrastructure/appointment-actions.ts",
@@ -1368,7 +1368,7 @@
         }
       },
       "layer": {
-        "app/(salon)/salon/[id]/appointments/page": "rsc",
+        "app/(salon)/salon/[id]/appointments/page": "action-browser",
         "app/(salon)/salon/[id]/dashboard/page": "rsc"
       },
       "filename": "Desktop/coiffeur/oop/infrastructure/appointment-actions.ts",
@@ -1397,7 +1397,7 @@
       },
       "layer": {
         "app/(client)/profil/[id]/page": "action-browser",
-        "app/(salon)/salon/[id]/appointments/page": "rsc",
+        "app/(salon)/salon/[id]/appointments/page": "action-browser",
         "app/(salon)/salon/[id]/dashboard/page": "rsc"
       },
       "filename": "Desktop/coiffeur/oop/infrastructure/appointment-actions.ts",
@@ -1431,6 +1431,36 @@
       },
       "filename": "Desktop/coiffeur/oop/infrastructure/appointment-actions.ts",
       "exportedName": "rescheduleAppointment"
+    },
+    "60962bf5ea7d6215f3a194242d9a94214ef20b8aad": {
+      "workers": {
+        "app/(salon)/salon/[id]/appointments/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/appointments/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/appointment-actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "CompleteAppointment",
+          "filename": "Desktop/coiffeur/oop/infrastructure/appointment-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/appointments/page": "action-browser"
+      },
+      "filename": "Desktop/coiffeur/oop/infrastructure/appointment-actions.ts",
+      "exportedName": "CompleteAppointment"
+    },
+    "70f7f62bb902b3c4db57ef6adc2752857d99600f27": {
+      "workers": {
+        "app/(salon)/salon/[id]/appointments/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/appointments/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/appointment-actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateBookedAppointment",
+          "filename": "Desktop/coiffeur/oop/infrastructure/appointment-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/appointments/page": "action-browser"
+      },
+      "filename": "Desktop/coiffeur/oop/infrastructure/appointment-actions.ts",
+      "exportedName": "updateBookedAppointment"
     },
     "4039873b9bd7a386831d668514b2411de4d12a6e5a": {
       "workers": {

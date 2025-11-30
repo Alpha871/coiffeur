@@ -30,7 +30,7 @@ import {
 import { AppointmentStatus } from "@/generated/prisma";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Appointment } from "@/lib/validations/appointment";
-import { randomValues } from "@/lib/utils";
+import { randomValues, STATUS_COLORS } from "@/lib/utils";
 import { format } from "date-fns";
 import {
   HoverCard,
@@ -39,6 +39,9 @@ import {
 } from "@/components/ui/hover-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { takeFirstLastLetters } from "@/utils/utils";
+import Modal from "@/components/common/modal";
+import AppointmentForm from "@/components/appointment/appointment-form";
+import { SalonServices, SalonStaff } from "@/lib/validations/appointment";
 
 function addMinutes(date: Date, minutes: number): Date {
   return new Date(date.getTime() + minutes * 60000);
@@ -63,61 +66,6 @@ interface CalendarEvent {
     status: AppointmentStatus;
   };
 }
-
-const STATUS_COLORS: Record<
-  AppointmentStatus,
-  { bg: string; border: string; text: string }
-> = {
-  APPROVED: { bg: "#E3F2FD", border: "#2196F3", text: "#1976D2" },
-  // APPROVED: { bg: "#E8F5E8", border: "#4CAF50", text: "#388E3C" },
-  PENDING: { bg: "#FFF3E0", border: "#FF9800", text: "#F57C00" },
-  COMPLETED: { bg: "#E8F5E8", border: "#4CAF50", text: "#388E3C" },
-  CANCELLED: { bg: "#FFEBEE", border: "#F44336", text: "#D32F2F" },
-  REJECTED: { bg: "#FCE4EC", border: "#E91E63", text: "#C2185B" },
-};
-
-// Sample appointments data
-// const INITIAL_APPOINTMENTS: appointment[] = [
-//   {
-//     id: "1",
-//     clientName: "Emma Wilson",
-//     clientPhone: "+1 555 0123",
-//     staffId: "1",
-//     staffName: "Ayşe Yılmaz",
-//     service: "Haircut",
-//     startTime: new Date(2024, 11, 15, 10, 0),
-//     endTime: new Date(2024, 11, 15, 11, 0),
-//     duration: 60,
-//     status: "confirmed",
-//     price: 50,
-//   },
-//   {
-//     id: "2",
-//     clientName: "Sarah Johnson",
-//     clientPhone: "+1 555 0456",
-//     staffId: "2",
-//     staffName: "Fatma Kaya",
-//     service: "Hair Color",
-//     startTime: new Date(2024, 11, 15, 14, 0),
-//     endTime: new Date(2024, 11, 15, 16, 0),
-//     duration: 120,
-//     status: "scheduled",
-//     price: 120,
-//   },
-//   {
-//     id: "3",
-//     clientName: "Mike Brown",
-//     clientPhone: "+1 555 0789",
-//     staffId: "3",
-//     staffName: "Mehmet Öztürk",
-//     service: "Barbering",
-//     startTime: new Date(2024, 11, 16, 9, 30),
-//     endTime: new Date(2024, 11, 16, 10, 15),
-//     duration: 45,
-//     status: "confirmed",
-//     price: 35,
-//   },
-// ];
 
 function convertEventsToAppointments(events: CalendarEvent[]): Appointment[] {
   return events
@@ -215,19 +163,27 @@ function findAppointmentConflicts(
 
 interface AppointmentClientProps {
   initialAppointments: Appointment[];
+  salonServices: SalonServices;
+  salonStaff: SalonStaff;
 }
 
 export default function AppointmentClient({
   initialAppointments,
+  salonServices,
+  salonStaff,
 }: AppointmentClientProps) {
   const [appointments, setAppointments] =
     useState<Appointment[]>(initialAppointments);
+  const [selectedAppointment, setSelectedAppointment] =
+    useState<Appointment | null>(null);
   const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>([]);
   const [selectedStatus, setSelectedStatus] = useState<
     AppointmentStatus | "all"
   >("all");
   const [selectedStaff, setSelectedStaff] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
+
+  const [EditApptModalOpen, setEditApptModalOpen] = useState(false);
 
   const members = useMemo(() => {
     const uniqueMembers = Array.from(
@@ -299,7 +255,6 @@ export default function AppointmentClient({
 
       const events = filteredAppointments.map(convertAppointmentToEvent);
 
-      console.log("events", events);
       setCalendarEvents(events);
     };
     action();
@@ -392,254 +347,286 @@ export default function AppointmentClient({
   //     setAppointments((prev) => [...prev, newAppointment]);
   //   }, []);
 
-  const todayAppointments = filterAppointmentsByDate(appointments, new Date());
+  const handleEditAppointment = (appointmentId: string) => {
+    const appointment = appointments.find((apt) => apt.id === appointmentId);
+    if (appointment) {
+      setEditApptModalOpen(true);
+    }
+  };
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Appointments</h1>
-        <Button
-        // onClick={addQuickAppointment}
-        >
-          <Plus className="mr-2 h-4 w-4" />
-          Quick Appointment
-        </Button>
-      </div>
+    <>
+      <Modal
+        open={EditApptModalOpen}
+        onOpenChange={setEditApptModalOpen}
+        title="Edit Appointment"
+        size="full"
+      >
+        <AppointmentForm
+          salonServices={salonServices}
+          salonStaff={salonStaff}
+          type="edit"
+          defaultAppointment={selectedAppointment!}
+          onClose={() => setEditApptModalOpen(false)}
+          setAppointments={setAppointments}
+        />
+      </Modal>
 
-      {/* Filters */}
-      <div className="mb-6 flex flex-wrap gap-4">
-        <div className="flex items-center gap-2">
-          <Search className="h-4 w-4 opacity-70" />
-          <Input
-            placeholder="Search appointments..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-64"
-          />
+      <div className="p-6 max-w-7xl mx-auto">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+          <h1 className="text-3xl font-bold tracking-tight">Appointments</h1>
+          {/* <Button
+          // onClick={addQuickAppointment}
+          >
+            <Plus className="mr-2 h-4 w-4" />
+            Quick Appointment
+          </Button> */}
         </div>
 
-        <Select value={selectedStaff} onValueChange={setSelectedStaff}>
-          <SelectTrigger className="w-48">
-            <SelectValue placeholder="Filter by staff" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Staff</SelectItem>
-            {members.map((staff, index) => (
-              <SelectItem key={`${staff.id}-${index}`} value={staff.id}>
-                <div className="flex items-center gap-2">
-                  <div
-                    className="w-3 h-3 rounded-full"
-                    style={{ backgroundColor: staff.color }}
-                  />
-                  {staff.name}
-                </div>
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        {/* Filters */}
+        <div className="mb-6 flex flex-wrap gap-4">
+          <div className="flex items-center gap-2">
+            <Search className="h-4 w-4 opacity-70" />
+            <Input
+              placeholder="Search appointments..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-64"
+            />
+          </div>
 
-        <Select
-          value={selectedStatus}
-          onValueChange={(value) =>
-            setSelectedStatus(value as AppointmentStatus | "all")
-          }
-        >
-          <SelectTrigger className="w-48">
-            <SelectValue placeholder="Filter by status" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Statuses</SelectItem>
-            <SelectItem value="APPROVED">Approved</SelectItem>
-            <SelectItem value="PENDING">Pending</SelectItem>
-            <SelectItem value="REJECTED">Rejected</SelectItem>
-            <SelectItem value="COMPLETED">Completed</SelectItem>
-            <SelectItem value="CANCELLED">Cancelled</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        {/* Today's Overview */}
-        <div className="lg:col-span-1">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Clock className="h-5 w-5" />
-                Today&rsquo;s Schedule
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {todayAppointments.length === 0 ? (
-                <p className="text-sm text-muted-foreground">
-                  No appointments today
-                </p>
-              ) : (
-                todayAppointments.map((apt) => (
-                  <div
-                    key={apt.id}
-                    className="flex items-center gap-3 p-3 rounded-lg border"
-                  >
+          <Select value={selectedStaff} onValueChange={setSelectedStaff}>
+            <SelectTrigger className="w-48">
+              <SelectValue placeholder="Filter by staff" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Staff</SelectItem>
+              {members.map((staff, index) => (
+                <SelectItem key={`${staff.id}-${index}`} value={staff.id}>
+                  <div className="flex items-center gap-2">
                     <div
-                      className="w-2 h-8 rounded"
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: staff.color }}
+                    />
+                    {staff.name}
+                  </div>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <Select
+            value={selectedStatus}
+            onValueChange={(value) =>
+              setSelectedStatus(value as AppointmentStatus | "all")
+            }
+          >
+            <SelectTrigger className="w-48">
+              <SelectValue placeholder="Filter by status" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Statuses</SelectItem>
+              <SelectItem value="APPROVED">Approved</SelectItem>
+              <SelectItem value="PENDING">Pending</SelectItem>
+              <SelectItem value="REJECTED">Rejected</SelectItem>
+              <SelectItem value="COMPLETED">Completed</SelectItem>
+              <SelectItem value="CANCELLED">Cancelled</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* Today's Overview */}
+          <div className="lg:col-span-1">
+            {/* Color Legend */}
+            <Card className="mt-4">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Badge className="h-5 w-5" />
+                  Status Legend
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                {Object.entries(STATUS_COLORS).map(([status, colors]) => (
+                  <div key={status} className="flex items-center gap-3">
+                    <div
+                      className="w-4 h-4 rounded border-2"
                       style={{
-                        backgroundColor: members.find(
-                          (s) => s.id === apt.memberId
-                        )?.color,
+                        backgroundColor: colors.bg,
+                        borderColor: colors.border,
                       }}
                     />
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-sm truncate">
-                        {apt.customerName}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {apt.service}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {format(apt.startsAt, "p")} - {format(apt.endsAt, "p")}
-                      </p>
-                    </div>
-                    <Badge variant="outline" className="text-xs">
-                      {apt.status}
-                    </Badge>
+                    <span className="text-sm font-medium">{status}</span>
                   </div>
-                ))
-              )}
-            </CardContent>
-          </Card>
+                ))}
+              </CardContent>
+            </Card>
 
-          {/* Staff Legend */}
-          <Card className="mt-4">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <User className="h-5 w-5" />
-                Staff
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              {members.map((staff, index) => (
-                <div
-                  key={`${staff.id}-${index}`}
-                  className="flex items-center gap-3"
-                >
+            {/* Staff Legend */}
+            <Card className="mt-4">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <User className="h-5 w-5" />
+                  Staff
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                {members.map((staff, index) => (
                   <div
-                    className="w-3 h-3 rounded-full"
-                    style={{ backgroundColor: staff.color }}
-                  />
-                  <span className="text-sm">{staff.name}</span>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-        </div>
+                    key={`${staff.id}-${index}`}
+                    className="flex items-center gap-3"
+                  >
+                    <div
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: staff.color }}
+                    />
+                    <span className="text-sm">{staff.name}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
 
-        {/* Calendar */}
-        <div className="lg:col-span-3">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <CalendarIcon className="h-5 w-5" />
-                Appointment Calendar
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-white rounded-lg border">
-                <FullCalendar
-                  plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                  initialView="timeGridWeek"
-                  headerToolbar={{
-                    left: "prev,next today",
-                    center: "title",
-                    right: "dayGridMonth,timeGridWeek,timeGridDay",
-                  }}
-                  events={calendarEvents}
-                  height="auto"
-                  slotMinTime="08:00:00"
-                  slotMaxTime="20:00:00"
-                  slotDuration="00:30:00"
-                  allDaySlot={false}
-                  weekends={true}
-                  //   selectable={true}
-                  selectMirror={true}
-                  //   editable={true}
-                  dayMaxEvents={true}
-                  businessHours={{
-                    daysOfWeek: [1, 2, 3, 4, 5, 6],
-                    startTime: "09:00",
-                    endTime: "18:00",
-                  }}
-                  select={handleDateSelect}
-                  eventClick={handleEventClick}
-                  eventDrop={handleEventDrop}
-                  eventContent={(eventInfo) => {
-                    const appointment =
-                      eventInfo.event.extendedProps?.appointment;
+          {/* Calendar */}
+          <div className="lg:col-span-3">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <CalendarIcon className="h-5 w-5" />
+                  Appointment Calendar
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-white rounded-lg border">
+                  <FullCalendar
+                    plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                    initialView="timeGridWeek"
+                    headerToolbar={{
+                      left: "prev,next today",
+                      center: "title",
+                      right: "dayGridMonth,timeGridWeek,timeGridDay",
+                    }}
+                    events={calendarEvents}
+                    height="auto"
+                    slotMinTime="08:00:00"
+                    slotMaxTime="20:00:00"
+                    slotDuration="00:30:00"
+                    allDaySlot={false}
+                    weekends={true}
+                    //   selectable={true}
+                    selectMirror={true}
+                    //   editable={true}
+                    dayMaxEvents={true}
+                    businessHours={{
+                      daysOfWeek: [1, 2, 3, 4, 5, 6],
+                      startTime: "09:00",
+                      endTime: "18:00",
+                    }}
+                    select={handleDateSelect}
+                    eventClick={handleEventClick}
+                    eventDrop={handleEventDrop}
+                    eventContent={(eventInfo) => {
+                      const appointment =
+                        eventInfo.event.extendedProps?.appointment;
 
-                    if (!appointment) return null;
+                      if (!appointment) return null;
 
-                    const duration =
-                      eventInfo.event.end && eventInfo.event.start
-                        ? (eventInfo.event.end.getTime() -
-                            eventInfo.event.start.getTime()) /
-                          (1000 * 60)
-                        : 60;
+                      const duration =
+                        eventInfo.event.end && eventInfo.event.start
+                          ? (eventInfo.event.end.getTime() -
+                              eventInfo.event.start.getTime()) /
+                            (1000 * 60)
+                          : 60;
 
-                    const isShort = duration < 60;
-                    const clientName = appointment.customerName;
+                      const isShort = duration < 60;
+                      const clientName = appointment.customerName;
 
-                    const service = appointment.service;
+                      const service = appointment.service;
 
-                    const status = appointment.status;
-                    const customerAvatar = appointment.customerAvatar;
-                    const customerName = appointment.customerName;
-                    const stylistName = appointment.memberName;
+                      const status = appointment.status;
+                      const customerAvatar = appointment.customerAvatar;
+                      const customerName = appointment.customerName;
+                      const stylistName = appointment.memberName;
+                      const price = appointment.price;
 
-                    return (
-                      <HoverCard>
-                        <HoverCardTrigger asChild>
-                          <div className="custom-event-content">
-                            <div className="custom-event-title">
-                              {isShort
-                                ? clientName
-                                : `${clientName} - ${service}`}
-                            </div>
-                            {!isShort && (
-                              <div className="custom-event-time">
-                                {format(eventInfo.event.start!, "p")} -{" "}
-                                {format(eventInfo.event.end!, "p")}
+                      return (
+                        <>
+                          <HoverCard>
+                            <HoverCardTrigger asChild>
+                              <div
+                                className="custom-event-content"
+                                onClick={() => {
+                                  setSelectedAppointment(appointment);
+                                  setEditApptModalOpen(true);
+                                }}
+                              >
+                                <div className="custom-event-title">
+                                  {isShort
+                                    ? clientName
+                                    : `${clientName} - ${service}`}
+                                </div>
+                                {!isShort && (
+                                  <div className="custom-event-time">
+                                    {format(eventInfo.event.start!, "p")} -{" "}
+                                    {format(eventInfo.event.end!, "p")}
+                                  </div>
+                                )}
                               </div>
-                            )}
-                          </div>
-                        </HoverCardTrigger>
-                        <HoverCardContent className="w-60">
-                          <div className="flex justify-between gap-4">
-                            <Avatar className="w-14 h-14">
-                              <AvatarImage src={customerAvatar} />
-                              <AvatarFallback className="w-14 h-14 border border-blue-400">
-                                {takeFirstLastLetters(clientName)}
-                              </AvatarFallback>
-                            </Avatar>
-                            <div className="space-y-1">
-                              <h4 className="text-sm font-semibold">
-                                {customerName}
-                              </h4>
-                              <p className="text-xs">
-                                {service} with {stylistName}
-                              </p>
-                              <Badge variant="orange">{status}</Badge>
-                            </div>
-                          </div>
-                        </HoverCardContent>
-                      </HoverCard>
-                    );
-                  }}
-                  nowIndicator={true}
-                  scrollTime="09:00:00"
-                />
-              </div>
-            </CardContent>
-          </Card>
+                            </HoverCardTrigger>
+                            <HoverCardContent className="w-60">
+                              <div className="flex justify-between gap-4">
+                                <Avatar className="w-16 h-16">
+                                  <AvatarImage src={customerAvatar} />
+                                  <AvatarFallback className="w-16 h-16 border border-blue-400">
+                                    {takeFirstLastLetters(clientName)}
+                                  </AvatarFallback>
+                                </Avatar>
+                                <div className="space-y-1">
+                                  <h4 className="text-sm font-semibold">
+                                    {customerName}
+                                  </h4>
+                                  <p className="text-xs">
+                                    {service} with {stylistName}
+                                  </p>
+                                  <p className="text-xs font-bold">
+                                    {format(eventInfo.event.start!, "HH:mm")} -{" "}
+                                    {format(eventInfo.event.end!, "HH:mm")} - $
+                                    {price}
+                                  </p>
+                                  <Badge
+                                    style={{
+                                      backgroundColor:
+                                        STATUS_COLORS[
+                                          status as AppointmentStatus
+                                        ].bg,
+                                      borderColor:
+                                        STATUS_COLORS[
+                                          status as AppointmentStatus
+                                        ].border,
+                                      color:
+                                        STATUS_COLORS[
+                                          status as AppointmentStatus
+                                        ].text,
+                                    }}
+                                  >
+                                    {status}
+                                  </Badge>
+                                </div>
+                              </div>
+                            </HoverCardContent>
+                          </HoverCard>
+                        </>
+                      );
+                    }}
+                    nowIndicator={true}
+                    scrollTime="09:00:00"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

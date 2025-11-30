@@ -40,6 +40,35 @@ export async function getAllAppointments() {
   return appointments;
 }
 
+export async function CompleteAppointment(
+  appointmentId: string,
+  salonId: string
+) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/authentication");
+  }
+
+  const appointment = await prisma.appointment.update({
+    where: {
+      id: appointmentId,
+    },
+    data: {
+      status: AppointmentStatus.COMPLETED,
+    },
+  });
+
+  revalidatePath("/worker/" + salonId);
+  revalidatePath("/profil/" + session.user.id);
+  revalidatePath("/book-appointment/" + salonId);
+  revalidatePath("/salon/" + salonId + "/appointments");
+
+  return appointment;
+}
+
 export async function ApproveAppointment(
   appointmentId: string,
   salonId: string
@@ -62,6 +91,9 @@ export async function ApproveAppointment(
   });
 
   revalidatePath("/worker/" + salonId);
+  revalidatePath("/profil/" + session.user.id);
+  revalidatePath("/book-appointment/" + salonId);
+  revalidatePath("/salon/" + salonId + "/appointments");
 
   return appointment;
 }
@@ -88,6 +120,9 @@ export async function RejectAppointment(
   });
 
   revalidatePath("/worker/" + salonId);
+  revalidatePath("/profil/" + session.user.id);
+  revalidatePath("/book-appointment/" + salonId);
+  revalidatePath("/salon/" + salonId + "/appointments");
 
   return appointment;
 }
@@ -115,6 +150,8 @@ export async function CancelAppointment(
 
   revalidatePath("/worker/" + salonId);
   revalidatePath("/profil/" + session.user.id);
+  revalidatePath("/book-appointment/" + salonId);
+  revalidatePath("/salon/" + salonId + "/appointments");
 
   return appointment;
 }
@@ -170,7 +207,7 @@ export async function bookAppointment(data: AppointmentFormValues) {
   const appointmentEnd = new Date(
     new Date(appointmentStart).getTime() +
       (data.duration ? data.duration * 60000 : 0)
-  ).toISOString();
+  );
 
   const existingAppointment = await prisma.appointment.findFirst({
     where: {
@@ -204,7 +241,8 @@ export async function bookAppointment(data: AppointmentFormValues) {
   });
 
   revalidatePath(`/book-appointment/${data.salonId}`);
-  revalidatePath(`/profil/${session.user.id}`);
+  revalidatePath(`/profil/${userId}`);
+  revalidatePath("/salon/" + data.salonId + "/appointments");
 
   return { success: true, appointment };
 }
@@ -258,4 +296,54 @@ export async function rescheduleAppointment(
   revalidatePath(`/book-appointment/${data.salonId}`);
 
   return appointment;
+}
+
+export async function updateBookedAppointment(
+  appointmentId: string,
+  data: Partial<AppointmentFormValues>,
+  salonId: string
+) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session || !session.user) {
+    redirect("/authentication?callbackUrl=" + encodeURIComponent("/salons"));
+  }
+
+  // if (!data.salonId || !data.memberId) {
+  //   throw new Error("Missing required appointment information.");
+  // }
+
+  const userId = session.user.id;
+  const updatedValues = Object.fromEntries(
+    Object.entries({
+      memberId: data.memberId,
+      serviceId: data.serviceId,
+      startsAt: data.date,
+      endsAt: data.time,
+      notes: data.notes,
+      salonId: data.salonId,
+      duration: data.duration,
+      price: data.price,
+    }).filter(([_, value]) => value !== undefined)
+  );
+  console.log({ updatedValues });
+
+  const appointment = await prisma.appointment.update({
+    where: {
+      id: appointmentId,
+    },
+    data: {
+      ...updatedValues,
+    },
+  });
+
+  console.log("salon id", salonId);
+
+  revalidatePath(`/book-appointment/${data.salonId}`);
+  revalidatePath(`/profil/${userId}`);
+  revalidatePath(`/salon/${salonId}/appointments`);
+
+  return { success: true, appointment };
 }

@@ -23,6 +23,7 @@ export type Appointment = {
   notes: string | null;
   status: $Enums.AppointmentStatus;
   service: string;
+  serviceId: string;
   customerName: string;
   customerAvatar: string | null;
   duration: number;

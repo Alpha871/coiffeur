@@ -34,7 +34,7 @@ async function page() {
     barberId: appointment.member.id,
   }));
 
-  const barber = appointments?.appointments.map((appt) => appt.member);
+  // const barber = appointments?.appointments.map((appt) => appt.member);
 
   return (
     <Suspense fallback={<Spinner />}>
