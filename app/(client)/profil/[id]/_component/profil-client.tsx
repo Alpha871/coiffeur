@@ -201,13 +201,14 @@ export default function ClientPageClient({
                                   stylist={appt.barber}
                                   stylistId={appt.barberId}
                                   salonName={appt.salonName || ""}
-                                  date={format(appt.startsAt, "PPP")}
+                                  date={appt.startsAt}
                                   meta={`${format(appt.startsAt, "p")} (${
                                     appt.durationMin
                                   } min) - $${appt.price.toFixed(2)}`}
                                   appointmentId={appt.id}
                                   salonId={appt.salondId}
                                   status={appt.status}
+                                  serviceDuration={appt.durationMin}
                                 />
                               ))
                             ) : (
@@ -224,13 +225,14 @@ export default function ClientPageClient({
                                   stylist={appt.barber}
                                   stylistId={appt.barberId}
                                   salonName={appt.salonName || ""}
-                                  date={format(appt.startsAt, "PPP")}
+                                  date={appt.startsAt}
                                   meta={`${format(appt.startsAt, "p")} (${
                                     appt.durationMin
                                   } min) - $${appt.price.toFixed(2)}`}
                                   appointmentId={appt.id}
                                   salonId={appt.salondId}
                                   status={appt.status}
+                                  serviceDuration={appt.durationMin}
                                 />
                               ))
                             ) : (

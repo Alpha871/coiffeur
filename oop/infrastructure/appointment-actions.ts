@@ -208,3 +208,54 @@ export async function bookAppointment(data: AppointmentFormValues) {
 
   return { success: true, appointment };
 }
+
+export async function rescheduleAppointment(
+  appointmentId: string,
+  data: AppointmentFormValues
+) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/authentication");
+  }
+
+  const appointmentStart = stringToTime(data.time, data.date);
+  const appointmentEnd = new Date(
+    new Date(appointmentStart).getTime() +
+      (data.duration ? data.duration * 60000 : 0)
+  ).toISOString();
+
+  const existingAppointment = await prisma.appointment.findFirst({
+    where: {
+      memberId: data.memberId,
+      startsAt: {
+        equals: appointmentStart,
+      },
+      endsAt: {
+        equals: appointmentEnd,
+      },
+      status: AppointmentStatus.APPROVED,
+    },
+  });
+
+  if (existingAppointment) {
+    throw new Error("Time slot already booked.");
+  }
+
+  const appointment = await prisma.appointment.update({
+    where: {
+      id: appointmentId,
+    },
+    data: {
+      startsAt: appointmentStart,
+      endsAt: appointmentEnd,
+    },
+  });
+
+  revalidatePath("/profil/" + session.user.id);
+  revalidatePath(`/book-appointment/${data.salonId}`);
+
+  return appointment;
+}

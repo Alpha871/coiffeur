@@ -1,8 +1,11 @@
 {
+  "/(client)/profil/[id]/page": "app/(client)/profil/[id]/page.js",
+  "/(salon)/book-appointment/[id]/page": "app/(salon)/book-appointment/[id]/page.js",
   "/(salon)/salon/[id]/appointments/page": "app/(salon)/salon/[id]/appointments/page.js",
   "/(salon)/salon/[id]/dashboard/page": "app/(salon)/salon/[id]/dashboard/page.js",
   "/(salon)/salon/[id]/services/page": "app/(salon)/salon/[id]/services/page.js",
   "/(salon)/salon/[id]/staff-management/page": "app/(salon)/salon/[id]/staff-management/page.js",
+  "/(salon)/salons/page": "app/(salon)/salons/page.js",
   "/api/auth/[...all]/route": "app/api/auth/[...all]/route.js",
   "/page": "app/page.js"
 }

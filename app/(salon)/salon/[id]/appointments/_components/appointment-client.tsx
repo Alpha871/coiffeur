@@ -31,10 +31,14 @@ import { AppointmentStatus } from "@/generated/prisma";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Appointment } from "@/lib/validations/appointment";
 import { randomValues } from "@/lib/utils";
-
-function formatTime(date: Date): string {
-  return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-}
+import { format } from "date-fns";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { takeFirstLastLetters } from "@/utils/utils";
 
 function addMinutes(date: Date, minutes: number): Date {
   return new Date(date.getTime() + minutes * 60000);
@@ -64,8 +68,8 @@ const STATUS_COLORS: Record<
   AppointmentStatus,
   { bg: string; border: string; text: string }
 > = {
-  // APPROVED: { bg: "#E3F2FD", border: "#2196F3", text: "#1976D2" },
-  APPROVED: { bg: "#E8F5E8", border: "#4CAF50", text: "#388E3C" },
+  APPROVED: { bg: "#E3F2FD", border: "#2196F3", text: "#1976D2" },
+  // APPROVED: { bg: "#E8F5E8", border: "#4CAF50", text: "#388E3C" },
   PENDING: { bg: "#FFF3E0", border: "#FF9800", text: "#F57C00" },
   COMPLETED: { bg: "#E8F5E8", border: "#4CAF50", text: "#388E3C" },
   CANCELLED: { bg: "#FFEBEE", border: "#F44336", text: "#D32F2F" },
@@ -491,7 +495,7 @@ export default function AppointmentClient({
                         {apt.service}
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        {formatTime(apt.startsAt)} - {formatTime(apt.endsAt)}
+                        {format(apt.startsAt, "p")} - {format(apt.endsAt, "p")}
                       </p>
                     </div>
                     <Badge variant="outline" className="text-xs">
@@ -538,72 +542,6 @@ export default function AppointmentClient({
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <style jsx global>{`
-                .fc-event {
-                  border-radius: 4px !important;
-                  border: none !important;
-                  font-size: 11px !important;
-                  padding: 2px 4px !important;
-                  overflow: hidden !important;
-                  text-overflow: ellipsis !important;
-                  white-space: nowrap !important;
-                }
-
-                .fc-event-title {
-                  overflow: hidden !important;
-                  text-overflow: ellipsis !important;
-                  white-space: nowrap !important;
-                  display: block !important;
-                  max-width: 100% !important;
-                }
-
-                .fc-event-time {
-                  overflow: hidden !important;
-                  text-overflow: ellipsis !important;
-                  white-space: nowrap !important;
-                  display: block !important;
-                  font-size: 10px !important;
-                  opacity: 0.8 !important;
-                }
-
-                .fc-timegrid-event {
-                  border-radius: 3px !important;
-                  margin: 1px !important;
-                }
-
-                .fc-timegrid-event-harness {
-                  margin: 1px !important;
-                }
-
-                .custom-event-content {
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                  width: 100%;
-                  font-size: 11px;
-                  line-height: 1.2;
-                }
-
-                .custom-event-title {
-                  font-weight: 500;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                  width: 100%;
-                  display: block;
-                }
-
-                .custom-event-time {
-                  font-size: 10px;
-                  opacity: 0.7;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                  width: 100%;
-                  display: block;
-                }
-              `}</style>
-
               <div className="bg-white rounded-lg border">
                 <FullCalendar
                   plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -646,27 +584,52 @@ export default function AppointmentClient({
                         : 60;
 
                     const isShort = duration < 60;
-                    const clientName =
-                      appointment.customerName.length > 12
-                        ? appointment.customerName
-                        : appointment.customerName;
-                    const service =
-                      appointment.service.length > 15
-                        ? appointment.service
-                        : appointment.service;
+                    const clientName = appointment.customerName;
+
+                    const service = appointment.service;
+
+                    const status = appointment.status;
+                    const customerAvatar = appointment.customerAvatar;
+                    const customerName = appointment.customerName;
+                    const stylistName = appointment.memberName;
 
                     return (
-                      <div className="custom-event-content">
-                        <div className="custom-event-title">
-                          {isShort ? clientName : `${clientName} - ${service}`}
-                        </div>
-                        {!isShort && (
-                          <div className="custom-event-time">
-                            {formatTime(eventInfo.event.start!)} -{" "}
-                            {formatTime(eventInfo.event.end!)}
+                      <HoverCard>
+                        <HoverCardTrigger asChild>
+                          <div className="custom-event-content">
+                            <div className="custom-event-title">
+                              {isShort
+                                ? clientName
+                                : `${clientName} - ${service}`}
+                            </div>
+                            {!isShort && (
+                              <div className="custom-event-time">
+                                {format(eventInfo.event.start!, "p")} -{" "}
+                                {format(eventInfo.event.end!, "p")}
+                              </div>
+                            )}
                           </div>
-                        )}
-                      </div>
+                        </HoverCardTrigger>
+                        <HoverCardContent className="w-60">
+                          <div className="flex justify-between gap-4">
+                            <Avatar className="w-14 h-14">
+                              <AvatarImage src={customerAvatar} />
+                              <AvatarFallback className="w-14 h-14 border border-blue-400">
+                                {takeFirstLastLetters(clientName)}
+                              </AvatarFallback>
+                            </Avatar>
+                            <div className="space-y-1">
+                              <h4 className="text-sm font-semibold">
+                                {customerName}
+                              </h4>
+                              <p className="text-xs">
+                                {service} with {stylistName}
+                              </p>
+                              <Badge variant="orange">{status}</Badge>
+                            </div>
+                          </div>
+                        </HoverCardContent>
+                      </HoverCard>
                     );
                   }}
                   nowIndicator={true}

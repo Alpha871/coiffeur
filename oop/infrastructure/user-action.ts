@@ -26,6 +26,7 @@ export async function getAppointmentsByMemberId() {
           member: {
             include: {
               user: true,
+              availabilities: true,
             },
           },
           service: true,

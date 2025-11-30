@@ -2,6 +2,7 @@ import { getAllSalonServices } from "@/oop/infrastructure/service-action";
 import { Suspense } from "react";
 import ManageServicesClient from "./_components/service-management-client";
 import { capitalize } from "@/lib/utils";
+import { Spinner } from "@/components/ui/spinner";
 
 export default async function ServiceManagement({
   params,
@@ -13,7 +14,7 @@ export default async function ServiceManagement({
   const services = await getAllSalonServices(id);
 
   return (
-    <Suspense fallback={<div>Loading services...</div>}>
+    <Suspense fallback={<Spinner />}>
       <ManageServicesClient
         services={services.map((s) => ({
           id: s.id,

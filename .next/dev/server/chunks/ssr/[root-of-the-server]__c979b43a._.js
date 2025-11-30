@@ -8824,6 +8824,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$compo
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/components/ui/select.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$generated$2f$prisma$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/generated/prisma/index.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/node_modules/date-fns/format.js [app-ssr] (ecmascript) <locals>");
 "use client";
 ;
 ;
@@ -8839,12 +8840,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_
 ;
 ;
 ;
-function formatTime(date) {
-    return date.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit"
-    });
-}
+;
 function addMinutes(date, minutes) {
     return new Date(date.getTime() + minutes * 60000);
 }
@@ -9104,7 +9100,7 @@ function AppointmentClient({ initialAppointments }) {
                         children: "Appointments"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                        lineNumber: 396,
+                        lineNumber: 393,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -9113,20 +9109,20 @@ function AppointmentClient({ initialAppointments }) {
                                 className: "mr-2 h-4 w-4"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                lineNumber: 400,
+                                lineNumber: 397,
                                 columnNumber: 11
                             }, this),
                             "Quick Appointment"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                        lineNumber: 397,
+                        lineNumber: 394,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                lineNumber: 395,
+                lineNumber: 392,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9139,7 +9135,7 @@ function AppointmentClient({ initialAppointments }) {
                                 className: "h-4 w-4 opacity-70"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                lineNumber: 408,
+                                lineNumber: 405,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -9149,13 +9145,13 @@ function AppointmentClient({ initialAppointments }) {
                                 className: "w-64"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                lineNumber: 409,
+                                lineNumber: 406,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                        lineNumber: 407,
+                        lineNumber: 404,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -9168,12 +9164,12 @@ function AppointmentClient({ initialAppointments }) {
                                     placeholder: "Filter by staff"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                    lineNumber: 419,
+                                    lineNumber: 416,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                lineNumber: 418,
+                                lineNumber: 415,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -9183,7 +9179,7 @@ function AppointmentClient({ initialAppointments }) {
                                         children: "All Staff"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                        lineNumber: 422,
+                                        lineNumber: 419,
                                         columnNumber: 13
                                     }, this),
                                     members.map((staff, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -9198,31 +9194,31 @@ function AppointmentClient({ initialAppointments }) {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                        lineNumber: 426,
+                                                        lineNumber: 423,
                                                         columnNumber: 19
                                                     }, this),
                                                     staff.name
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                lineNumber: 425,
+                                                lineNumber: 422,
                                                 columnNumber: 17
                                             }, this)
                                         }, `${staff.id}-${index}`, false, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                            lineNumber: 424,
+                                            lineNumber: 421,
                                             columnNumber: 15
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                lineNumber: 421,
+                                lineNumber: 418,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                        lineNumber: 417,
+                        lineNumber: 414,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -9235,12 +9231,12 @@ function AppointmentClient({ initialAppointments }) {
                                     placeholder: "Filter by status"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                    lineNumber: 444,
+                                    lineNumber: 441,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                lineNumber: 443,
+                                lineNumber: 440,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -9250,7 +9246,7 @@ function AppointmentClient({ initialAppointments }) {
                                         children: "All Statuses"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                        lineNumber: 447,
+                                        lineNumber: 444,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -9258,7 +9254,7 @@ function AppointmentClient({ initialAppointments }) {
                                         children: "Approved"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                        lineNumber: 448,
+                                        lineNumber: 445,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -9266,7 +9262,7 @@ function AppointmentClient({ initialAppointments }) {
                                         children: "Pending"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                        lineNumber: 449,
+                                        lineNumber: 446,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -9274,7 +9270,7 @@ function AppointmentClient({ initialAppointments }) {
                                         children: "Rejected"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                        lineNumber: 450,
+                                        lineNumber: 447,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -9282,7 +9278,7 @@ function AppointmentClient({ initialAppointments }) {
                                         children: "Completed"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                        lineNumber: 451,
+                                        lineNumber: 448,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -9290,25 +9286,25 @@ function AppointmentClient({ initialAppointments }) {
                                         children: "Cancelled"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                        lineNumber: 452,
+                                        lineNumber: 449,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                lineNumber: 446,
+                                lineNumber: 443,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                        lineNumber: 437,
+                        lineNumber: 434,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                lineNumber: 406,
+                lineNumber: 403,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9327,19 +9323,19 @@ function AppointmentClient({ initialAppointments }) {
                                                     className: "h-5 w-5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                    lineNumber: 463,
+                                                    lineNumber: 460,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Today’s Schedule"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                            lineNumber: 462,
+                                            lineNumber: 459,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                        lineNumber: 461,
+                                        lineNumber: 458,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -9349,7 +9345,7 @@ function AppointmentClient({ initialAppointments }) {
                                             children: "No appointments today"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                            lineNumber: 469,
+                                            lineNumber: 466,
                                             columnNumber: 17
                                         }, this) : todayAppointments.map((apt)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "flex items-center gap-3 p-3 rounded-lg border",
@@ -9361,7 +9357,7 @@ function AppointmentClient({ initialAppointments }) {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                        lineNumber: 478,
+                                                        lineNumber: 475,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9372,7 +9368,7 @@ function AppointmentClient({ initialAppointments }) {
                                                                 children: apt.customerName
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                                lineNumber: 487,
+                                                                lineNumber: 484,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -9380,25 +9376,25 @@ function AppointmentClient({ initialAppointments }) {
                                                                 children: apt.service
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                                lineNumber: 490,
+                                                                lineNumber: 487,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                 className: "text-xs text-muted-foreground",
                                                                 children: [
-                                                                    formatTime(apt.startsAt),
+                                                                    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(apt.startsAt, "p"),
                                                                     " - ",
-                                                                    formatTime(apt.endsAt)
+                                                                    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(apt.endsAt, "p")
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                                lineNumber: 493,
+                                                                lineNumber: 490,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                        lineNumber: 486,
+                                                        lineNumber: 483,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -9407,24 +9403,24 @@ function AppointmentClient({ initialAppointments }) {
                                                         children: apt.status
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                        lineNumber: 497,
+                                                        lineNumber: 494,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, apt.id, true, {
                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                lineNumber: 474,
+                                                lineNumber: 471,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                        lineNumber: 467,
+                                        lineNumber: 464,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                lineNumber: 460,
+                                lineNumber: 457,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -9438,19 +9434,19 @@ function AppointmentClient({ initialAppointments }) {
                                                     className: "h-5 w-5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                    lineNumber: 510,
+                                                    lineNumber: 507,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Staff"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                            lineNumber: 509,
+                                            lineNumber: 506,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                        lineNumber: 508,
+                                        lineNumber: 505,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -9465,7 +9461,7 @@ function AppointmentClient({ initialAppointments }) {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                        lineNumber: 520,
+                                                        lineNumber: 517,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -9473,30 +9469,30 @@ function AppointmentClient({ initialAppointments }) {
                                                         children: staff.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                        lineNumber: 524,
+                                                        lineNumber: 521,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, `${staff.id}-${index}`, true, {
                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                lineNumber: 516,
+                                                lineNumber: 513,
                                                 columnNumber: 17
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                        lineNumber: 514,
+                                        lineNumber: 511,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                lineNumber: 507,
+                                lineNumber: 504,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                        lineNumber: 459,
+                        lineNumber: 456,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9511,19 +9507,19 @@ function AppointmentClient({ initialAppointments }) {
                                                 className: "h-5 w-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                lineNumber: 536,
+                                                lineNumber: 533,
                                                 columnNumber: 17
                                             }, this),
                                             "Appointment Calendar"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                        lineNumber: 535,
+                                        lineNumber: 532,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                    lineNumber: 534,
+                                    lineNumber: 531,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -9577,36 +9573,49 @@ function AppointmentClient({ initialAppointments }) {
                                                     if (!appointment) return null;
                                                     const duration = eventInfo.event.end && eventInfo.event.start ? (eventInfo.event.end.getTime() - eventInfo.event.start.getTime()) / (1000 * 60) : 60;
                                                     const isShort = duration < 60;
-                                                    const clientName = appointment.customerName.length > 12 ? appointment.customerName : appointment.customerName;
-                                                    const service = appointment.service.length > 15 ? appointment.service : appointment.service;
-                                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "jsx-726b488deca97f93" + " " + "custom-event-content",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "jsx-726b488deca97f93" + " " + "custom-event-title",
-                                                                children: isShort ? clientName : `${clientName} - ${service}`
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                                lineNumber: 660,
-                                                                columnNumber: 25
-                                                            }, void 0),
-                                                            !isShort && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "jsx-726b488deca97f93" + " " + "custom-event-time",
+                                                    const clientName = appointment.customerName;
+                                                    const service = appointment.service;
+                                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(HoverCard, {
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(HoverCardTrigger, {
+                                                            asChild: true,
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "jsx-726b488deca97f93" + " " + "custom-event-content",
                                                                 children: [
-                                                                    formatTime(eventInfo.event.start),
-                                                                    " -",
-                                                                    " ",
-                                                                    formatTime(eventInfo.event.end)
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "jsx-726b488deca97f93" + " " + "custom-event-title",
+                                                                        children: isShort ? clientName : `${clientName} - ${service}`
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
+                                                                        lineNumber: 654,
+                                                                        columnNumber: 29
+                                                                    }, void 0),
+                                                                    !isShort && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "jsx-726b488deca97f93" + " " + "custom-event-time",
+                                                                        children: [
+                                                                            (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(eventInfo.event.start, "p"),
+                                                                            " -",
+                                                                            " ",
+                                                                            (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(eventInfo.event.end, "p")
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
+                                                                        lineNumber: 660,
+                                                                        columnNumber: 31
+                                                                    }, void 0)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                                lineNumber: 664,
+                                                                lineNumber: 653,
                                                                 columnNumber: 27
                                                             }, void 0)
-                                                        ]
-                                                    }, void 0, true, {
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
+                                                            lineNumber: 652,
+                                                            columnNumber: 25
+                                                        }, void 0)
+                                                    }, void 0, false, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                        lineNumber: 659,
+                                                        lineNumber: 651,
                                                         columnNumber: 23
                                                     }, void 0);
                                                 },
@@ -9614,41 +9623,41 @@ function AppointmentClient({ initialAppointments }) {
                                                 scrollTime: "09:00:00"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                                lineNumber: 608,
+                                                lineNumber: 605,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                            lineNumber: 607,
+                                            lineNumber: 604,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                                    lineNumber: 540,
+                                    lineNumber: 537,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                            lineNumber: 533,
+                            lineNumber: 530,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                        lineNumber: 532,
+                        lineNumber: 529,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-                lineNumber: 457,
+                lineNumber: 454,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/appointments/_components/appointment-client.tsx",
-        lineNumber: 394,
+        lineNumber: 391,
         columnNumber: 5
     }, this);
 }

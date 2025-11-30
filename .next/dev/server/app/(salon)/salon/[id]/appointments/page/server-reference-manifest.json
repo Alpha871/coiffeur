@@ -314,6 +314,21 @@
       },
       "exportedName": "CancelAppointment",
       "filename": "Desktop/coiffeur/oop/infrastructure/appointment-actions.ts"
+    },
+    "607be1b9083a1719895edaf65d4ae03346ad966d6f": {
+      "workers": {
+        "app/(salon)/salon/[id]/appointments/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/appointments/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/appointment-actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "rescheduleAppointment",
+          "filename": "Desktop/coiffeur/oop/infrastructure/appointment-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/appointments/page": "rsc"
+      },
+      "exportedName": "rescheduleAppointment",
+      "filename": "Desktop/coiffeur/oop/infrastructure/appointment-actions.ts"
     }
   },
   "edge": {}

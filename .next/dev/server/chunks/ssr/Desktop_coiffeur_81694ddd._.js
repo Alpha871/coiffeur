@@ -2,7 +2,7 @@ module.exports = [
 "[project]/Desktop/coiffeur/oop/infrastructure/appointment-actions.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-/* __next_internal_action_entry_do_not_use__ [{"00edba2f31c9a778f32e7e41b067764d691e8be4fc":"getAllAppointments","4070d56e0b2e696589236abafcfa4a92ec1b09f869":"bookAppointment","4074944f8d19ea130e0041fcd2e5e1867bda8cf63e":"getAppointmentsByMemberId","6002f0159214a6f4ad8488fbdd868d36ff43b23d44":"RejectAppointment","606713b3d1bcfeb004f3a5cfc49a91bea64c6cdc13":"ApproveAppointment","606a9319bd6569522ccb42f0b77bdf0c00f91b7ee6":"CancelAppointment"},"",""] */ __turbopack_context__.s([
+/* __next_internal_action_entry_do_not_use__ [{"00edba2f31c9a778f32e7e41b067764d691e8be4fc":"getAllAppointments","4070d56e0b2e696589236abafcfa4a92ec1b09f869":"bookAppointment","4074944f8d19ea130e0041fcd2e5e1867bda8cf63e":"getAppointmentsByMemberId","6002f0159214a6f4ad8488fbdd868d36ff43b23d44":"RejectAppointment","606713b3d1bcfeb004f3a5cfc49a91bea64c6cdc13":"ApproveAppointment","606a9319bd6569522ccb42f0b77bdf0c00f91b7ee6":"CancelAppointment","607be1b9083a1719895edaf65d4ae03346ad966d6f":"rescheduleAppointment"},"",""] */ __turbopack_context__.s([
     "ApproveAppointment",
     ()=>ApproveAppointment,
     "CancelAppointment",
@@ -14,7 +14,9 @@ module.exports = [
     "getAllAppointments",
     ()=>getAllAppointments,
     "getAppointmentsByMemberId",
-    ()=>getAppointmentsByMemberId
+    ()=>getAppointmentsByMemberId,
+    "rescheduleAppointment",
+    ()=>rescheduleAppointment
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/node_modules/next/dist/build/webpack/loaders/next-flight-loader/server-reference.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$generated$2f$prisma$2f$index$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/generated/prisma/index.js [app-rsc] (ecmascript)");
@@ -194,6 +196,43 @@ async function bookAppointment(data) {
         appointment
     };
 }
+async function rescheduleAppointment(appointmentId, data) {
+    const session = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$auth$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["auth"].api.getSession({
+        headers: await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$headers$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["headers"])()
+    });
+    if (!session) {
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/authentication");
+    }
+    const appointmentStart = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$utils$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["stringToTime"])(data.time, data.date);
+    const appointmentEnd = new Date(new Date(appointmentStart).getTime() + (data.duration ? data.duration * 60000 : 0)).toISOString();
+    const existingAppointment = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].appointment.findFirst({
+        where: {
+            memberId: data.memberId,
+            startsAt: {
+                equals: appointmentStart
+            },
+            endsAt: {
+                equals: appointmentEnd
+            },
+            status: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$generated$2f$prisma$2f$index$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["AppointmentStatus"].APPROVED
+        }
+    });
+    if (existingAppointment) {
+        throw new Error("Time slot already booked.");
+    }
+    const appointment = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].appointment.update({
+        where: {
+            id: appointmentId
+        },
+        data: {
+            startsAt: appointmentStart,
+            endsAt: appointmentEnd
+        }
+    });
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])("/profil/" + session.user.id);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(`/book-appointment/${data.salonId}`);
+    return appointment;
+}
 ;
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$action$2d$validate$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ensureServerEntryExports"])([
     getAllAppointments,
@@ -201,7 +240,8 @@ async function bookAppointment(data) {
     RejectAppointment,
     CancelAppointment,
     getAppointmentsByMemberId,
-    bookAppointment
+    bookAppointment,
+    rescheduleAppointment
 ]);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAllAppointments, "00edba2f31c9a778f32e7e41b067764d691e8be4fc", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(ApproveAppointment, "606713b3d1bcfeb004f3a5cfc49a91bea64c6cdc13", null);
@@ -209,6 +249,7 @@ async function bookAppointment(data) {
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(CancelAppointment, "606a9319bd6569522ccb42f0b77bdf0c00f91b7ee6", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAppointmentsByMemberId, "4074944f8d19ea130e0041fcd2e5e1867bda8cf63e", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(bookAppointment, "4070d56e0b2e696589236abafcfa4a92ec1b09f869", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(rescheduleAppointment, "607be1b9083a1719895edaf65d4ae03346ad966d6f", null);
 }),
 "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/appointments/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/appointment-actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript) <locals>", ((__turbopack_context__) => {
 "use strict";
@@ -216,6 +257,7 @@ async function bookAppointment(data) {
 __turbopack_context__.s([]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$appointment$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/oop/infrastructure/appointment-actions.ts [app-rsc] (ecmascript)");
+;
 ;
 ;
 ;
@@ -278,6 +320,8 @@ __turbopack_context__.s([
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$appointment$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ApproveAppointment"],
     "606a9319bd6569522ccb42f0b77bdf0c00f91b7ee6",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$appointment$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CancelAppointment"],
+    "607be1b9083a1719895edaf65d4ae03346ad966d6f",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$appointment$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["rescheduleAppointment"],
     "608a31b425e4efebc863d001b6a44b11e36a1ed5c6",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["rejectSalonRequest"],
     "60b49318f31ee3fdfb3f63e8d9283ad52937ecc767",

@@ -10,17 +10,20 @@ import { Spinner } from "../ui/spinner";
 import { AppointmentStatus } from "@/generated/prisma";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
+import { RescheduleForm } from "../profil/reschedule-form";
+import { format } from "date-fns";
 
 interface ApptCardProps {
   title: string;
   stylist: string;
-  date: string;
+  date: Date;
   meta: string;
   appointmentId: string;
   salonId: string;
   status: string;
   stylistId: string;
   salonName: string;
+  serviceDuration: number;
 }
 
 export function ApptCardInfo({
@@ -33,6 +36,7 @@ export function ApptCardInfo({
   status,
   stylistId,
   salonName,
+  serviceDuration,
 }: ApptCardProps) {
   const [cancelModalOpen, setCancelModalOpen] = useState(false);
   const [rescheduleModalOpen, setRescheduleModalOpen] = useState(false);
@@ -95,18 +99,15 @@ export function ApptCardInfo({
         onOpenChange={setRescheduleModalOpen}
         title="Reschedule Appointment"
       >
-        <div>
-          <p>Rescheduling functionality coming soon!</p>
-          <div className="flex justify-end mt-6 gap-4">
-            <Button
-              variant="outline"
-              onClick={() => setRescheduleModalOpen(false)}
-            >
-              Close
-            </Button>
-          </div>
-        </div>
+        <RescheduleForm
+          appointmentId={appointmentId}
+          defaultDate={date}
+          serviceDuration={serviceDuration}
+          barberId={stylistId}
+          onClose={() => setRescheduleModalOpen(false)}
+        />
       </Modal>
+
       <div className="bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark rounded-lg p-6 mb-4">
         <div className="flex justify-between items-start">
           <div>
@@ -126,7 +127,7 @@ export function ApptCardInfo({
             </p>
           </div>
           <div className="text-right">
-            <p className="font-semibold">{date}</p>
+            <p className="font-semibold">{format(date, "PPP")}</p>
             <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark">
               {meta}
             </p>

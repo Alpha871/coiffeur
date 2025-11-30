@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/select";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { StatCard } from "@/components/dashboard/stat-card";
-import { useSession } from "@/lib/auth-client";
 import { useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -83,7 +82,7 @@ export default function SalonDashboardClient({
           <div className="flex items-center gap-2">
             <CalendarDays className="h-5 w-5 text-slate-500 dark:text-slate-400" />
             <Select value={range} onValueChange={setRange}>
-              <SelectTrigger className="w-[160px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+              <SelectTrigger className="w-40 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                 <SelectValue placeholder="Last 30 days" />
               </SelectTrigger>
               <SelectContent>

@@ -440,7 +440,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                         children: "Welcome, Admin!"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                        lineNumber: 61,
+                        lineNumber: 60,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -452,7 +452,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                     className: "absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500 dark:text-slate-400"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                    lineNumber: 66,
+                                    lineNumber: 65,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -462,24 +462,24 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                     className: "h-10 pl-9 bg-slate-100 dark:bg-slate-800 border-0 focus-visible:ring-0 text-slate-900 dark:text-white"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                    lineNumber: 67,
+                                    lineNumber: 66,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                            lineNumber: 65,
+                            lineNumber: 64,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                        lineNumber: 64,
+                        lineNumber: 63,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                lineNumber: 60,
+                lineNumber: 59,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -493,7 +493,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                 children: "Dashboard"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                lineNumber: 80,
+                                lineNumber: 79,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -503,7 +503,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                         className: "h-5 w-5 text-slate-500 dark:text-slate-400"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                        lineNumber: 84,
+                                        lineNumber: 83,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -511,17 +511,17 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                         onValueChange: setRange,
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectTrigger"], {
-                                                className: "w-[160px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700",
+                                                className: "w-40 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {
                                                     placeholder: "Last 30 days"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 87,
+                                                    lineNumber: 86,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                lineNumber: 86,
+                                                lineNumber: 85,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -531,7 +531,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                         children: "Last 30 days"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                        lineNumber: 90,
+                                                        lineNumber: 89,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -539,7 +539,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                         children: "Last 7 days"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                        lineNumber: 91,
+                                                        lineNumber: 90,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -547,31 +547,31 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                         children: "This Month"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 91,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                lineNumber: 89,
+                                                lineNumber: 88,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                        lineNumber: 85,
+                                        lineNumber: 84,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                lineNumber: 83,
+                                lineNumber: 82,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                        lineNumber: 79,
+                        lineNumber: 78,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -583,7 +583,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                 delta: "+5% from yesterday"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                lineNumber: 100,
+                                lineNumber: 99,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$dashboard$2f$stat$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -592,7 +592,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                 delta: "+12% from yesterday"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                lineNumber: 105,
+                                lineNumber: 104,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$dashboard$2f$stat$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -601,7 +601,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                 delta: "+2% from yesterday"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                lineNumber: 110,
+                                lineNumber: 109,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$dashboard$2f$stat$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -611,13 +611,13 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                 deltaColor: "text-red-500"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                lineNumber: 115,
+                                lineNumber: 114,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                        lineNumber: 99,
+                        lineNumber: 98,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -633,7 +633,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                             children: "Appointments This Week"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                            lineNumber: 128,
+                                            lineNumber: 127,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -641,7 +641,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                             children: totalAppointments
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                            lineNumber: 131,
+                                            lineNumber: 130,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -652,7 +652,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                     children: "This Week"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 135,
+                                                    lineNumber: 134,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -660,13 +660,13 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                     children: "+8%"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 138,
+                                                    lineNumber: 137,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                            lineNumber: 134,
+                                            lineNumber: 133,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -710,7 +710,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                             }
                                                         }, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                            lineNumber: 152,
+                                                            lineNumber: 151,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -718,29 +718,29 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                             children: b.label
                                                         }, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                            lineNumber: 158,
+                                                            lineNumber: 157,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, b.label, true, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 151,
+                                                    lineNumber: 150,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                            lineNumber: 141,
+                                            lineNumber: 140,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                    lineNumber: 127,
+                                    lineNumber: 126,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                lineNumber: 126,
+                                lineNumber: 125,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -753,7 +753,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                             children: "Revenue Trends (Last 30 Days)"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                            lineNumber: 170,
+                                            lineNumber: 169,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -764,7 +764,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                             })
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                            lineNumber: 173,
+                                            lineNumber: 172,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -775,7 +775,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                     children: "Last 30 Days"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 180,
+                                                    lineNumber: 179,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -783,13 +783,13 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                     children: "+15%"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 183,
+                                                    lineNumber: 182,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                            lineNumber: 179,
+                                            lineNumber: 178,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -815,7 +815,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                                         stopOpacity: "0.2"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                                        lineNumber: 202,
+                                                                        lineNumber: 201,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
@@ -824,18 +824,18 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                                         stopOpacity: "0"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                                        lineNumber: 203,
+                                                                        lineNumber: 202,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                                lineNumber: 194,
+                                                                lineNumber: 193,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                            lineNumber: 193,
+                                                            lineNumber: 192,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -843,7 +843,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                             fill: "url(#revenue-gradient)"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                            lineNumber: 206,
+                                                            lineNumber: 205,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -854,13 +854,13 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                             fill: "none"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                            lineNumber: 210,
+                                                            lineNumber: 209,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 187,
+                                                    lineNumber: 186,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -875,35 +875,35 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                             children: w
                                                         }, w, false, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                            lineNumber: 220,
+                                                            lineNumber: 219,
                                                             columnNumber: 21
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 218,
+                                                    lineNumber: 217,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                            lineNumber: 186,
+                                            lineNumber: 185,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                    lineNumber: 169,
+                                    lineNumber: 168,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                lineNumber: 168,
+                                lineNumber: 167,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                        lineNumber: 124,
+                        lineNumber: 123,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -922,7 +922,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                     children: "Today's Upcoming Appointments"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 239,
+                                                    lineNumber: 238,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -934,23 +934,23 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                         children: "View Full Calendar"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                        lineNumber: 247,
+                                                        lineNumber: 246,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 242,
+                                                    lineNumber: 241,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                            lineNumber: 238,
+                                            lineNumber: 237,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                        lineNumber: 237,
+                                        lineNumber: 236,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -967,20 +967,20 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                                     src: a.customerAvatar || undefined
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                                    lineNumber: 261,
+                                                                    lineNumber: 260,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarFallback"], {
                                                                     children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$utils$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["takeFirstLastLetters"])(a.customerName)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                                    lineNumber: 262,
+                                                                    lineNumber: 261,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                            lineNumber: 260,
+                                                            lineNumber: 259,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -991,7 +991,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                                     children: a.customerName
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                                    lineNumber: 267,
+                                                                    lineNumber: 266,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -999,13 +999,13 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                                     children: a.service
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                                    lineNumber: 270,
+                                                                    lineNumber: 269,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                            lineNumber: 266,
+                                                            lineNumber: 265,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1013,29 +1013,29 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                             children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(new Date(a.startsAt), "p")
                                                         }, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                            lineNumber: 274,
+                                                            lineNumber: 273,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, a.id, true, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 256,
+                                                    lineNumber: 255,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                            lineNumber: 254,
+                                            lineNumber: 253,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                        lineNumber: 253,
+                                        lineNumber: 252,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                lineNumber: 236,
+                                lineNumber: 235,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -1051,7 +1051,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                     children: "Top Staff This Month"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 287,
+                                                    lineNumber: 286,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1063,23 +1063,23 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                         children: "Manage Staff"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                        lineNumber: 293,
+                                                        lineNumber: 292,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 288,
+                                                    lineNumber: 287,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                            lineNumber: 286,
+                                            lineNumber: 285,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                        lineNumber: 285,
+                                        lineNumber: 284,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1096,20 +1096,20 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                                     src: s.image || undefined
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                                    lineNumber: 307,
+                                                                    lineNumber: 306,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarFallback"], {
                                                                     children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$utils$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["takeFirstLastLetters"])(s.memberName)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                                    lineNumber: 308,
+                                                                    lineNumber: 307,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                            lineNumber: 306,
+                                                            lineNumber: 305,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1120,7 +1120,7 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                                     children: s.memberName
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                                    lineNumber: 313,
+                                                                    lineNumber: 312,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1131,13 +1131,13 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                                    lineNumber: 316,
+                                                                    lineNumber: 315,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                            lineNumber: 312,
+                                                            lineNumber: 311,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1148,47 +1148,47 @@ function SalonDashboardClient({ bestAppointments, topAppointments, totalPrice, t
                                                             })
                                                         }, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                            lineNumber: 320,
+                                                            lineNumber: 319,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, s.memberId, true, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                                    lineNumber: 302,
+                                                    lineNumber: 301,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                            lineNumber: 300,
+                                            lineNumber: 299,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                        lineNumber: 299,
+                                        lineNumber: 298,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                                lineNumber: 284,
+                                lineNumber: 283,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                        lineNumber: 234,
+                        lineNumber: 233,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-                lineNumber: 78,
+                lineNumber: 77,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx",
-        lineNumber: 58,
+        lineNumber: 57,
         columnNumber: 5
     }, this);
 }

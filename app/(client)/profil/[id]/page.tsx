@@ -34,6 +34,8 @@ async function page() {
     barberId: appointment.member.id,
   }));
 
+  const barber = appointments?.appointments.map((appt) => appt.member);
+
   return (
     <Suspense fallback={<Spinner />}>
       <ClientPageClient
@@ -42,6 +44,7 @@ async function page() {
         image={session.user.image}
         phone={undefined}
         appointments={appointmentsData || []}
+        // barberIds={barber || []}
       />
     </Suspense>
   );

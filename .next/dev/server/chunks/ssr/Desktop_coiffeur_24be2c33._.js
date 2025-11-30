@@ -68,7 +68,8 @@ async function getAppointmentsByMemberId() {
                 include: {
                     member: {
                         include: {
-                            user: true
+                            user: true,
+                            availabilities: true
                         }
                     },
                     service: true,
