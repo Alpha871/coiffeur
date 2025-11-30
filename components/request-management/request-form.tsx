@@ -23,7 +23,10 @@ import { convertOpeningHoursToDatabase } from "@/lib/utils";
 import { organization, useSession } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { Salon } from "@/oop/domain/salon";
-import { requestSalon, updateSalon } from "@/oop/infrastructure/salon-actions";
+import {
+  requestSalon,
+  updateSalon,
+} from "@/oop/infrastructure/salon-repository";
 import { openingHoursConfig } from "@/utils/constant";
 import { Label } from "../ui/label";
 import z from "zod";

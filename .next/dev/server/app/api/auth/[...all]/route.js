@@ -1,6 +1,6 @@
 var R=require("../../../../chunks/[turbopack]_runtime.js")("server/app/api/auth/[...all]/route.js")
 R.c("server/chunks/2ae5e_8274d135._.js")
-R.c("server/chunks/[root-of-the-server]__e731fc84._.js")
+R.c("server/chunks/[root-of-the-server]__aea25429._.js")
 R.c("server/chunks/2ae5e_next_dist_21674543._.js")
 R.c("server/chunks/2ae5e_@better-auth_core_dist_2be95946._.js")
 R.c("server/chunks/2ae5e_jose_dist_webapi_dd8bc469._.js")

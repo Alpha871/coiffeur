@@ -30,7 +30,8 @@ import {
   scheduleSchema,
 } from "@/lib/validations/staff-management";
 import { toast } from "sonner";
-import { memberAvailability } from "@/oop/infrastructure/user-action";
+import { memberAvailability } from "@/oop/infrastructure/user-repository";
+import { updateStaffMemberHours } from "@/oop/infrastructure/salon-repository";
 
 type ScheduleFormProps = {
   schedule?: OpeningHours;
@@ -45,6 +46,8 @@ export function ScheduleForm({
   memberId,
   onSave,
 }: ScheduleFormProps) {
+  console.log("schedule", schedule);
+
   const form = useForm<ScheduleFormValues>({
     resolver: zodResolver(scheduleSchema),
     defaultValues: (schedule as ScheduleFormValues) ?? defaultSchedule(),
@@ -89,11 +92,7 @@ export function ScheduleForm({
     console.log({ availabilities });
 
     try {
-      const result = await memberAvailability(
-        memberId,
-        salonId,
-        availabilities
-      );
+      const result = await updateStaffMemberHours(memberId, availabilities);
 
       toast.success("Schedule saved successfully.");
     } catch (error) {

@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/carousel";
 import { useSession } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
-import { SalonListItem } from "@/oop/infrastructure/salon-actions";
+import { SalonListItem } from "@/oop/infrastructure/salon-repository";
 import { SalonItem } from "./salon-item";
 
 type Salon = {

@@ -20,7 +20,10 @@ import {
   ServiceSchema,
   ServiceValues,
 } from "@/lib/validations/service";
-import { addService, editService } from "@/oop/infrastructure/service-action";
+import {
+  addService,
+  editService,
+} from "@/oop/infrastructure/service-repository";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams } from "next/navigation";
 import { toast } from "sonner";

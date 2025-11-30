@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Loader from "../common/loader";
 import BarberTabClient from "./barber-tab-client";
-import { getCompleteSalons } from "@/oop/infrastructure/salon-actions";
+import { getCompleteSalons } from "@/oop/infrastructure/salon-repository";
 
 async function BarberTab() {
   const baberShops = await getCompleteSalons();

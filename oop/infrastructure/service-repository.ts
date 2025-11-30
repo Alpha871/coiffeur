@@ -1,5 +1,6 @@
 "use server";
 
+import { ServiceCategory } from "@/generated/prisma";
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
@@ -22,7 +23,7 @@ export async function addService(
       service: {
         create: {
           name,
-          category: category.toUpperCase() as any,
+          category: category.toUpperCase() as ServiceCategory,
           durationMin,
           price,
           description,
@@ -56,7 +57,7 @@ export async function editService(
       service: {
         update: {
           name,
-          category: category?.toUpperCase() as any,
+          category: category?.toUpperCase() as ServiceCategory,
           durationMin,
           price,
           description,

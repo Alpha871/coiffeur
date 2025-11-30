@@ -15,7 +15,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { authClient } from "@/lib/auth-client";
 import { StaffDetailContent } from "@/app/(salon)/salon/[id]/staff-management/_component/staff-detail-content";
 import UserButton from "./user-button";
-import { getSalonById, SalonById } from "@/oop/infrastructure/salon-actions";
+import { getSalonById, SalonById } from "@/oop/infrastructure/salon-repository";
 
 export type PendingInvites = {
   id: string;

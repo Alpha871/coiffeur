@@ -16,7 +16,7 @@ import {
   DeleteSalonById,
   getCompleteSalons,
   SalonType,
-} from "@/oop/infrastructure/salon-actions";
+} from "@/oop/infrastructure/salon-repository";
 import Modal from "../common/modal";
 
 import { toast } from "sonner";

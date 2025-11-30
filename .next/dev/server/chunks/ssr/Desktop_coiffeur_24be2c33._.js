@@ -167,22 +167,26 @@ async function memberAvailability(memberId, salonId, availabilities) {
     }
 }
 async function assignMemberSpecialties(memberId, salonId, specialties) {
-    const selectedSpecialties = specialties.filter((s)=>s.specialty).map((s)=>s.id);
-    const updatedMember = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].member.update({
-        where: {
-            id: memberId
-        },
-        data: {
-            specialties: {
-                connect: selectedSpecialties.map((serviceId)=>({
-                        id: serviceId
-                    }))
+    try {
+        const selectedSpecialties = specialties.filter((s)=>s.specialty).map((s)=>s.id);
+        const updatedMember = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].member.update({
+            where: {
+                id: memberId
+            },
+            data: {
+                specialties: {
+                    set: selectedSpecialties.map((serviceId)=>({
+                            id: serviceId
+                        }))
+                }
             }
-        }
-    });
-    return updatedMember;
-    //TURBOPACK unreachable
-    ;
+        });
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(`/salon/${salonId}/staff-management`);
+        return updatedMember;
+    } catch (error) {
+        console.error("Error assigning member specialties:", error);
+        throw error;
+    }
 }
 async function updateUserCurrentInfo(values) {
     const session = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$auth$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["auth"].api.getSession({
@@ -448,6 +452,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2
 ;
 ;
 ;
+;
 }),
 "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -473,6 +478,8 @@ __turbopack_context__.s([
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getSalonByIdwithUserId"],
     "4094d41623d3b7e6f0f9bc722e90295ce007f3966c",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getSalonById"],
+    "600113378dc2f89a594e03699717dc337188d2832d",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateStaffMemberHours"],
     "6004c32fd04750f00ddb0b561775356f58817a7f4c",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateSalon"],
     "600c856b6937340f7017b93f6140070e1872531700",
@@ -481,8 +488,6 @@ __turbopack_context__.s([
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["rejectSalonRequest"],
     "60b49318f31ee3fdfb3f63e8d9283ad52937ecc767",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ActiveCurrentSalonOrganizationId"],
-    "7042404640bd085ec070392176e3f95ed2d632d0d5",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$user$2d$action$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["memberAvailability"],
     "70a39f2aec289444d8e6577d7c99e905b5e6698181",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$user$2d$action$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateUserInfo"],
     "70aa0f9e6d69134959e0f69fe45d00b6488722b931",

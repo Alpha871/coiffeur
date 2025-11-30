@@ -1,4 +1,4 @@
-import { getPendingSalonRequests } from "@/oop/infrastructure/salon-actions";
+import { getPendingSalonRequests } from "@/oop/infrastructure/salon-repository";
 import { Suspense } from "react";
 import RequestTabClient from "./request-tab-client";
 

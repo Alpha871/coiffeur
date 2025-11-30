@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { getSalonByIdwithUserId } from "@/oop/infrastructure/salon-actions";
+import { getSalonByIdwithUserId } from "@/oop/infrastructure/salon-repository";
 import StatusCard from "@/components/request-management/status-card";
 import { redirect } from "next/navigation";
 

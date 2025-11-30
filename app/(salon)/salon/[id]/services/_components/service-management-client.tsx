@@ -12,7 +12,7 @@ import { useState } from "react";
 import { FeaturedCard } from "./featured-card";
 import { DataTable } from "@/components/common/data-table";
 import { useServiceColumns } from "./table";
-import { deleteServiceById } from "@/oop/infrastructure/service-action";
+import { deleteServiceById } from "@/oop/infrastructure/service-repository";
 import { Spinner } from "@/components/ui/spinner";
 
 interface ManageServicesClientProps {

@@ -2,7 +2,7 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 
 import { admin as adminPlugin, organization } from "better-auth/plugins";
-import { admin, ac, user } from "@/oop/infrastructure/permission";
+import { admin, ac, user } from "@/oop/infrastructure/permission-repository";
 
 import prisma from "./prisma";
 import { sendEmail } from "./emails/send-email";

@@ -3,7 +3,7 @@ import BookAppointmentClient from "./_components/book-appointment-client";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { getSalonById } from "@/oop/infrastructure/salon-actions";
+import { getSalonById } from "@/oop/infrastructure/salon-repository";
 import { timeToString } from "@/lib/utils";
 
 async function BookAppointment({

@@ -449,3 +449,26 @@ export async function getAllSalonsForCurrentUser() {
 
   return salons;
 }
+
+export async function updateStaffMemberHours(
+  memberId: string,
+  openingHours: OpeningHours
+) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (!session) {
+    throw new Error("Unauthorized");
+  }
+
+  // Create new opening hours
+  await prisma.salonAvailability.updateMany({
+    where: { memberId },
+    data: openingHours.map((hours) => ({
+      dayOfWeek: hours.dayOfWeek,
+      startTime: hours.startTime,
+      endTime: hours.endTime,
+      isClosed: hours.isClosed,
+    })),
+  });
+}

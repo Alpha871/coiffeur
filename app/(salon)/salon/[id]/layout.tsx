@@ -8,7 +8,7 @@ import { auth } from "@/lib/auth";
 import {
   ActiveCurrentSalonOrganizationId,
   getSalonById,
-} from "@/oop/infrastructure/salon-actions";
+} from "@/oop/infrastructure/salon-repository";
 import Link from "next/link";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";

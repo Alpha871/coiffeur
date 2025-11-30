@@ -11,13 +11,13 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 
-import { getSalonByUserId } from "@/oop/infrastructure/salon-actions";
+import { getSalonByUserId } from "@/oop/infrastructure/salon-repository";
 import { CreationStatus } from "@/generated/prisma";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import HeroSection from "@/components/common/hero-section";
-import { getMemberByUserId } from "@/oop/infrastructure/user-action";
+import { getMemberByUserId } from "@/oop/infrastructure/user-repository";
 
 const HERO_BG =
   "linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDaXYkTtVzFz8Pp6wAhjTT-oy5WuEvJC3a2Gx0RBsoAggSEntXpYlOdYwwtdlaVFbljLKMHmcxqob_rW4novTRfa1dUJKKHC0Ov892n6BiED2uoolo3g9L4sCXDQelZwE_AMZb6hpwWHcOCdvxEHm7oVGpS0ht-h4nEqMpWLVd2cwH5HhbKzx3pCRsdckRERwQlqxC6jm8lJsqfHXpG7LmXs08CyQFkmcfYTaQPoyVP0nwa4PsO4eT03HKvZmkxNmmG2Lft0i2fNIo')";

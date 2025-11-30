@@ -8668,7 +8668,7 @@ const auth = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coif
 "[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-/* __next_internal_action_entry_do_not_use__ [{"00347034f0a35de1389806c1045a1aece406516d07":"getAllSalons","0034edf1296dfde36f541fa6241442ad02c0fa98d0":"getAllSalonsForCurrentUser","00415d66b6bd131e1f8820179496ad5e4ee891f441":"getSalonByUserId","007eacf23b4c6e01519572343b98f56e61da5ade29":"getCompleteSalons","00afed06713e6475cbd7684ba5fff2b3974f667fff":"getPendingSalonRequests","40331dbbf71ca0eb27c668241b4125062ea18eaab6":"DeleteSalonById","405829561ee014ba9cea6f894f080211fc6817a120":"requestSalon","405be565189fbb351b7660673726adce92467bec28":"approveSalonRequest","408b093e811cfea011251fd42c69e80f11b0549780":"getSalonByIdwithUserId","4094d41623d3b7e6f0f9bc722e90295ce007f3966c":"getSalonById","6004c32fd04750f00ddb0b561775356f58817a7f4c":"updateSalon","600c856b6937340f7017b93f6140070e1872531700":"updateSalonOpeningHours","608a31b425e4efebc863d001b6a44b11e36a1ed5c6":"rejectSalonRequest","60b49318f31ee3fdfb3f63e8d9283ad52937ecc767":"ActiveCurrentSalonOrganizationId","7f47780fd17797dde366f3417657d2e6c4bf4aee04":"updateSalonOrganizationId"},"",""] */ __turbopack_context__.s([
+/* __next_internal_action_entry_do_not_use__ [{"00347034f0a35de1389806c1045a1aece406516d07":"getAllSalons","0034edf1296dfde36f541fa6241442ad02c0fa98d0":"getAllSalonsForCurrentUser","00415d66b6bd131e1f8820179496ad5e4ee891f441":"getSalonByUserId","007eacf23b4c6e01519572343b98f56e61da5ade29":"getCompleteSalons","00afed06713e6475cbd7684ba5fff2b3974f667fff":"getPendingSalonRequests","40331dbbf71ca0eb27c668241b4125062ea18eaab6":"DeleteSalonById","405829561ee014ba9cea6f894f080211fc6817a120":"requestSalon","405be565189fbb351b7660673726adce92467bec28":"approveSalonRequest","408b093e811cfea011251fd42c69e80f11b0549780":"getSalonByIdwithUserId","4094d41623d3b7e6f0f9bc722e90295ce007f3966c":"getSalonById","600113378dc2f89a594e03699717dc337188d2832d":"updateStaffMemberHours","6004c32fd04750f00ddb0b561775356f58817a7f4c":"updateSalon","600c856b6937340f7017b93f6140070e1872531700":"updateSalonOpeningHours","608a31b425e4efebc863d001b6a44b11e36a1ed5c6":"rejectSalonRequest","60b49318f31ee3fdfb3f63e8d9283ad52937ecc767":"ActiveCurrentSalonOrganizationId","7f47780fd17797dde366f3417657d2e6c4bf4aee04":"updateSalonOrganizationId"},"",""] */ __turbopack_context__.s([
     "ActiveCurrentSalonOrganizationId",
     ()=>ActiveCurrentSalonOrganizationId,
     "DeleteSalonById",
@@ -8698,7 +8698,9 @@ const auth = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coif
     "updateSalonOpeningHours",
     ()=>updateSalonOpeningHours,
     "updateSalonOrganizationId",
-    ()=>updateSalonOrganizationId
+    ()=>updateSalonOrganizationId,
+    "updateStaffMemberHours",
+    ()=>updateStaffMemberHours
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/node_modules/next/dist/build/webpack/loaders/next-flight-loader/server-reference.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/lib/prisma.ts [app-rsc] (ecmascript)");
@@ -9101,6 +9103,26 @@ async function getAllSalonsForCurrentUser() {
     });
     return salons;
 }
+async function updateStaffMemberHours(memberId, openingHours) {
+    const session = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$auth$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["auth"].api.getSession({
+        headers: await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$headers$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["headers"])()
+    });
+    if (!session) {
+        throw new Error("Unauthorized");
+    }
+    // Create new opening hours
+    await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].salonAvailability.updateMany({
+        where: {
+            memberId
+        },
+        data: openingHours.map((hours)=>({
+                dayOfWeek: hours.dayOfWeek,
+                startTime: hours.startTime,
+                endTime: hours.endTime,
+                isClosed: hours.isClosed
+            }))
+    });
+}
 ;
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$action$2d$validate$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ensureServerEntryExports"])([
     getSalonById,
@@ -9117,7 +9139,8 @@ async function getAllSalonsForCurrentUser() {
     getAllSalons,
     getCompleteSalons,
     updateSalonOpeningHours,
-    getAllSalonsForCurrentUser
+    getAllSalonsForCurrentUser,
+    updateStaffMemberHours
 ]);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getSalonById, "4094d41623d3b7e6f0f9bc722e90295ce007f3966c", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(ActiveCurrentSalonOrganizationId, "60b49318f31ee3fdfb3f63e8d9283ad52937ecc767", null);
@@ -9134,6 +9157,7 @@ async function getAllSalonsForCurrentUser() {
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getCompleteSalons, "007eacf23b4c6e01519572343b98f56e61da5ade29", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(updateSalonOpeningHours, "600c856b6937340f7017b93f6140070e1872531700", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAllSalonsForCurrentUser, "0034edf1296dfde36f541fa6241442ad02c0fa98d0", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(updateStaffMemberHours, "600113378dc2f89a594e03699717dc337188d2832d", null);
 }),
 "[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -9597,6 +9621,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2
 ;
 ;
 ;
+;
 }),
 "[project]/Desktop/coiffeur/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -9646,6 +9671,8 @@ __turbopack_context__.s([
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$user$2d$action$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateUserCurrentInfo"],
     "40f4826f92cc84439a4510572700494b00261043ae",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$user$2d$action$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["cancelInvitation"],
+    "600113378dc2f89a594e03699717dc337188d2832d",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateStaffMemberHours"],
     "6004c32fd04750f00ddb0b561775356f58817a7f4c",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateSalon"],
     "600c856b6937340f7017b93f6140070e1872531700",

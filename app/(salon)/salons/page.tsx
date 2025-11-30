@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import SalonPageClient from "./_components/salon-client";
-import { getAllSalons } from "@/oop/infrastructure/salon-actions";
+import { getAllSalons } from "@/oop/infrastructure/salon-repository";
 
 async function page() {
   const salons = await getAllSalons();

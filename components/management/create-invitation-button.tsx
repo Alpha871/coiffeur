@@ -32,7 +32,7 @@ import { useParams, useSearchParams } from "next/navigation";
 import {
   getInvitations,
   sendInvitation,
-} from "@/oop/infrastructure/user-action";
+} from "@/oop/infrastructure/user-repository";
 import { authClient } from "@/lib/auth-client";
 import { PendingInvites } from "./staff-management-client";
 

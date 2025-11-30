@@ -16,7 +16,7 @@ import {
 import {
   assignMemberSpecialties,
   updateUserInfo,
-} from "@/oop/infrastructure/user-action";
+} from "@/oop/infrastructure/user-repository";
 import { useParams } from "next/navigation";
 import { toast } from "sonner";
 
@@ -52,8 +52,6 @@ export function StaffDetailTabs({
   }));
 
   const availabilities = convertOpeningHoursFromDatabase(active.availabilities);
-
-  const MemeberAvailabity = active?.availabilities;
 
   function handleDelete(id: string) {
     // setStaff((prev) => prev.filter((s) => s.id !== id));
@@ -129,6 +127,8 @@ export function StaffDetailTabs({
         values.skills
       );
 
+      console.log({ result });
+
       // setStaff((prev) =>
       //   prev.map((s) =>
       //     s.id === active.id
@@ -143,7 +143,7 @@ export function StaffDetailTabs({
       //       : s
       //   )
       // );
-      toast.success("Specialties updated successfully");
+      if (result) toast.success("Specialties updated successfully");
     } catch (error) {
       console.error("Failed to save specialties:", error);
       toast.error("Failed to update specialties");

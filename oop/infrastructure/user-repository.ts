@@ -150,23 +150,30 @@ export async function assignMemberSpecialties(
   salonId: string,
   specialties: { id: string; name: string; specialty: boolean }[]
 ) {
-  const selectedSpecialties = specialties
-    .filter((s) => s.specialty)
-    .map((s) => s.id);
+  try {
+    const selectedSpecialties = specialties
+      .filter((s) => s.specialty)
+      .map((s) => s.id);
 
-  const updatedMember = await prisma.member.update({
-    where: { id: memberId },
-    data: {
-      specialties: {
-        connect: selectedSpecialties.map((serviceId) => ({ id: serviceId })),
+    const updatedMember = await prisma.member.update({
+      where: { id: memberId },
+      data: {
+        specialties: {
+          set: selectedSpecialties.map((serviceId) => ({
+            id: serviceId,
+          })),
+        },
       },
-    },
-  });
+    });
 
-  return updatedMember;
-
-  revalidatePath(`/salon/${salonId}/staff-management`);
+    revalidatePath(`/salon/${salonId}/staff-management`);
+    return updatedMember;
+  } catch (error) {
+    console.error("Error assigning member specialties:", error);
+    throw error;
+  }
 }
+
 export async function updateUserCurrentInfo(values: {
   name?: string;
   phone?: string;

@@ -15,7 +15,7 @@ import { CreateInviteButton } from "./create-invitation-button";
 import {
   cancelInvitation,
   getInvitations,
-} from "@/oop/infrastructure/user-action";
+} from "@/oop/infrastructure/user-repository";
 import { InvitationStatus } from "better-auth/plugins";
 import { PendingInvites } from "./staff-management-client";
 

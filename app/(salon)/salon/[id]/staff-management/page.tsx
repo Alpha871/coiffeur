@@ -1,6 +1,6 @@
 import Loader from "@/components/common/loader";
 import StaffManagementContentClient from "@/components/management/staff-management-client";
-import { getSalonById } from "@/oop/infrastructure/salon-actions";
+import { getSalonById } from "@/oop/infrastructure/salon-repository";
 
 import { Suspense } from "react";
 

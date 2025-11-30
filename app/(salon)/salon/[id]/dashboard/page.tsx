@@ -1,7 +1,7 @@
 import { Spinner } from "@/components/ui/spinner";
 import { Suspense } from "react";
 import SalonDashboardClient from "./_components/salon-dashboard";
-import { getAllAppointments } from "@/oop/infrastructure/appointment-actions";
+import { getAllAppointments } from "@/oop/infrastructure/appointment-repository";
 
 async function page() {
   // const await = null; // Placeholder to keep this an async function

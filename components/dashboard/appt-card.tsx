@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import Modal from "../common/modal";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { CancelAppointment } from "@/oop/infrastructure/appointment-actions";
+import { CancelAppointment } from "@/oop/infrastructure/appointment-repository";
 import { Spinner } from "../ui/spinner";
 import { AppointmentStatus } from "@/generated/prisma";
 import { Badge } from "../ui/badge";

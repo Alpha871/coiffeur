@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import {
   getMemberById,
   getMemberByUserId,
-} from "@/oop/infrastructure/user-action";
+} from "@/oop/infrastructure/user-repository";
 
 import WorkerPageClient from "@/components/worker/worker-client";
 

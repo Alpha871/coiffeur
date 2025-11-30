@@ -2,8 +2,8 @@ import { Spinner } from "@/components/ui/spinner";
 
 import { Suspense } from "react";
 import AppointmentClient from "./_components/appointment-client";
-import { getAllAppointments } from "@/oop/infrastructure/appointment-actions";
-import { getSalonById } from "@/oop/infrastructure/salon-actions";
+import { getAllAppointments } from "@/oop/infrastructure/appointment-repository";
+import { getSalonById } from "@/oop/infrastructure/salon-repository";
 import { redirect } from "next/navigation";
 
 async function page({ params }: { params: Promise<{ id: string }> }) {

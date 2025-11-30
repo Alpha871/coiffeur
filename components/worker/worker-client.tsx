@@ -16,7 +16,7 @@ import { AppointmentList } from "../../app/(worker)/worker/[id]/_components/appo
 import {
   MemberStylist,
   updateUserInfo,
-} from "@/oop/infrastructure/user-action";
+} from "@/oop/infrastructure/user-repository";
 import { takeFirstLastLetters } from "@/utils/utils";
 import { changedValues, DAY_ORDER, timeToString } from "@/lib/utils";
 import { appointment } from "@/lib/validations/appointment";

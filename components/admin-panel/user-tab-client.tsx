@@ -20,7 +20,7 @@ import {
   handleRevokeSessions,
   handleUnbanUser,
   ListUsersType,
-} from "@/oop/infrastructure/user-action";
+} from "@/oop/infrastructure/user-repository";
 
 import { UserRole } from "@/oop/domain/person";
 import {

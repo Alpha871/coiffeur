@@ -3,7 +3,7 @@ import ClientPageClient from "./_component/profil-client";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { getAppointmentsByMemberId } from "@/oop/infrastructure/user-action";
+import { getAppointmentsByMemberId } from "@/oop/infrastructure/user-repository";
 import { Spinner } from "@/components/ui/spinner";
 
 async function page() {
