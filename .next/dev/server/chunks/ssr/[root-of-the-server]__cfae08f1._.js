@@ -68,7 +68,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$spinner$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/components/ui/spinner.tsx [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$app$2f28$salon$292f$salon$2f5b$id$5d2f$dashboard$2f$_components$2f$salon$2d$dashboard$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/app/(salon)/salon/[id]/dashboard/_components/salon-dashboard.tsx [app-rsc] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$appointment$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/oop/infrastructure/appointment-actions.ts [app-rsc] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$appointment$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/oop/infrastructure/appointment-repository.ts [app-rsc] (ecmascript)");
 ;
 ;
 ;
@@ -76,7 +76,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2
 ;
 async function page() {
     // const await = null; // Placeholder to keep this an async function
-    const appointments = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$appointment$2d$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getAllAppointments"])();
+    const appointments = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$appointment$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getAllAppointments"])();
     const topAppointments = appointments.sort((a, b)=>new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime()).slice(0, 3).map((appointment)=>({
             id: appointment.id,
             customerName: appointment.customer.user.name,

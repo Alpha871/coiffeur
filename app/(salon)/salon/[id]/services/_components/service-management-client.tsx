@@ -88,6 +88,12 @@ export default function ManageServicesClient({
 
     return matchCat && matchQ;
   });
+  // .sort((a, b) => {
+  //   return (
+  //     (b.createdAt ? new Date(b.createdAt).getTime() : 0) -
+  //     (a.createdAt ? new Date(a.createdAt).getTime() : 0)
+  //   );
+  // });
 
   const columns = useServiceColumns(openEditModal, openDeleteModal);
 

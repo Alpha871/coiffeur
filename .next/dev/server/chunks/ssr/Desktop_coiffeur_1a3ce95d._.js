@@ -2491,6 +2491,12 @@ function ManageServicesClient({ services }) {
         const matchQ = !q || r.title.toLowerCase().includes(q) || r.category.toLowerCase().includes(q) || r.durationMin.toString().toLowerCase().includes(q) || r.price.toString().toLowerCase().includes(q);
         return matchCat && matchQ;
     });
+    // .sort((a, b) => {
+    //   return (
+    //     (b.createdAt ? new Date(b.createdAt).getTime() : 0) -
+    //     (a.createdAt ? new Date(a.createdAt).getTime() : 0)
+    //   );
+    // });
     const columns = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$app$2f28$salon$292f$salon$2f5b$id$5d2f$services$2f$_components$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useServiceColumns"])(openEditModal, openDeleteModal);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
@@ -2510,7 +2516,7 @@ function ManageServicesClient({ services }) {
                             children: "Cancel"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                            lineNumber: 104,
+                            lineNumber: 110,
                             columnNumber: 13
                         }, void 0),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2519,28 +2525,28 @@ function ManageServicesClient({ services }) {
                             disabled: isDeleting,
                             children: isDeleting ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$spinner$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Spinner"], {}, void 0, false, {
                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                lineNumber: 116,
+                                lineNumber: 122,
                                 columnNumber: 29
                             }, void 0) : "Confirm Delete"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                            lineNumber: 111,
+                            lineNumber: 117,
                             columnNumber: 13
                         }, void 0)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                    lineNumber: 103,
+                    lineNumber: 109,
                     columnNumber: 11
                 }, void 0),
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {}, void 0, false, {
                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                    lineNumber: 121,
+                    lineNumber: 127,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                lineNumber: 96,
+                lineNumber: 102,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$common$2f$modal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -2556,12 +2562,12 @@ function ManageServicesClient({ services }) {
                     type: "edit"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                    lineNumber: 124,
+                    lineNumber: 130,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                lineNumber: 123,
+                lineNumber: 129,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2576,7 +2582,7 @@ function ManageServicesClient({ services }) {
                                     children: "Manage Services"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                    lineNumber: 136,
+                                    lineNumber: 142,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2584,13 +2590,13 @@ function ManageServicesClient({ services }) {
                                     children: "Add, edit, and manage the services your salon offers."
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                    lineNumber: 137,
+                                    lineNumber: 143,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                            lineNumber: 135,
+                            lineNumber: 141,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$common$2f$smart$2d$carousel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SmartCarousel"], {
@@ -2603,17 +2609,17 @@ function ManageServicesClient({ services }) {
                                         onClick: ()=>setCategory(c)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                        lineNumber: 145,
+                                        lineNumber: 151,
                                         columnNumber: 17
                                     }, this)
                                 }, c, false, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                    lineNumber: 144,
+                                    lineNumber: 150,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                            lineNumber: 142,
+                            lineNumber: 148,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2629,7 +2635,7 @@ function ManageServicesClient({ services }) {
                                                 children: "Add a New Service"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                                lineNumber: 157,
+                                                lineNumber: 163,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$services$2f$service$2d$form$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -2638,18 +2644,18 @@ function ManageServicesClient({ services }) {
                                                 setOpenModal: setOpen
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                                lineNumber: 159,
+                                                lineNumber: 165,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                        lineNumber: 156,
+                                        lineNumber: 162,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                    lineNumber: 155,
+                                    lineNumber: 161,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -2666,12 +2672,12 @@ function ManageServicesClient({ services }) {
                                                     onChange: (e)=>setFeaturedSearch(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                                    lineNumber: 172,
+                                                    lineNumber: 178,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                                lineNumber: 171,
+                                                lineNumber: 177,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$common$2f$smart$2d$carousel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SmartCarousel"], {
@@ -2685,17 +2691,17 @@ function ManageServicesClient({ services }) {
                                                             onDelete: ()=>openDeleteModal(f)
                                                         }, f.id, false, {
                                                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                                            lineNumber: 183,
+                                                            lineNumber: 189,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, f.id, false, {
                                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                                        lineNumber: 182,
+                                                        lineNumber: 188,
                                                         columnNumber: 21
                                                     }, this))
                                             }, featured.length, false, {
                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                                lineNumber: 180,
+                                                lineNumber: 186,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$common$2f$data$2d$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DataTable"], {
@@ -2705,35 +2711,35 @@ function ManageServicesClient({ services }) {
                                                 searchColumn: "title"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                                lineNumber: 193,
+                                                lineNumber: 199,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                        lineNumber: 169,
+                                        lineNumber: 175,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                                    lineNumber: 168,
+                                    lineNumber: 174,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                            lineNumber: 154,
+                            lineNumber: 160,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                    lineNumber: 134,
+                    lineNumber: 140,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/services/_components/service-management-client.tsx",
-                lineNumber: 133,
+                lineNumber: 139,
                 columnNumber: 7
             }, this)
         ]

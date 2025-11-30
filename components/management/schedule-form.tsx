@@ -30,7 +30,6 @@ import {
   scheduleSchema,
 } from "@/lib/validations/staff-management";
 import { toast } from "sonner";
-import { memberAvailability } from "@/oop/infrastructure/user-repository";
 import { updateStaffMemberHours } from "@/oop/infrastructure/salon-repository";
 
 type ScheduleFormProps = {
@@ -39,6 +38,35 @@ type ScheduleFormProps = {
   memberId: string;
   onSave?: (values: ScheduleFormValues) => void;
 };
+
+// OpeningHours -> ScheduleFormValues dönüştürücü
+function buildInitialValues(schedule?: OpeningHours): ScheduleFormValues {
+  // defaultSchedule formun beklediği yapıyı (open/closed/start/end vs.) oluşturuyor
+  const base = defaultSchedule();
+
+  if (!schedule) return base;
+
+  const result: ScheduleFormValues = { ...base };
+
+  for (const day of DAY_ORDER) {
+    const dbDay = schedule[day];
+
+    if (!dbDay) continue;
+
+    const isClosed = dbDay.closed ?? false;
+
+    result[day] = {
+      ...result[day],
+      dayOfWeek: dbDay.dayOfWeek,
+      open: !isClosed,
+      closed: isClosed,
+      start: dbDay.start ?? DEFAULT_START,
+      end: dbDay.end ?? DEFAULT_END,
+    };
+  }
+
+  return result;
+}
 
 export function ScheduleForm({
   schedule,
@@ -50,7 +78,7 @@ export function ScheduleForm({
 
   const form = useForm<ScheduleFormValues>({
     resolver: zodResolver(scheduleSchema),
-    defaultValues: (schedule as ScheduleFormValues) ?? defaultSchedule(),
+    defaultValues: buildInitialValues(schedule),
     mode: "onBlur",
   });
 
@@ -89,12 +117,14 @@ export function ScheduleForm({
   const onSubmit = async (values: ScheduleFormValues) => {
     const availabilities = convertOpeningHoursToDatabase(values);
 
-    console.log({ availabilities });
-
     try {
-      const result = await updateStaffMemberHours(memberId, availabilities);
+      const result = await updateStaffMemberHours(
+        memberId,
+        salonId,
+        availabilities
+      );
 
-      toast.success("Schedule saved successfully.");
+      if (result) toast.success("Schedule saved successfully.");
     } catch (error) {
       console.log(error);
       toast.error("Failed to save schedule.");
@@ -220,9 +250,7 @@ export function ScheduleForm({
           <Button
             type="button"
             variant="outline"
-            onClick={() =>
-              form.reset((schedule as ScheduleFormValues) ?? defaultSchedule())
-            }
+            onClick={() => form.reset(buildInitialValues(schedule))}
           >
             Reset
           </Button>

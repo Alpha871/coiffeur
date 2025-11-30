@@ -2321,11 +2321,34 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2
 ;
 ;
 ;
+// OpeningHours -> ScheduleFormValues dönüştürücü
+function buildInitialValues(schedule) {
+    // defaultSchedule formun beklediği yapıyı (open/closed/start/end vs.) oluşturuyor
+    const base = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["defaultSchedule"])();
+    if (!schedule) return base;
+    const result = {
+        ...base
+    };
+    for (const day of __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DAY_ORDER"]){
+        const dbDay = schedule[day];
+        if (!dbDay) continue;
+        const isClosed = dbDay.closed ?? false;
+        result[day] = {
+            ...result[day],
+            dayOfWeek: dbDay.dayOfWeek,
+            open: !isClosed,
+            closed: isClosed,
+            start: dbDay.start ?? __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DEFAULT_START"],
+            end: dbDay.end ?? __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DEFAULT_END"]
+        };
+    }
+    return result;
+}
 function ScheduleForm({ schedule, salonId, memberId, onSave }) {
     console.log("schedule", schedule);
     const form = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useForm"])({
         resolver: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f40$hookform$2f$resolvers$2f$zod$2f$dist$2f$zod$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["zodResolver"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$validations$2f$staff$2d$management$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["scheduleSchema"]),
-        defaultValues: schedule ?? (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["defaultSchedule"])(),
+        defaultValues: buildInitialValues(schedule),
         mode: "onBlur"
     });
     const setAllClosed = ()=>{
@@ -2360,11 +2383,9 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
     };
     const onSubmit = async (values)=>{
         const availabilities = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["convertOpeningHoursToDatabase"])(values);
-        console.log({
-            availabilities
-        });
         try {
             const result = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$data$3a$d2dad4__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__["updateStaffMemberHours"])(memberId, availabilities);
+            if (onSave) onSave(values);
             __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success("Schedule saved successfully.");
         } catch (error) {
             console.log(error);
@@ -2393,7 +2414,7 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                            lineNumber: 110,
+                            lineNumber: 137,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2403,13 +2424,13 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
                             children: "Set All Closed"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                            lineNumber: 113,
+                            lineNumber: 140,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                    lineNumber: 109,
+                    lineNumber: 136,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2423,7 +2444,7 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
                                     children: "Day"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                    lineNumber: 121,
+                                    lineNumber: 148,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2431,7 +2452,7 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
                                     children: "Open"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                    lineNumber: 122,
+                                    lineNumber: 149,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2439,7 +2460,7 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
                                     children: "Start"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                    lineNumber: 123,
+                                    lineNumber: 150,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2447,13 +2468,13 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
                                     children: "End"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                    lineNumber: 124,
+                                    lineNumber: 151,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                            lineNumber: 120,
+                            lineNumber: 147,
                             columnNumber: 11
                         }, this),
                         __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DAY_ORDER"].map((day)=>{
@@ -2466,7 +2487,7 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
                                         children: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DAY_LABEL"][day]
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                        lineNumber: 137,
+                                        lineNumber: 164,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2488,33 +2509,33 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
                                                                 }
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                                                lineNumber: 149,
+                                                                lineNumber: 176,
                                                                 columnNumber: 27
                                                             }, void 0)
                                                         }, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                                            lineNumber: 148,
+                                                            lineNumber: 175,
                                                             columnNumber: 25
                                                         }, void 0),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FormMessage"], {}, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                                            lineNumber: 160,
+                                                            lineNumber: 187,
                                                             columnNumber: 25
                                                         }, void 0)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                                    lineNumber: 147,
+                                                    lineNumber: 174,
                                                     columnNumber: 23
                                                 }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                            lineNumber: 143,
+                                            lineNumber: 170,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                        lineNumber: 142,
+                                        lineNumber: 169,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2535,33 +2556,33 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
                                                                 onBlur: field.onBlur
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                                                lineNumber: 174,
+                                                                lineNumber: 201,
                                                                 columnNumber: 27
                                                             }, void 0)
                                                         }, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                                            lineNumber: 173,
+                                                            lineNumber: 200,
                                                             columnNumber: 25
                                                         }, void 0),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FormMessage"], {}, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                                            lineNumber: 184,
+                                                            lineNumber: 211,
                                                             columnNumber: 25
                                                         }, void 0)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                                    lineNumber: 172,
+                                                    lineNumber: 199,
                                                     columnNumber: 23
                                                 }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                            lineNumber: 168,
+                                            lineNumber: 195,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                        lineNumber: 167,
+                                        lineNumber: 194,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2582,46 +2603,46 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
                                                                 onBlur: field.onBlur
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                                                lineNumber: 198,
+                                                                lineNumber: 225,
                                                                 columnNumber: 27
                                                             }, void 0)
                                                         }, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                                            lineNumber: 197,
+                                                            lineNumber: 224,
                                                             columnNumber: 25
                                                         }, void 0),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FormMessage"], {}, void 0, false, {
                                                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                                            lineNumber: 208,
+                                                            lineNumber: 235,
                                                             columnNumber: 25
                                                         }, void 0)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                                    lineNumber: 196,
+                                                    lineNumber: 223,
                                                     columnNumber: 23
                                                 }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                            lineNumber: 192,
+                                            lineNumber: 219,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                        lineNumber: 191,
+                                        lineNumber: 218,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, day, true, {
                                 fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                                lineNumber: 132,
+                                lineNumber: 159,
                                 columnNumber: 15
                             }, this);
                         })
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                    lineNumber: 119,
+                    lineNumber: 146,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2630,11 +2651,11 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                             type: "button",
                             variant: "outline",
-                            onClick: ()=>form.reset(schedule ?? (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["defaultSchedule"])()),
+                            onClick: ()=>form.reset(buildInitialValues(schedule)),
                             children: "Reset"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                            lineNumber: 220,
+                            lineNumber: 247,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2642,24 +2663,24 @@ function ScheduleForm({ schedule, salonId, memberId, onSave }) {
                             children: "Save Schedule"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                            lineNumber: 229,
+                            lineNumber: 254,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-                    lineNumber: 219,
+                    lineNumber: 246,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-            lineNumber: 107,
+            lineNumber: 134,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/coiffeur/components/management/schedule-form.tsx",
-        lineNumber: 106,
+        lineNumber: 133,
         columnNumber: 5
     }, this);
 }

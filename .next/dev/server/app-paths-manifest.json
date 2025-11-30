@@ -1,4 +1,4 @@
 {
-  "/(salon)/salon/[id]/services/page": "app/(salon)/salon/[id]/services/page.js",
+  "/(salon)/salon/[id]/staff-management/page": "app/(salon)/salon/[id]/staff-management/page.js",
   "/api/auth/[...all]/route": "app/api/auth/[...all]/route.js"
 }

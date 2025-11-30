@@ -452,25 +452,37 @@ export async function getAllSalonsForCurrentUser() {
 
 export async function updateStaffMemberHours(
   memberId: string,
+  salonId: string,
   openingHours: OpeningHours
 ) {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
+
   if (!session) {
     throw new Error("Unauthorized");
   }
 
-  // Create new opening hours
-  await prisma.salonAvailability.updateMany({
+  // Delete existing availability records for this member
+  await prisma.salonAvailability.deleteMany({
     where: { memberId },
+  });
+
+  // Create new availability records
+  const result = await prisma.salonAvailability.createMany({
     data: openingHours.map((hours) => ({
+      memberId,
+      salonId: salonId,
       dayOfWeek: hours.dayOfWeek,
       startTime: hours.startTime,
       endTime: hours.endTime,
       isClosed: hours.isClosed,
     })),
   });
+
+  revalidatePath(`/salon/${salonId}/staff-management`);
+  revalidatePath(`/salon/${salonId}/appointments`);
+  return result;
 }
 
 export async function removeSalon(organizationId: string) {
