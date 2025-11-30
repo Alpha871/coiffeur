@@ -90,6 +90,21 @@
       "exportedName": "getSalonById",
       "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
     },
+    "4038a9bc7000a38412172c9cbe08ae4e07c255da71": {
+      "workers": {
+        "app/(salon)/salon/[id]/services/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/services/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-repository.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/service-repository.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "removeSalon",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/services/page": "rsc"
+      },
+      "exportedName": "removeSalon",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+    },
     "404af05ccd415664faa5b9436f86ce501d1f537f22": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
@@ -283,6 +298,21 @@
         "app/(salon)/salon/[id]/services/page": "action-browser"
       },
       "exportedName": "deleteServiceById",
+      "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
+    },
+    "60af248bf17d50a46fc09bde7c8d4a3b0bc1c11aa8": {
+      "workers": {
+        "app/(salon)/salon/[id]/services/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/services/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-repository.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/service-repository.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "removeMember",
+          "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/services/page": "rsc"
+      },
+      "exportedName": "removeMember",
       "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
     },
     "7fa701fc2cfdca59138aab40051abaffe0c454c913": {

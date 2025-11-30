@@ -8,6 +8,32 @@ import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
+export async function removeMember(
+  memberIdOrEmail: string,
+  organizationId: string
+) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/authentication");
+  }
+
+  try {
+    const data = await auth.api.removeMember({
+      body: {
+        memberIdOrEmail,
+        organizationId,
+      },
+    });
+
+    return data;
+  } catch (error) {
+    console.error("Error removing member:", error);
+  }
+}
+
 export async function addService(
   salonId: string,
   name: string,

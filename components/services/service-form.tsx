@@ -101,7 +101,6 @@ export default function ServiceForm({
           createdAt: newVal.service.createdAt || undefined,
         };
 
-        console.log({ updatedService });
         setServices((prev) =>
           [
             updatedService,
@@ -148,13 +147,13 @@ export default function ServiceForm({
       };
 
       setServices((prev) =>
-        [...prev!, addedService].sort(
+        [addedService, ...prev!].sort(
           (a, b) =>
             new Date(b.createdAt!).getTime() - new Date(a.createdAt!).getTime()
         )
       );
       setFeatured((prev) =>
-        [...prev!, addedService].sort(
+        [addedService, ...prev!].sort(
           (a, b) =>
             new Date(b.createdAt!).getTime() - new Date(a.createdAt!).getTime()
         )

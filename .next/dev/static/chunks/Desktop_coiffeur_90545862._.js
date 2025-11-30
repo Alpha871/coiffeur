@@ -3817,9 +3817,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$data$3a$eb3cf1__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/oop/infrastructure/data:eb3cf1 [app-client] (ecmascript) <text/javascript>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/node_modules/sonner/dist/index.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/coiffeur/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -3833,13 +3835,8 @@ function StaffDetailTabs({ active, setStaff, // activeId,
 // staff,
 salonServices }) {
     _s();
-    // const [activeTab, setActiveTab] = useState("profile");
-    // Reset tab when active staff member changes
-    // useEffect(() => {
-    //   const resetTab = () => setActiveTab("profile");
-    //   resetTab();
-    // }, [active.id]);
     const { id: salonId } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"])();
+    const [isPending, startTransition] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTransition"])();
     const MemberSpecialities = salonServices.map((spec)=>({
             id: spec.id,
             name: spec.name,
@@ -3847,11 +3844,11 @@ salonServices }) {
         }));
     const availabilities = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["convertOpeningHoursFromDatabase"])(active.availabilities);
     function handleDelete(id) {
-    // setStaff((prev) => prev.filter((s) => s.id !== id));
-    // if (id === activeId) {
-    //   const next = staff.find((s) => s.id !== id);
-    //   setActiveId(next?.id ?? "");
-    // }
+        startTransition(async ()=>{
+            try {
+                setStaff((prev)=>prev.filter((member)=>member.id !== id));
+            } catch (error) {}
+        });
     }
     async function handleSaveInfo(values) {
         if (!active) return;
@@ -3930,7 +3927,7 @@ salonServices }) {
                         children: "Personal Info"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/staff-management/_component/staff-detail-tabs.tsx",
-                        lineNumber: 163,
+                        lineNumber: 157,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -3938,7 +3935,7 @@ salonServices }) {
                         children: "Specialties"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/staff-management/_component/staff-detail-tabs.tsx",
-                        lineNumber: 164,
+                        lineNumber: 158,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -3946,13 +3943,13 @@ salonServices }) {
                         children: "Work Schedule"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/staff-management/_component/staff-detail-tabs.tsx",
-                        lineNumber: 165,
+                        lineNumber: 159,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/staff-management/_component/staff-detail-tabs.tsx",
-                lineNumber: 162,
+                lineNumber: 156,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -3968,12 +3965,12 @@ salonServices }) {
                     onDelete: handleDelete
                 }, active.id, false, {
                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/staff-management/_component/staff-detail-tabs.tsx",
-                    lineNumber: 169,
+                    lineNumber: 163,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/staff-management/_component/staff-detail-tabs.tsx",
-                lineNumber: 168,
+                lineNumber: 162,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -3986,12 +3983,12 @@ salonServices }) {
                     onSave: handleSaveSpecialties
                 }, active.id, false, {
                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/staff-management/_component/staff-detail-tabs.tsx",
-                    lineNumber: 182,
+                    lineNumber: 176,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/staff-management/_component/staff-detail-tabs.tsx",
-                lineNumber: 181,
+                lineNumber: 175,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -4003,24 +4000,25 @@ salonServices }) {
                     memberId: active.id
                 }, active.id, false, {
                     fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/staff-management/_component/staff-detail-tabs.tsx",
-                    lineNumber: 192,
+                    lineNumber: 186,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/staff-management/_component/staff-detail-tabs.tsx",
-                lineNumber: 191,
+                lineNumber: 185,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/coiffeur/app/(salon)/salon/[id]/staff-management/_component/staff-detail-tabs.tsx",
-        lineNumber: 161,
+        lineNumber: 155,
         columnNumber: 5
     }, this);
 }
-_s(StaffDetailTabs, "5aN6D0/Pe1pLA+WM190MPPKKwnY=", false, function() {
+_s(StaffDetailTabs, "jt/ag20lsKSu1au8stqvOA5xN44=", false, function() {
     return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"]
+        __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTransition"]
     ];
 });
 _c = StaffDetailTabs;

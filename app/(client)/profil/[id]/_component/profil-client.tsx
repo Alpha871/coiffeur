@@ -185,7 +185,7 @@ export default function ClientPageClient({
                           value="history"
                           className="text-text-secondary-light dark:text-text-secondary-dark data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary font-medium px-4 py-2"
                         >
-                          History (0)
+                          History ({filteredAppointmentsHistory.length})
                         </TabsTrigger>
                       </TabsList>
                     </CardHeader>

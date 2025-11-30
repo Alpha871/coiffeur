@@ -472,3 +472,31 @@ export async function updateStaffMemberHours(
     })),
   });
 }
+
+export async function removeSalon(organizationId: string) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (session === null) redirect("/authentication");
+
+  const { role } = await auth.api.getActiveMemberRole({
+    headers: await headers(),
+  });
+
+  if (role !== "owner") {
+    throw new Error("Unauthorized");
+  }
+
+  const data = await auth.api.deleteOrganization({
+    body: {
+      organizationId,
+    },
+
+    headers: await headers(),
+  });
+
+  revalidatePath("/salons");
+  redirect("/");
+
+  return data;
+}

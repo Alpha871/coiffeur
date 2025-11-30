@@ -1,6 +1,6 @@
 "use client";
 
-import { z } from "zod";
+import { set, z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trash2 } from "lucide-react";
@@ -23,6 +23,8 @@ import {
 } from "@/lib/validations/staff-management";
 import { useState, useTransition } from "react";
 import { Spinner } from "../ui/spinner";
+import Modal from "../common/modal";
+import { removeSalon } from "@/oop/infrastructure/salon-repository";
 
 type PersonalInfoFormProps = {
   staffId: string;
@@ -32,7 +34,9 @@ type PersonalInfoFormProps = {
   email?: string;
   onSave: (values: PersonInfoFormValues) => void;
   onDelete?: (id: string) => void;
-  type?: "employee" | "manager";
+  onDeleteSalon?: (id: string) => void;
+
+  role?: string;
 };
 
 export function PersonalInfoForm({
@@ -43,7 +47,8 @@ export function PersonalInfoForm({
   email,
   onSave,
   onDelete,
-  type = "manager",
+  onDeleteSalon,
+  role,
 }: PersonalInfoFormProps) {
   const form = useForm<PersonInfoFormValues>({
     resolver: zodResolver(personInfoSchema),
@@ -55,132 +60,207 @@ export function PersonalInfoForm({
     },
     mode: "onBlur",
   });
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openSalonDeleteModal, setOpenSalonDeleteModal] = useState(false);
 
   const [isPending, startTransition] = useTransition();
-  const [pendingAction, setPendingAction] = useState<"delete" | "save" | null>(
-    null
-  );
+  const [pendingAction, setPendingAction] = useState<
+    "delete" | "save" | "delete salon" | null
+  >(null);
+
+  function handleDeleteClick() {
+    setPendingAction("delete");
+    startTransition(() => {
+      onDelete?.(staffId);
+    });
+    setOpenDeleteModal(false);
+  }
+  function handleDeleteSalonClick() {
+    setPendingAction("delete salon");
+    startTransition(() => {
+      onDeleteSalon?.(staffId);
+    });
+    setOpenSalonDeleteModal(false);
+  }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center gap-6">
-        <Avatar className="h-24 w-24">
-          <AvatarImage src={avatar} alt={name} />
-          <AvatarFallback>
-            {name
-              .split(" ")
-              .map((p) => p[0])
-              .join("")
-              .slice(0, 2)
-              .toUpperCase()}
-          </AvatarFallback>
-        </Avatar>
-
-        <div className="w-full">
-          <Label htmlFor="photo">Profile Photo</Label>
-          <Input id="photo" type="file" className="mt-2" disabled />
-          <p className="mt-1 text-xs text-muted-foreground">
-            PNG, JPG, GIF (max. 800×800 px).
-          </p>
+    <>
+      <Modal
+        open={openDeleteModal}
+        onOpenChange={setOpenDeleteModal}
+        title="Deleting Staff Member"
+        description="Are you sure you want to remove this staff member? This action cannot be undone."
+      >
+        <div className="flex items-center justify-end gap-3">
+          <Button onClick={() => setOpenDeleteModal(false)}>
+            <span>Cancel</span>
+          </Button>
+          <Button
+            variant={"destructive"}
+            disabled={isPending && pendingAction === "delete"}
+            onClick={handleDeleteClick}
+          >
+            {isPending && pendingAction === "delete" && (
+              <Spinner className="mr-2" />
+            )}
+            <Trash2 className="mr-2 h-4 w-4" />
+            Remove
+          </Button>
         </div>
-      </div>
+      </Modal>
+      <Modal
+        open={openSalonDeleteModal}
+        onOpenChange={setOpenSalonDeleteModal}
+        title="Deleting Salon"
+        description="Are you sure you want to remove this salon? This action cannot be undone."
+      >
+        <div className="flex items-center justify-end gap-3">
+          <Button onClick={() => setOpenSalonDeleteModal(false)}>
+            <span>Cancel</span>
+          </Button>
+          <Button
+            variant={"destructive"}
+            disabled={isPending && pendingAction === "delete salon"}
+            onClick={handleDeleteSalonClick}
+          >
+            {isPending && pendingAction === "delete salon" && (
+              <Spinner className="mr-2" />
+            )}
+            <Trash2 className="mr-2 h-4 w-4" />
+            Remove
+          </Button>
+        </div>
+      </Modal>
 
-      <Form {...form}>
-        <form
-          className="grid grid-cols-1 gap-4 md:grid-cols-2"
-          onSubmit={form.handleSubmit(onSave)}
-        >
-          <FormField
-            control={form.control}
-            name="firstName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>First Name</FormLabel>
-                <FormControl>
-                  <Input className="mt-2" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="lastName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Last Name</FormLabel>
-                <FormControl>
-                  <Input className="mt-2" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone Number</FormLabel>
-                <FormControl>
-                  <Input className="mt-2" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email Address</FormLabel>
-                <FormControl>
-                  <Input className="mt-2" type="email" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+      <div className="space-y-6">
+        <div className="flex items-center gap-6">
+          <Avatar className="h-24 w-24">
+            <AvatarImage src={avatar} alt={name} />
+            <AvatarFallback>
+              {name
+                .split(" ")
+                .map((p) => p[0])
+                .join("")
+                .slice(0, 2)
+                .toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
 
-          <div className="md:col-span-2 flex justify-end gap-3 pt-2">
-            {type === "manager" && (
+          <div className="w-full">
+            <Label htmlFor="photo">Profile Photo</Label>
+            <Input id="photo" type="file" className="mt-2" disabled />
+            <p className="mt-1 text-xs text-muted-foreground">
+              PNG, JPG, GIF (max. 800×800 px).
+            </p>
+          </div>
+        </div>
+
+        <Form {...form}>
+          <form
+            className="grid grid-cols-1 gap-4 md:grid-cols-2"
+            onSubmit={form.handleSubmit(onSave)}
+          >
+            <FormField
+              control={form.control}
+              name="firstName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>First Name</FormLabel>
+                  <FormControl>
+                    <Input className="mt-2" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="lastName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Last Name</FormLabel>
+                  <FormControl>
+                    <Input className="mt-2" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone Number</FormLabel>
+                  <FormControl>
+                    <Input className="mt-2" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email Address</FormLabel>
+                  <FormControl>
+                    <Input className="mt-2" type="email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <div className="md:col-span-2 flex justify-end gap-3 pt-2">
+              {role === "owner" && (
+                <Button
+                  type="button"
+                  variant="destructive"
+                  onClick={() => setOpenSalonDeleteModal(true)}
+                  disabled={isPending && pendingAction === "delete salon"}
+                >
+                  {isPending && pendingAction === "delete salon" && (
+                    <Spinner className="mr-2" />
+                  )}
+                  <Trash2 className="mr-2 h-4 w-4" />
+                  Remove Salon
+                </Button>
+              )}
+              {role === "member" && (
+                <Button
+                  type="button"
+                  variant="destructive"
+                  onClick={() => setOpenDeleteModal(true)}
+                  disabled={isPending && pendingAction === "delete"}
+                >
+                  {isPending && pendingAction === "delete" && (
+                    <Spinner className="mr-2" />
+                  )}
+                  <Trash2 className="mr-2 h-4 w-4" />
+                  Remove Staff Member
+                </Button>
+              )}
               <Button
-                type="button"
-                variant="destructive"
+                type="submit"
                 onClick={() => {
-                  setPendingAction("delete");
+                  setPendingAction("save");
                   startTransition(() => {
-                    onDelete?.(staffId);
+                    form.handleSubmit(onSave)();
                   });
                 }}
-                disabled={isPending && pendingAction === "delete"}
+                disabled={isPending && pendingAction === "save"}
               >
-                {isPending && pendingAction === "delete" && (
+                {isPending && pendingAction === "save" && (
                   <Spinner className="mr-2" />
                 )}
-                <Trash2 className="mr-2 h-4 w-4" />
-                Delete Staff
+                Save Changes
               </Button>
-            )}
-            <Button
-              type="submit"
-              onClick={() => {
-                setPendingAction("save");
-                startTransition(() => {
-                  form.handleSubmit(onSave)();
-                });
-              }}
-              disabled={isPending && pendingAction === "save"}
-            >
-              {isPending && pendingAction === "save" && (
-                <Spinner className="mr-2" />
-              )}
-              Save Changes
-            </Button>
-          </div>
-        </form>
-      </Form>
-    </div>
+            </div>
+          </form>
+        </Form>
+      </div>
+    </>
   );
 }

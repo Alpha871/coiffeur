@@ -32,30 +32,25 @@ export class Salon {
     public openingHours: OpeningHours
   ) {}
 
-  //  Check if salon is open on a specific day
   isOpenOn(dayOfWeek: number): boolean {
     const day = this.openingHours?.[dayOfWeek];
     return day ? !day.isClosed : false;
   }
 
-  // Get opening hours for a day
   getHoursForDay(dayOfWeek: number): { start: Date; end: Date } | null {
     const day = this.openingHours?.[dayOfWeek];
     if (!day || day.isClosed) return null;
     return { start: day.startTime, end: day.endTime };
   }
 
-  //  Validate phone number format
   isValidPhone(): boolean {
     return /^\d{10,}$/.test(this.phone.replace(/\D/g, ""));
   }
 
-  // ✅Validate email
   isValidEmail(): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email);
   }
 
-  // Check if all required fields are filled
   isComplete(): boolean {
     return (
       this.name.trim().length > 0 &&

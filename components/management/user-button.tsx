@@ -49,7 +49,9 @@ function UserButton({
           >
             {name}
           </p>
-          <p className="truncate text-sm text-muted-foreground">{role}</p>
+          <p className="truncate text-sm text-muted-foreground">
+            {role !== "owner" ? "Employee" : "Owner"}
+          </p>
         </div>
       </div>
       <ChevronRight
