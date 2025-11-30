@@ -1,6 +1,7 @@
 import { getAllSalonServices } from "@/oop/infrastructure/service-action";
 import { Suspense } from "react";
 import ManageServicesClient from "./_components/service-management-client";
+import { capitalize } from "@/lib/utils";
 
 export default async function ServiceManagement({
   params,
@@ -10,8 +11,6 @@ export default async function ServiceManagement({
   const { id } = await params;
 
   const services = await getAllSalonServices(id);
-  const capitalize = (str: string) =>
-    str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 
   return (
     <Suspense fallback={<div>Loading services...</div>}>
@@ -19,10 +18,13 @@ export default async function ServiceManagement({
         services={services.map((s) => ({
           id: s.id,
           title: s.service.name,
-          cat: capitalize(s.service.category),
-          dur: `${s.service.durationMin} min`,
-          price: `$${s.service.price.toFixed(2)}`,
+          category: capitalize(s.service.category),
+          durationMin: s.service.durationMin,
+          price: s.service.price,
           image: s.service.image || undefined,
+          description: s.service.description || undefined,
+          createdAt: s.service.createdAt || undefined,
+          updatedAt: s.service.updatedAt || undefined,
         }))}
       />
     </Suspense>

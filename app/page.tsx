@@ -17,6 +17,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import HeroSection from "@/components/common/hero-section";
+import { getMemberByUserId } from "@/oop/infrastructure/user-action";
 
 const HERO_BG =
   "linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDaXYkTtVzFz8Pp6wAhjTT-oy5WuEvJC3a2Gx0RBsoAggSEntXpYlOdYwwtdlaVFbljLKMHmcxqob_rW4novTRfa1dUJKKHC0Ov892n6BiED2uoolo3g9L4sCXDQelZwE_AMZb6hpwWHcOCdvxEHm7oVGpS0ht-h4nEqMpWLVd2cwH5HhbKzx3pCRsdckRERwQlqxC6jm8lJsqfHXpG7LmXs08CyQFkmcfYTaQPoyVP0nwa4PsO4eT03HKvZmkxNmmG2Lft0i2fNIo')";
@@ -46,9 +47,26 @@ const testimonials = [
 ];
 
 export default async function Page() {
-  const salon = await getSalonByUserId();
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
-  console.log({ salon });
+  if (session) {
+    const member = await getMemberByUserId(session.user.id);
+    if (member?.role === "member") {
+      return redirect(`/worker/${member.id}`);
+    }
+
+    if (
+      member?.role === "owner" &&
+      member.organization?.salon &&
+      member.organization.salon.creationStatus === CreationStatus.COMPLETED
+    ) {
+      return redirect(`/salon/${member.organization.salon.id}/dashboard`);
+    }
+  }
+
+  const salon = await getSalonByUserId();
 
   return (
     <div className="bg-background-light dark:bg-background-dark min-h-screen text-gray-800 dark:text-gray-200 font-display">

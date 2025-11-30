@@ -14,7 +14,7 @@ export default async function InvitationPage({
   params,
 }: PageProps<"/invites/[id]">) {
   const session = await auth.api.getSession({ headers: await headers() });
-  if (session == null) return redirect("/authenticate");
+  if (session == null) return redirect("/authentication");
 
   const { id } = await params;
 

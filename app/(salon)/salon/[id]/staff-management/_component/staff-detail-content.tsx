@@ -9,23 +9,23 @@ import {
 export function StaffDetailContent({
   activeId,
   active,
-  // setStaff,
+  setStaff,
   // staff,
   // setActiveId,
   pendingInvites,
-  organizationId,
+  // organizationId,
   setPendingInvites,
   salonServices,
 }: {
   activeId: string;
   active: Member | undefined;
-  // setStaff: React.Dispatch<React.SetStateAction<Member[]>>;
+  setStaff: React.Dispatch<React.SetStateAction<Member[]>>;
   // staff: Member[];
   // setActiveId: React.Dispatch<React.SetStateAction<string>>;
   pendingInvites: PendingInvites[];
-  organizationId: string;
+  // organizationId: string;
   setPendingInvites: React.Dispatch<React.SetStateAction<PendingInvites[]>>;
-  salonServices: string[];
+  salonServices: { id: string; name: string }[];
 }) {
   if (activeId === "invites") {
     return (
@@ -43,7 +43,7 @@ export function StaffDetailContent({
         salonServices={salonServices}
         active={active}
         // staff={staff}
-        // setStaff={setStaff}
+        setStaff={setStaff}
         // activeId={activeId}
         // setActiveId={setActiveId}
       />

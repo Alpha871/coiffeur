@@ -143,7 +143,7 @@ export type Member = Org["members"][number];
 
 interface StaffManagementContentClientProps {
   members: Org["members"] | null | undefined;
-  salonServices: string[];
+  salonServices: { id: string; name: string }[];
 }
 
 export default function StaffManagementContentClient({
@@ -279,11 +279,11 @@ export default function StaffManagementContentClient({
             <StaffDetailContent
               activeId={activeId}
               active={active}
-              // setStaff={setStaff}
+              setStaff={setStaff}
               // staff={staff}
               salonServices={salonServices}
               // setActiveId={setActiveId}
-              organizationId={activeOrganization?.id || ""}
+              // organizationId={activeOrganization?.id || ""}
               pendingInvites={pendingInvites}
               setPendingInvites={setPendingInvites}
             />

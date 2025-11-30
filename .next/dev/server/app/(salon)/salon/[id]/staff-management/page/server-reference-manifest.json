@@ -1,51 +1,6 @@
 {
   "node": {
-    "001c1642d3b79d5100e7c94c161c4000d509c17b3f": {
-      "workers": {
-        "app/(salon)/salon/[id]/staff-management/page": {
-          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getSalonByUserId",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
-        }
-      },
-      "layer": {
-        "app/(salon)/salon/[id]/staff-management/page": "rsc"
-      },
-      "exportedName": "getSalonByUserId",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
-    },
-    "005ab2cdca59a8fb80150c92dc47608a3f99571ae6": {
-      "workers": {
-        "app/(salon)/salon/[id]/staff-management/page": {
-          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getPendingSalonRequests",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
-        }
-      },
-      "layer": {
-        "app/(salon)/salon/[id]/staff-management/page": "rsc"
-      },
-      "exportedName": "getPendingSalonRequests",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
-    },
-    "00ec2d487617bae9120a66f40c3dee053e36a599fa": {
-      "workers": {
-        "app/(salon)/salon/[id]/staff-management/page": {
-          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getCompleteSalons",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
-        }
-      },
-      "layer": {
-        "app/(salon)/salon/[id]/staff-management/page": "rsc"
-      },
-      "exportedName": "getCompleteSalons",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
-    },
-    "00ffea2739b92691cb1a05a70eb65d5007f6647c2b": {
+    "00347034f0a35de1389806c1045a1aece406516d07": {
       "workers": {
         "app/(salon)/salon/[id]/staff-management/page": {
           "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -60,37 +15,67 @@
       "exportedName": "getAllSalons",
       "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
     },
-    "4014598ab2ad9954816b1622681109f3ac13390dc6": {
+    "0034edf1296dfde36f541fa6241442ad02c0fa98d0": {
       "workers": {
         "app/(salon)/salon/[id]/staff-management/page": {
           "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
-          "exportedName": "approveSalonRequest",
+          "exportedName": "getAllSalonsForCurrentUser",
           "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/staff-management/page": "rsc"
       },
-      "exportedName": "approveSalonRequest",
+      "exportedName": "getAllSalonsForCurrentUser",
       "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
     },
-    "40236ca19bc30439825afea6ea8e1d64394951d6f6": {
+    "00415d66b6bd131e1f8820179496ad5e4ee891f441": {
       "workers": {
         "app/(salon)/salon/[id]/staff-management/page": {
           "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
-          "exportedName": "requestSalon",
+          "exportedName": "getSalonByUserId",
           "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/staff-management/page": "rsc"
       },
-      "exportedName": "requestSalon",
+      "exportedName": "getSalonByUserId",
       "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
     },
-    "408a1dc8df9f11ef68136085f18889346dc0652358": {
+    "007eacf23b4c6e01519572343b98f56e61da5ade29": {
+      "workers": {
+        "app/(salon)/salon/[id]/staff-management/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCompleteSalons",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/staff-management/page": "rsc"
+      },
+      "exportedName": "getCompleteSalons",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+    },
+    "00afed06713e6475cbd7684ba5fff2b3974f667fff": {
+      "workers": {
+        "app/(salon)/salon/[id]/staff-management/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPendingSalonRequests",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/staff-management/page": "rsc"
+      },
+      "exportedName": "getPendingSalonRequests",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+    },
+    "40331dbbf71ca0eb27c668241b4125062ea18eaab6": {
       "workers": {
         "app/(salon)/salon/[id]/staff-management/page": {
           "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -105,7 +90,37 @@
       "exportedName": "DeleteSalonById",
       "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
     },
-    "40ae2f89c39855265ae05cb5b51dc4ad1545fdf6fe": {
+    "405829561ee014ba9cea6f894f080211fc6817a120": {
+      "workers": {
+        "app/(salon)/salon/[id]/staff-management/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "requestSalon",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/staff-management/page": "rsc"
+      },
+      "exportedName": "requestSalon",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+    },
+    "405be565189fbb351b7660673726adce92467bec28": {
+      "workers": {
+        "app/(salon)/salon/[id]/staff-management/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "approveSalonRequest",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/staff-management/page": "rsc"
+      },
+      "exportedName": "approveSalonRequest",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+    },
+    "408b093e811cfea011251fd42c69e80f11b0549780": {
       "workers": {
         "app/(salon)/salon/[id]/staff-management/page": {
           "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -120,7 +135,7 @@
       "exportedName": "getSalonByIdwithUserId",
       "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
     },
-    "40e43a67b6de58bb32cfdb3ead5ebab10855b465ee": {
+    "4094d41623d3b7e6f0f9bc722e90295ce007f3966c": {
       "workers": {
         "app/(salon)/salon/[id]/staff-management/page": {
           "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -135,52 +150,7 @@
       "exportedName": "getSalonById",
       "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
     },
-    "6024cc143b60b951e5fe0c86eaff3bddbd816afeeb": {
-      "workers": {
-        "app/(salon)/salon/[id]/staff-management/page": {
-          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "rejectSalonRequest",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
-        }
-      },
-      "layer": {
-        "app/(salon)/salon/[id]/staff-management/page": "rsc"
-      },
-      "exportedName": "rejectSalonRequest",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
-    },
-    "606d1a1c040e914908bb378421da82e41a7dec7522": {
-      "workers": {
-        "app/(salon)/salon/[id]/staff-management/page": {
-          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "updateSalonOpeningHours",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
-        }
-      },
-      "layer": {
-        "app/(salon)/salon/[id]/staff-management/page": "rsc"
-      },
-      "exportedName": "updateSalonOpeningHours",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
-    },
-    "608121b981ebcc060af9fea375d3928e795a4b4c70": {
-      "workers": {
-        "app/(salon)/salon/[id]/staff-management/page": {
-          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "ActiveCurrentSalonOrganizationId",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
-        }
-      },
-      "layer": {
-        "app/(salon)/salon/[id]/staff-management/page": "rsc"
-      },
-      "exportedName": "ActiveCurrentSalonOrganizationId",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
-    },
-    "60840012ff61a9958aca9f4ff1dd77fb92e4938040": {
+    "6004c32fd04750f00ddb0b561775356f58817a7f4c": {
       "workers": {
         "app/(salon)/salon/[id]/staff-management/page": {
           "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -195,7 +165,52 @@
       "exportedName": "updateSalon",
       "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
     },
-    "7f94f619a087ea3ad312368551636480513630eed3": {
+    "600c856b6937340f7017b93f6140070e1872531700": {
+      "workers": {
+        "app/(salon)/salon/[id]/staff-management/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateSalonOpeningHours",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/staff-management/page": "rsc"
+      },
+      "exportedName": "updateSalonOpeningHours",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+    },
+    "608a31b425e4efebc863d001b6a44b11e36a1ed5c6": {
+      "workers": {
+        "app/(salon)/salon/[id]/staff-management/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "rejectSalonRequest",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/staff-management/page": "rsc"
+      },
+      "exportedName": "rejectSalonRequest",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+    },
+    "60b49318f31ee3fdfb3f63e8d9283ad52937ecc767": {
+      "workers": {
+        "app/(salon)/salon/[id]/staff-management/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "ActiveCurrentSalonOrganizationId",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/staff-management/page": "rsc"
+      },
+      "exportedName": "ActiveCurrentSalonOrganizationId",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
+    },
+    "7f47780fd17797dde366f3417657d2e6c4bf4aee04": {
       "workers": {
         "app/(salon)/salon/[id]/staff-management/page": {
           "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -210,7 +225,7 @@
       "exportedName": "updateSalonOrganizationId",
       "filename": "Desktop/coiffeur/oop/infrastructure/salon-actions.ts"
     },
-    "788f93ced8c494b8e8462ceb7232b858ea7b2e4ad8": {
+    "7870a4ad573bc495375b5e417d2ef8af32cd785a4e": {
       "workers": {
         "app/(salon)/salon/[id]/staff-management/page": {
           "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -223,6 +238,51 @@
         "app/(salon)/salon/[id]/staff-management/page": "action-browser"
       },
       "exportedName": "sendInvitation",
+      "filename": "Desktop/coiffeur/oop/infrastructure/user-action.ts"
+    },
+    "70aa0f9e6d69134959e0f69fe45d00b6488722b931": {
+      "workers": {
+        "app/(salon)/salon/[id]/staff-management/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "assignMemberSpecialties",
+          "filename": "Desktop/coiffeur/oop/infrastructure/user-action.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/staff-management/page": "action-browser"
+      },
+      "exportedName": "assignMemberSpecialties",
+      "filename": "Desktop/coiffeur/oop/infrastructure/user-action.ts"
+    },
+    "70a39f2aec289444d8e6577d7c99e905b5e6698181": {
+      "workers": {
+        "app/(salon)/salon/[id]/staff-management/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateUserInfo",
+          "filename": "Desktop/coiffeur/oop/infrastructure/user-action.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/staff-management/page": "action-browser"
+      },
+      "exportedName": "updateUserInfo",
+      "filename": "Desktop/coiffeur/oop/infrastructure/user-action.ts"
+    },
+    "7042404640bd085ec070392176e3f95ed2d632d0d5": {
+      "workers": {
+        "app/(salon)/salon/[id]/staff-management/page": {
+          "moduleId": "[project]/Desktop/coiffeur/.next-internal/server/app/(salon)/salon/[id]/staff-management/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/coiffeur/oop/infrastructure/salon-actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/Desktop/coiffeur/oop/infrastructure/user-action.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "memberAvailability",
+          "filename": "Desktop/coiffeur/oop/infrastructure/user-action.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/staff-management/page": "action-browser"
+      },
+      "exportedName": "memberAvailability",
       "filename": "Desktop/coiffeur/oop/infrastructure/user-action.ts"
     }
   },

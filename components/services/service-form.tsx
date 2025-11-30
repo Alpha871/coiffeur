@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { z } from "zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Button } from "../ui/button";
@@ -15,47 +15,117 @@ import {
   SelectValue,
 } from "../ui/select";
 
-import { addServiceSchema, CATEGORIES } from "@/lib/validations/service";
+import {
+  CATEGORIES,
+  ServiceSchema,
+  ServiceValues,
+} from "@/lib/validations/service";
+import { addService, editService } from "@/oop/infrastructure/service-action";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Card, CardContent } from "../ui/card";
-import { Textarea } from "../ui/textarea";
 import { useParams } from "next/navigation";
 import { toast } from "sonner";
-import { addService } from "@/oop/infrastructure/service-action";
-
-type AddServiceValues = z.infer<typeof addServiceSchema>;
+import { Spinner } from "../ui/spinner";
+import { Textarea } from "../ui/textarea";
+import { capitalize, changedValues } from "@/lib/utils";
 
 interface ServiceFormProps {
-  onCancel: () => void;
-  defaultValues?: Partial<AddServiceValues>;
+  setFeatured: React.Dispatch<React.SetStateAction<ServiceValues[]>>;
+  defaultValues?: Partial<ServiceValues>;
+  type?: "add" | "edit";
+  setServices: React.Dispatch<React.SetStateAction<ServiceValues[]>>;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function ServiceForm({
-  onCancel,
   defaultValues,
+  type = "add",
+  setServices,
+  setFeatured,
+  setOpenModal,
 }: ServiceFormProps) {
   const { id: salonId } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const addServiceForm = useForm<AddServiceValues>({
-    resolver: zodResolver(addServiceSchema),
+  const addServiceForm = useForm<ServiceValues>({
+    resolver: zodResolver(ServiceSchema),
     defaultValues: {
+      id: defaultValues?.id ?? undefined,
       title: defaultValues?.title ?? "",
       category: defaultValues?.category ?? "",
       durationMin: defaultValues?.durationMin ?? 5,
       price: defaultValues?.price ?? 0,
       image: defaultValues?.image ?? "",
+      description: defaultValues?.description ?? "",
     },
   });
 
-  const onSubmit = async (values: AddServiceValues) => {
-    console.log("Add Service Form Values:", values);
-
+  const onSubmit = async (values: ServiceValues) => {
     if (!salonId) {
       toast.error("Salon ID is missing. Cannot add service.");
       return;
     }
 
     try {
+      setIsLoading(true);
+      if (type === "edit") {
+        // Edit service logic to be implemented
+
+        const vals = changedValues<ServiceValues>(defaultValues || {}, values);
+
+        if (!defaultValues?.id) {
+          toast.error("Service ID is missing. Cannot edit service.");
+          return;
+        }
+
+        const newVal = await editService(
+          defaultValues.id as string,
+          vals.title || undefined,
+          vals.category || undefined,
+          vals.durationMin || undefined,
+          vals.price || undefined,
+          vals.description || undefined,
+          vals.image || undefined
+        );
+
+        const updatedService: ServiceValues = {
+          id: newVal.id as string,
+          title: newVal.service.name,
+          category: capitalize(newVal.service.category),
+          durationMin: newVal.service.durationMin,
+          price: newVal.service.price,
+          image: newVal.service.image || undefined,
+          updatedAt: newVal.service.updatedAt || undefined,
+          createdAt: newVal.service.createdAt || undefined,
+        };
+
+        console.log({ updatedService });
+        setServices((prev) =>
+          [
+            updatedService,
+            ...prev!.filter((s) => s.id !== defaultValues?.id),
+          ].sort(
+            (a, b) =>
+              new Date(b.updatedAt!).getTime() -
+              new Date(a.updatedAt!).getTime()
+          )
+        );
+
+        setFeatured((prev) =>
+          [
+            updatedService,
+            ...prev!.filter((s) => s.id !== defaultValues?.id),
+          ].sort(
+            (a, b) =>
+              new Date(b.updatedAt!).getTime() -
+              new Date(a.updatedAt!).getTime()
+          )
+        );
+
+        toast.success("Service updated successfully!");
+        setOpenModal(false);
+        return;
+      }
+
       const newService = await addService(
         salonId as string,
         values.title,
@@ -65,12 +135,34 @@ export default function ServiceForm({
         values.description,
         values.image
       );
-      toast.success("Service added successfully!");
+      const addedService: ServiceValues = {
+        id: newService.id,
+        title: newService.service.name,
+        category: capitalize(newService.service.category),
+        durationMin: newService.service.durationMin,
+        price: Number(newService.service.price.toFixed(2)),
+        image: newService.service.image || undefined,
+      };
 
-      console.log({ newService });
+      setServices((prev) =>
+        [...prev!, addedService].sort(
+          (a, b) =>
+            new Date(b.createdAt!).getTime() - new Date(a.createdAt!).getTime()
+        )
+      );
+      setFeatured((prev) =>
+        [...prev!, addedService].sort(
+          (a, b) =>
+            new Date(b.createdAt!).getTime() - new Date(a.createdAt!).getTime()
+        )
+      );
+      toast.success("Service added successfully!");
     } catch (error) {
       console.log(error);
       toast.error("Failed to add service. Please try again.");
+    } finally {
+      setIsLoading(false);
+      setOpenModal(false);
     }
 
     addServiceForm.reset();
@@ -203,10 +295,18 @@ export default function ServiceForm({
         )}
 
         <div className="flex flex-col-reverse sm:flex-row gap-2 justify-end">
-          <Button variant="secondary" type="button" onClick={onCancel}>
+          <Button
+            variant="secondary"
+            type="button"
+            onClick={() => setOpenModal(false)}
+            disabled={isLoading}
+          >
             Cancel
           </Button>
-          <Button type="submit">Add new</Button>
+          <Button type="submit" disabled={isLoading}>
+            {isLoading && <Spinner className="mr-2" />}
+            {type === "add" ? "Add Service" : "Save Changes"}
+          </Button>
         </div>
       </form>
     </Form>

@@ -17,15 +17,12 @@ import {
   FormControl,
   FormMessage,
 } from "@/components/ui/form";
-
-const infoSchema = z.object({
-  firstName: z.string().min(1, "Required"),
-  lastName: z.string().min(1, "Required"),
-  phone: z.string().optional(),
-  email: z.email("Enter a valid email").optional().or(z.literal("")),
-});
-
-type InfoFormValues = z.infer<typeof infoSchema>;
+import {
+  PersonInfoFormValues,
+  personInfoSchema,
+} from "@/lib/validations/staff-management";
+import { useState, useTransition } from "react";
+import { Spinner } from "../ui/spinner";
 
 type PersonalInfoFormProps = {
   staffId: string;
@@ -33,8 +30,9 @@ type PersonalInfoFormProps = {
   avatar: string;
   phone?: string;
   email?: string;
-  onSave: (values: InfoFormValues) => void;
-  onDelete: (id: string) => void;
+  onSave: (values: PersonInfoFormValues) => void;
+  onDelete?: (id: string) => void;
+  type?: "employee" | "manager";
 };
 
 export function PersonalInfoForm({
@@ -45,9 +43,10 @@ export function PersonalInfoForm({
   email,
   onSave,
   onDelete,
+  type = "manager",
 }: PersonalInfoFormProps) {
-  const form = useForm<InfoFormValues>({
-    resolver: zodResolver(infoSchema),
+  const form = useForm<PersonInfoFormValues>({
+    resolver: zodResolver(personInfoSchema),
     defaultValues: {
       firstName: name.split(" ")[0] ?? "",
       lastName: name.split(" ").slice(1).join(" ") ?? "",
@@ -56,6 +55,11 @@ export function PersonalInfoForm({
     },
     mode: "onBlur",
   });
+
+  const [isPending, startTransition] = useTransition();
+  const [pendingAction, setPendingAction] = useState<"delete" | "save" | null>(
+    null
+  );
 
   return (
     <div className="space-y-6">
@@ -74,7 +78,7 @@ export function PersonalInfoForm({
 
         <div className="w-full">
           <Label htmlFor="photo">Profile Photo</Label>
-          <Input id="photo" type="file" className="mt-2" />
+          <Input id="photo" type="file" className="mt-2" disabled />
           <p className="mt-1 text-xs text-muted-foreground">
             PNG, JPG, GIF (max. 800×800 px).
           </p>
@@ -140,15 +144,40 @@ export function PersonalInfoForm({
           />
 
           <div className="md:col-span-2 flex justify-end gap-3 pt-2">
+            {type === "manager" && (
+              <Button
+                type="button"
+                variant="destructive"
+                onClick={() => {
+                  setPendingAction("delete");
+                  startTransition(() => {
+                    onDelete?.(staffId);
+                  });
+                }}
+                disabled={isPending && pendingAction === "delete"}
+              >
+                {isPending && pendingAction === "delete" && (
+                  <Spinner className="mr-2" />
+                )}
+                <Trash2 className="mr-2 h-4 w-4" />
+                Delete Staff
+              </Button>
+            )}
             <Button
-              type="button"
-              variant="destructive"
-              onClick={() => onDelete(staffId)}
+              type="submit"
+              onClick={() => {
+                setPendingAction("save");
+                startTransition(() => {
+                  form.handleSubmit(onSave)();
+                });
+              }}
+              disabled={isPending && pendingAction === "save"}
             >
-              <Trash2 className="mr-2 h-4 w-4" />
-              Delete Staff
+              {isPending && pendingAction === "save" && (
+                <Spinner className="mr-2" />
+              )}
+              Save Changes
             </Button>
-            <Button type="submit">Save Changes</Button>
           </div>
         </form>
       </Form>

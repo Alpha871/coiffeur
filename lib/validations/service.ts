@@ -12,7 +12,8 @@ export const CATEGORIES = [
   "Kids",
 ] as const;
 
-export const addServiceSchema = z.object({
+export const ServiceSchema = z.object({
+  id: z.string().optional(),
   title: z.string().min(2),
 
   category: z.enum(
@@ -30,7 +31,11 @@ export const addServiceSchema = z.object({
   description: z.string().min(10).max(1000).optional(),
 
   image: z.union([z.literal(""), z.url()]).optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
 });
+
+export type ServiceValues = z.infer<typeof ServiceSchema>;
 
 export type Service = {
   id: string;

@@ -9,15 +9,16 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
 
   const salon = await getSalonById(id);
 
-  console.log({ salon });
-
   const members = salon?.organization?.members || [];
 
   const salonServices =
-    salon?.salonServices.map((service) => service.service.name) || [];
+    salon?.salonServices.map((service) => ({
+      id: service.id,
+      name: service.service.name,
+    })) || [];
 
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense>
       <StaffManagementContentClient
         members={members}
         salonServices={salonServices}

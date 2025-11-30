@@ -7,46 +7,33 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PersonalInfoForm } from "@/components/management/personal-form";
 import z from "zod";
 import { Member } from "@/components/management/staff-management-client";
-import { convertOpeningHoursFromDatabase } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { changedValues, convertOpeningHoursFromDatabase } from "@/lib/utils";
 
-const infoSchema = z.object({
-  firstName: z.string().min(1, "Required"),
-  lastName: z.string().min(1, "Required"),
-  phone: z.string().optional(),
-  email: z.email("Enter a valid email").optional().or(z.literal("")),
-});
-
-const daySchema = z.object({
-  enabled: z.boolean(),
-  start: z.string(),
-  end: z.string(),
-});
-
-const scheduleSchema = z.object({
-  mon: daySchema,
-  tue: daySchema,
-  wed: daySchema,
-  thu: daySchema,
-  fri: daySchema,
-  sat: daySchema,
-  sun: daySchema,
-});
+import {
+  PersonInfoFormValues,
+  SpecialtiesFormValues,
+} from "@/lib/validations/staff-management";
+import {
+  assignMemberSpecialties,
+  updateUserInfo,
+} from "@/oop/infrastructure/user-action";
+import { useParams } from "next/navigation";
+import { toast } from "sonner";
 
 export function StaffDetailTabs({
   active,
-  // setStaff,
+  setStaff,
   // activeId,
   // setActiveId,
   // staff,
   salonServices,
 }: {
   active: Member;
-  // setStaff: React.Dispatch<React.SetStateAction<Member[]>>;
+  setStaff: React.Dispatch<React.SetStateAction<Member[]>>;
   // activeId: string;
   // setActiveId: React.Dispatch<React.SetStateAction<string>>;
   // staff: Member[];
-  salonServices: string[];
+  salonServices: { id: string; name: string }[];
 }) {
   // const [activeTab, setActiveTab] = useState("profile");
 
@@ -56,10 +43,12 @@ export function StaffDetailTabs({
   //   resetTab();
   // }, [active.id]);
 
-  const MemberSpecialities = active?.specialties.map((spec) => ({
-    name: spec.service.name,
+  const { id: salonId } = useParams();
+
+  const MemberSpecialities = salonServices.map((spec) => ({
     id: spec.id,
-    specialty: salonServices.includes(spec.service.name),
+    name: spec.name,
+    specialty: active.specialties.some((s) => s.id === spec.id),
   }));
 
   const availabilities = convertOpeningHoursFromDatabase(active.availabilities);
@@ -74,40 +63,99 @@ export function StaffDetailTabs({
     // }
   }
 
-  function handleSaveInfo(values: z.infer<typeof infoSchema>) {
-    // if (!active) return;
-    // const fullName = `${values.firstName} ${values.lastName}`.trim();
-    // setStaff((prev) =>
-    //   prev.map((s) =>
-    //     s.id === active.id
-    //       ? { ...s, name: fullName, phone: values.phone, email: values.email }
-    //       : s
-    //   )
-    // );
+  async function handleSaveInfo(values: Partial<PersonInfoFormValues>) {
+    if (!active) return;
+    const edittingValues = {
+      name:
+        values.firstName &&
+        values.lastName &&
+        `${values.firstName} ${values.lastName}`,
+
+      phone: values.phone,
+      email: values.email,
+    };
+
+    const existingValues = {
+      name: active.user.name ?? undefined,
+      phone: active.user.phone ?? undefined,
+      email: active.user.email ?? undefined,
+    };
+
+    const changes = changedValues<{
+      name?: string;
+      phone?: string;
+      email?: string;
+    }>(existingValues, edittingValues);
+
+    try {
+      const result = await updateUserInfo(
+        active.user.id,
+        salonId as string,
+        changes
+      );
+
+      if (!result) return;
+
+      setStaff((prev) =>
+        prev.map((s) =>
+          s.user.id === result.id
+            ? {
+                ...s,
+                user: {
+                  ...s.user,
+                  name: result.name,
+                  image: result.image,
+                  phone: result.phone,
+                  email: result.email,
+                },
+              }
+            : s
+        )
+      );
+      toast.success("Personal info updated successfully");
+    } catch (error) {
+      console.error("Failed to save personal info:", error);
+      toast.error("Failed to update personal info");
+    }
   }
 
-  function handleSaveSpecialties(values: z.infer<typeof specialtiesSchema>) {
-    // if (!active) return;
-    // setStaff((prev) =>
-    //   prev.map((s) =>
-    //     s.id === active.id
-    //       ? {
-    //           ...s,
-    //           skills: values.skills,
-    //           primarySkill: values.primarySkill,
-    //           notes: values.notes,
-    //         }
-    //       : s
-    //   )
-    // );
+  async function handleSaveSpecialties(values: SpecialtiesFormValues) {
+    if (!active) return;
+
+    try {
+      const result = await assignMemberSpecialties(
+        active.id,
+        salonId as string,
+        values.skills
+      );
+
+      // setStaff((prev) =>
+      //   prev.map((s) =>
+      //     s.id === active.id
+      //       ? {
+      //           ...s,
+      //           specialties: s.specialties.map((spec) => ({
+      //             ...spec,
+      //             result,
+      //           })),
+      //           notes: values.notes,
+      //         }
+      //       : s
+      //   )
+      // );
+      toast.success("Specialties updated successfully");
+    } catch (error) {
+      console.error("Failed to save specialties:", error);
+      toast.error("Failed to update specialties");
+    }
   }
 
-  function handleSaveSchedule(values: z.infer<typeof scheduleSchema>) {
-    // if (!active) return;
-    // setStaff((prev) =>
-    //   prev.map((s) => (s.id === active.id ? { ...s, schedule: values } : s))
-    // );
-  }
+  // function handleSaveSchedule(values: z.infer<typeof scheduleSchema>) {
+  //   // if (!active) return;
+  //   // setStaff((prev) =>
+  //   //   prev.map((s) => (s.id === active.id ? { ...s, schedule: values } : s))
+  //   // );
+  // }
 
   return (
     <Tabs defaultValue="profile" className="w-full">
@@ -144,6 +192,8 @@ export function StaffDetailTabs({
         <ScheduleForm
           key={active.id}
           schedule={availabilities}
+          salonId={salonId as string}
+          memberId={active.id}
           // onSave={handleSaveSchedule}
         />
       </TabsContent>

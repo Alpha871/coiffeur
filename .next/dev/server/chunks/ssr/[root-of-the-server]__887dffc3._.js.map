@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 22, "column": 0}, "map": {"version":3,"sources":["file:///Users/alphabah/Desktop/coiffeur/app/%28salon%29/salon/%5Bid%5D/services/page.tsx"],"sourcesContent":["import { getAllSalonServices } from \"@/oop/infrastructure/service-action\";\nimport { Suspense } from \"react\";\n\ntype ServiceRow = {\n  id: string;\n  title: string;\n  cat: string;\n  dur: string;\n  price: string;\n  image?: string;\n};\n\nexport default async function ServiceManagement({\n  params,\n}: {\n  params: Promise<{ id: string }>;\n}) {\n  const { id } = await params;\n\n  const services = await getAllSalonServices(id);\n\n  console.log({ services });\n\n  return (\n    <Suspense fallback={<div>Loading services...</div>}>\n      <ManageServicesClient services={services} />\n    </Suspense>\n  );\n}\n"],"names":[],"mappings":";;;;;AAAA;AACA;;;;AAWe,eAAe,kBAAkB,EAC9C,MAAM,EAGP;IACC,MAAM,EAAE,EAAE,EAAE,GAAG,MAAM;IAErB,MAAM,WAAW,MAAM,IAAA,wLAAmB,EAAC;IAE3C,QAAQ,GAAG,CAAC;QAAE;IAAS;IAEvB,qBACE,qQAAC,wOAAQ;QAAC,wBAAU,qQAAC;sBAAI;;;;;;kBACvB,cAAA,qQAAC;YAAqB,UAAU;;;;;;;;;;;AAGtC","debugId":null}}]
-}

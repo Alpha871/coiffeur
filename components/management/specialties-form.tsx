@@ -1,53 +1,24 @@
 "use client";
 
-import { z } from "zod";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormControl,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-
-const SKILL_OPTIONS = [
-  "Haircut",
-  "Hair Color",
-  "Highlights",
-  "Balayage",
-  "Blowout",
-  "Barbering",
-  "Nails",
-  "Makeup",
-  "Skincare",
-];
-
-const skillSchema = z.object({
-  name: z.string(),
-  id: z.string(),
-  specialty: z.boolean(),
-});
-
-const specialtiesSchema = z.object({
-  skills: z.array(skillSchema).min(1, "Select at least one specialty"),
-  notes: z.string().max(500, "Max 500 characters").optional().or(z.literal("")),
-});
-
-type SpecialtiesFormValues = z.infer<typeof specialtiesSchema>;
+import {
+  SpecialtiesFormValues,
+  specialtiesSchema,
+} from "@/lib/validations/staff-management";
 
 interface SpecialtiesFormProps {
   skills: { name: string; id: string; specialty: boolean }[] | null | undefined;
@@ -81,7 +52,11 @@ export function SpecialtiesForm({
               <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {skills &&
                   skills.map((s) => {
-                    const checked = field.value?.includes(s);
+                    const current =
+                      (field.value ?? []).find((x) => x.id === s.id) ?? s;
+
+                    const checked = !!current.specialty;
+
                     return (
                       <label
                         key={s.id}
@@ -93,15 +68,23 @@ export function SpecialtiesForm({
                         )}
                       >
                         <Checkbox
-                          checked={!!checked}
+                          checked={checked}
                           onCheckedChange={(v) => {
                             const isOn = Boolean(v);
-                            if (isOn)
-                              field.onChange([...(field.value ?? []), s]);
-                            else
-                              field.onChange(
-                                (field.value ?? []).filter((x) => x !== s)
+                            const prev = field.value ?? [];
+
+                            // Update or insert this skill with new `specialty` value
+                            const next = (() => {
+                              const exists = prev.some((x) => x.id === s.id);
+                              if (!exists) {
+                                return [...prev, { ...s, specialty: isOn }];
+                              }
+                              return prev.map((x) =>
+                                x.id === s.id ? { ...x, specialty: isOn } : x
                               );
+                            })();
+
+                            field.onChange(next);
                           }}
                         />
                         <span className="text-sm font-medium">{s.name}</span>
@@ -113,40 +96,6 @@ export function SpecialtiesForm({
             </FormItem>
           )}
         />
-
-        {/* <FormField
-          control={form.control}
-          name="primarySkill"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Primary Specialty</FormLabel>
-              <FormControl>
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="mt-2">
-                    <SelectValue placeholder="Choose primary specialty" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {(form.getValues("skills") ?? []).length
-                      ? (form.getValues("skills") ?? []).map((s) => (
-                          <SelectItem key={s} value={s}>
-                            {s}
-                          </SelectItem>
-                        ))
-                      : SKILL_OPTIONS.map((s) => (
-                          <SelectItem key={s} value={s}>
-                            {s}
-                          </SelectItem>
-                        ))}
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <p className="text-xs text-muted-foreground mt-1">
-                If none selected above, full list is shown.
-              </p>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
 
         <FormField
           control={form.control}

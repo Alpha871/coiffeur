@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { ServiceRow } from "./service-management-client";
+import { ServiceValues } from "@/lib/validations/service";
 
 export function FeaturedCard({
   item,
   onEdit,
   onDelete,
 }: {
-  item: ServiceRow;
+  item: ServiceValues;
   onEdit: () => void;
   onDelete: () => void;
 }) {
@@ -21,10 +21,10 @@ export function FeaturedCard({
           <div className="min-w-0">
             <p className="font-semibold truncate">{item.title}</p>
             <p className="text-sm opacity-70">
-              {item.cat} • {item.dur}
+              {item.category} • {item.durationMin} min
             </p>
           </div>
-          <span className="text-sm font-medium">{item.price}</span>
+          <span className="text-sm font-medium">${item.price} </span>
         </div>
         <div className="flex gap-2">
           <Button variant="secondary" className="h-8 px-3" onClick={onEdit}>

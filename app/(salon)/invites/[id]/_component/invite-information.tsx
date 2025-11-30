@@ -1,7 +1,7 @@
 "use client";
 
 import { BetterAuthActionButton } from "@/components/common/beter-auth-action-button";
-import { authClient } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 
 export function InviteInformation({
@@ -9,6 +9,7 @@ export function InviteInformation({
 }: {
   invitation: { id: string; organizationId: string };
 }) {
+  const session = useSession();
   const router = useRouter();
 
   function acceptInvite() {
@@ -19,7 +20,7 @@ export function InviteInformation({
           await authClient.organization.setActive({
             organizationId: invitation.organizationId,
           });
-          router.push("/worker");
+          router.push(`/worker/${session.data?.user.id}`);
         },
       }
     );

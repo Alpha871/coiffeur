@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { cn } from "@/lib/utils";
+import { changedValues, cn } from "@/lib/utils";
 import {
   Form,
   FormField,
@@ -21,15 +21,23 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Camera } from "lucide-react";
 import { userSchema } from "@/lib/validations/user";
 import { useState } from "react";
+import { toast } from "sonner";
+import {
+  updateUserCurrentInfo,
+  updateUserInfo,
+} from "@/oop/infrastructure/user-action";
+import { Spinner } from "../ui/spinner";
 
 export type UserFormValues = z.infer<typeof userSchema>;
 
 interface UserFormProps {
-  defaultValues?: Partial<UserFormValues>;
+  defaultValues: Partial<UserFormValues>;
   className?: string;
 }
 
 export function UserForm({ defaultValues, className }: UserFormProps) {
+  const [isPending, setIsPending] = useState(false);
+
   const form = useForm<UserFormValues>({
     resolver: zodResolver(userSchema),
     defaultValues: {
@@ -55,8 +63,25 @@ export function UserForm({ defaultValues, className }: UserFormProps) {
     }
   };
 
-  const submitHandler = (values: UserFormValues) => {
-    console.log("User Form Values:", values);
+  const submitHandler = async (values: UserFormValues) => {
+    try {
+      setIsPending(true);
+      const submittedValues = {
+        name: values.name + " " + values.lastname,
+        email: values.email,
+        phone: values.phone,
+      };
+      const changes = changedValues(defaultValues, submittedValues);
+
+      await updateUserCurrentInfo(changes);
+
+      toast.success("Profile edited successfully.");
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to edit profile.");
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
@@ -73,7 +98,7 @@ export function UserForm({ defaultValues, className }: UserFormProps) {
                 <AvatarImage src={preview} alt="User image" />
               ) : (
                 <AvatarFallback>
-                  {form.watch("name")?.charAt(0) || "?"}
+                  {form.watch("name")?.charAt(0) || "U"}
                 </AvatarFallback>
               )}
             </Avatar>
@@ -90,6 +115,7 @@ export function UserForm({ defaultValues, className }: UserFormProps) {
               accept="image/*"
               onChange={handleImageChange}
               className="hidden"
+              disabled
             />
           </div>
           <p className="text-sm text-muted-foreground">
@@ -163,6 +189,7 @@ export function UserForm({ defaultValues, className }: UserFormProps) {
 
         <div className="flex justify-end pt-2">
           <Button type="submit" className="w-full sm:w-auto">
+            {isPending && <Spinner />}
             Edit Profile
           </Button>
         </div>

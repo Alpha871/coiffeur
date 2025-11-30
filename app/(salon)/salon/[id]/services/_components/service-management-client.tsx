@@ -6,112 +6,128 @@ import { CategoryPill } from "@/components/services/cartegory-pill";
 import ServiceForm from "@/components/services/service-form";
 import { CarouselItem } from "@/components/ui/carousel";
 import { Input } from "@/components/ui/input";
-import { CATEGORIES } from "@/lib/validations/service";
+import { CATEGORIES, ServiceValues } from "@/lib/validations/service";
 import * as React from "react";
 import { useState } from "react";
 import { FeaturedCard } from "./featured-card";
 import { DataTable } from "@/components/common/data-table";
 import { useServiceColumns } from "./table";
-
-export type ServiceRow = {
-  id: string;
-  title: string;
-  cat: string;
-  dur: string;
-  price: string;
-  image?: string;
-};
+import { deleteServiceById } from "@/oop/infrastructure/service-action";
+import { Spinner } from "@/components/ui/spinner";
 
 interface ManageServicesClientProps {
-  services: ServiceRow[];
+  services: ServiceValues[];
 }
 
 export default function ManageServicesClient({
   services,
 }: ManageServicesClientProps) {
-  console.log(services);
-
+  console.log({ services });
   const [category, setCategory] = useState<(typeof CATEGORIES)[number]>("All");
-  const [search, setSearch] = useState("");
+  const [search] = useState("");
+  const [featuredSearch, setFeaturedSearch] = useState("");
 
-  const [featured, setFeatured] = useState<ServiceRow[]>(services);
-  const [rows, setRows] = useState<ServiceRow[]>(services);
+  const [featured, setFeatured] = useState<ServiceValues[]>(services);
+  const [rows, setRows] = useState<ServiceValues[]>(services);
 
   const [open, setOpen] = useState(false);
-  const [editing, setEditing] = useState<ServiceRow | null>(null);
+  const [targetValue, setTargetValue] = useState<
+    Partial<ServiceValues> | undefined
+  >(undefined);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isDeletingModal, setIsDeletingModal] = useState(false);
 
-  // function onAdd(values: AddValues) {
-  //   const id = crypto.randomUUID?.() ?? Math.random().toString(36).slice(2);
-
-  //   const newRow: ServiceRow = {
-  //     id,
-  //     title: values.title.trim(),
-  //     cat: values.category,
-  //     dur: `${values.durationMin} min`,
-  //     price: `$${values.price.toFixed(2)}`,
-  //     image: values.image || undefined,
-  //   };
-
-  //   setRows((prev) => [newRow, ...prev]);
-  //   if (values.category === "Haircuts") {
-  //     setFeatured((prev) => [newRow, ...prev]);
-  //   }
-  //   addForm.reset();
-  // }
-
-  function openEditModal(s: ServiceRow) {
-    setEditing(s);
+  function openEditModal(s: ServiceValues) {
+    setTargetValue(s);
     setOpen(true);
   }
 
-  function deleteService(s: ServiceRow) {
-    setRows((p) => p.filter((x) => x.id !== s.id));
-    setFeatured((p) => p.filter((x) => x.id !== s.id));
+  function openDeleteModal(s: ServiceValues) {
+    setTargetValue(s);
+    setIsDeletingModal(true);
   }
 
-  // function onEditSubmit(v: EditValues) {
-  //   if (!editing) return;
+  async function deleteService(s: ServiceValues) {
+    setIsDeletingModal(true);
+    setIsDeleting(true);
+    try {
+      const deletedService = await deleteServiceById(s.id as string);
 
-  //   const updated: ServiceRow = {
-  //     ...editing,
-  //     title: v.title.trim(),
-  //     cat: v.category,
-  //     dur: `${v.durationMin} min`,
-  //     price: `$${v.price.toFixed(2)}`,
-  //     image: v.image || undefined,
-  //   };
-
-  //   setRows((p) => p.map((x) => (x.id === updated.id ? updated : x)));
-  //   setFeatured((p) => p.map((x) => (x.id === updated.id ? updated : x)));
-
-  //   setOpen(false);
-  //   setEditing(null);
-  // }
+      setRows((p) => p.filter((x) => x.id !== deletedService.id));
+      setFeatured((p) => p.filter((x) => x.id !== deletedService.id));
+    } catch (error) {
+      console.error("Error deleting service:", error);
+    } finally {
+      setIsDeleting(false);
+      setIsDeletingModal(false);
+    }
+  }
 
   const filteredRows = rows.filter((r) => {
     const q = search.toLowerCase();
-    const matchCat = category === "All" || r.cat === category;
+    // const matchCat = category === "All" || r.category === category;
     const matchQ =
       !q ||
       r.title.toLowerCase().includes(q) ||
-      r.cat.toLowerCase().includes(q) ||
-      r.dur.toLowerCase().includes(q) ||
-      r.price.toLowerCase().includes(q);
+      r.category.toLowerCase().includes(q) ||
+      r.durationMin.toString().toLowerCase().includes(q) ||
+      r.price.toString().toLowerCase().includes(q);
+
+    return matchQ;
+  });
+
+  const filteredFeatures = featured.filter((r) => {
+    const q = featuredSearch.toLowerCase();
+    const matchCat = category === "All" || r.category === category;
+    const matchQ =
+      !q ||
+      r.title.toLowerCase().includes(q) ||
+      r.category.toLowerCase().includes(q) ||
+      r.durationMin.toString().toLowerCase().includes(q) ||
+      r.price.toString().toLowerCase().includes(q);
 
     return matchCat && matchQ;
   });
 
-  const columns = useServiceColumns(openEditModal, deleteService);
+  const columns = useServiceColumns(openEditModal, openDeleteModal);
 
   return (
     <>
       <Modal
-        open={open}
-        onOpenChange={() => setOpen(false)}
-        title="Edit Service"
-        size="lg"
+        open={isDeletingModal}
+        onOpenChange={setIsDeletingModal}
+        title="Delete Service"
+        description="Are you sure you want to delete this service? This action cannot be undone."
+        size="md"
+        footer={
+          <div className="flex justify-end space-x-2">
+            <button
+              className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
+              onClick={() => setIsDeletingModal(false)}
+              disabled={isDeleting}
+            >
+              Cancel
+            </button>
+            <button
+              className="px-4 py-2 rounded bg-red-600 text-white hover:bg-red-700"
+              onClick={() => deleteService(targetValue as ServiceValues)}
+              disabled={isDeleting}
+            >
+              {isDeleting ? <Spinner /> : "Confirm Delete"}
+            </button>
+          </div>
+        }
       >
-        <ServiceForm onCancel={() => setOpen(false)} />
+        <div />
+      </Modal>
+      <Modal open={open} onOpenChange={setOpen} title="Edit Service" size="md">
+        <ServiceForm
+          setOpenModal={setOpen}
+          setServices={setRows}
+          setFeatured={setFeatured}
+          defaultValues={targetValue}
+          type="edit"
+        />
       </Modal>
 
       <div className="bg-background-light dark:bg-background-dark min-h-screen">
@@ -140,7 +156,11 @@ export default function ManageServicesClient({
               <div className="p-6 rounded-xl border bg-content-light dark:bg-content-dark">
                 <h2 className="text-xl font-bold mb-6">Add a New Service</h2>
 
-                <ServiceForm onCancel={() => {}} />
+                <ServiceForm
+                  setServices={setRows}
+                  setFeatured={setFeatured}
+                  setOpenModal={setOpen}
+                />
               </div>
             </section>
 
@@ -152,26 +172,25 @@ export default function ManageServicesClient({
                   <Input
                     placeholder="Search for a service..."
                     className="h-12"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    value={featuredSearch}
+                    onChange={(e) => setFeaturedSearch(e.target.value)}
                   />
                 </div>
 
-                <SmartCarousel wheel className="mb-6">
-                  {featured
-                    .filter((f) => category === "All" || f.cat === category)
-                    .map((f) => (
-                      <CarouselItem key={f.id} className="basis-auto pl-3">
-                        <FeaturedCard
-                          item={f}
-                          onEdit={() => openEditModal(f)}
-                          onDelete={() => deleteService(f)}
-                        />
-                      </CarouselItem>
-                    ))}
+                <SmartCarousel wheel className="mb-6" key={featured.length}>
+                  {filteredFeatures.map((f) => (
+                    <CarouselItem key={f.id} className="basis-auto pl-3">
+                      <FeaturedCard
+                        key={f.id}
+                        item={f}
+                        onEdit={() => openEditModal(f)}
+                        onDelete={() => openDeleteModal(f)}
+                      />
+                    </CarouselItem>
+                  ))}
                 </SmartCarousel>
 
-                <DataTable<ServiceRow>
+                <DataTable<ServiceValues>
                   title="Services"
                   columns={columns}
                   data={filteredRows}

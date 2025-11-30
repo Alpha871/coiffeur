@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { Loader, Menu } from "lucide-react";
 import { signOut, useSession } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
+import UserInfo from "../profil/user-info";
 
 function Header() {
   const { data: session, isPending } = useSession();
@@ -58,12 +60,23 @@ function Header() {
           {isPending ? (
             <Loader className="animate-spin" />
           ) : session ? (
-            <Button
-              onClick={() => signOut()}
-              className="h-10 px-4 rounded-xl bg-primary text-background-dark text-sm font-bold tracking-[0.015em]"
-            >
-              Logout
-            </Button>
+            // <Button
+            //   onClick={() => {
+            //     handleLogout();
+            //   }}
+            //   className="h-10 px-4 rounded-xl bg-primary text-background-dark text-sm font-bold tracking-[0.015em]"
+            // >
+            //   Logout
+            // </Button>
+            <UserInfo
+              user={{
+                id: session?.user?.id,
+                name: session?.user?.name,
+                email: session?.user?.email,
+                image: session?.user?.image || undefined,
+                role: session?.user?.role || "",
+              }}
+            />
           ) : (
             <Button className="h-10 px-4 rounded-xl bg-primary text-background-dark text-sm font-bold tracking-[0.015em]">
               <Link href="/authentication">Login</Link>

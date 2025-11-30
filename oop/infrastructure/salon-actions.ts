@@ -10,6 +10,51 @@ import { revalidatePath } from "next/cache";
 import { CreationStatus, Prisma } from "@/generated/prisma";
 import { redirect } from "next/navigation";
 
+export type SalonBy = Awaited<ReturnType<typeof getSalonById>>;
+
+export async function getSalonById(salonId: string) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (!session) {
+    redirect(
+      "/authentication?callbackUrl=" +
+        encodeURIComponent(`/book-appointment/${salonId}`)
+    );
+  }
+
+  const salon = await prisma.salon.findUnique({
+    where: { id: salonId },
+    include: {
+      availabilities: true,
+      organization: {
+        include: {
+          members: {
+            // where: { role: "member" },
+            include: {
+              user: true,
+              availabilities: true,
+              specialties: {
+                include: {
+                  service: true,
+                },
+              },
+              appointments: true,
+            },
+          },
+        },
+      },
+      salonServices: {
+        include: {
+          service: true,
+        },
+      },
+    },
+  });
+
+  return salon;
+}
+
 export async function ActiveCurrentSalonOrganizationId(
   organizationId: string,
   organizationSlug: string
@@ -75,7 +120,7 @@ export async function updateSalon(
     if (changedValues.phone) updateData.phone = changedValues.phone;
     if (changedValues.email) updateData.email = changedValues.email;
 
-    updateData.creationStatus = "PENDING";
+    updateData.creationStatus = CreationStatus.PENDING;
 
     await prisma.salon.update({
       where: { id: salonId },
@@ -154,6 +199,13 @@ export async function getSalonByUserId() {
 
   const requestedSalon = await prisma.salon.findFirst({
     where: { userId: session.user.id },
+    include: {
+      organization: {
+        include: {
+          members: true,
+        },
+      },
+    },
   });
 
   return requestedSalon;
@@ -307,58 +359,13 @@ export type SalonById = Prisma.SalonGetPayload<{
     };
   };
 }>;
-// export type SalonById = Awaited<ReturnType<typeof getSalonById>>;
 
-export async function getSalonById(salonId: string) {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  if (!session) {
-    redirect("/authentication");
-  }
-
-  return await prisma.salon.findUnique({
-    where: { id: salonId },
-    include: {
-      availabilities: true,
-      organization: {
-        include: {
-          members: {
-            include: {
-              user: true,
-              availabilities: true,
-              specialties: {
-                include: {
-                  service: true,
-                },
-              },
-            },
-          },
-        },
-      },
-      salonServices: {
-        include: {
-          service: true,
-        },
-      },
-    },
-  });
-}
-
-export type SalonType = Awaited<ReturnType<typeof getAllSalons>>[number];
+export type SalonListItem = Awaited<ReturnType<typeof getAllSalons>>;
 
 export async function getAllSalons() {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  if (!session || session.user.role !== userRole.admin) {
-    redirect("/authentication");
-  }
-
-  return await prisma.salon.findMany({
+  const salons = await prisma.salon.findMany({
+    where: { creationStatus: CreationStatus.COMPLETED },
     include: {
-      availabilities: true,
-      user: true,
       salonServices: {
         include: {
           service: true,
@@ -367,6 +374,7 @@ export async function getAllSalons() {
       organization: true,
     },
   });
+  return salons;
 }
 
 export async function getCompleteSalons() {
@@ -418,4 +426,26 @@ export async function updateSalonOpeningHours(
       isClosed: hours.isClosed,
     })),
   });
+}
+
+export async function getAllSalonsForCurrentUser() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (!session) {
+    redirect("/authentication");
+  }
+
+  const salons = await prisma.salon.findMany({
+    where: { userId: session.user.id },
+    include: {
+      salonServices: {
+        include: {
+          service: true,
+        },
+      },
+    },
+  });
+
+  return salons;
 }

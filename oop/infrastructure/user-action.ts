@@ -2,8 +2,222 @@
 
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+
+export async function getAppointmentsByMemberId() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/authentication");
+  }
+
+  const appointments = await prisma.customer.findFirst({
+    where: {
+      userId: session?.user.id,
+    },
+    include: {
+      appointments: {
+        include: {
+          member: {
+            include: {
+              user: true,
+            },
+          },
+          service: true,
+          salon: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  return appointments;
+}
+
+export type MemberStylist = Awaited<ReturnType<typeof getMemberById>>;
+
+export async function getUserById(id: string) {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: id,
+    },
+  });
+
+  return user;
+}
+
+export async function getMemberById(id: string) {
+  const member = await prisma.member.findUnique({
+    where: {
+      id: id,
+    },
+    include: {
+      user: true,
+      specialties: {
+        include: {
+          service: true,
+        },
+      },
+      availabilities: true,
+      organization: {
+        include: {
+          salon: true,
+        },
+      },
+      appointments: {
+        include: {
+          service: true,
+          customer: {
+            include: {
+              user: true,
+            },
+          },
+        },
+      },
+    },
+  });
+
+  return member;
+}
+
+export async function getMemberByUserId(userId: string) {
+  const member = await prisma.member.findFirst({
+    where: {
+      userId: userId,
+    },
+    include: {
+      specialties: true,
+      organization: {
+        include: {
+          salon: true,
+        },
+      },
+    },
+  });
+
+  return member;
+}
+
+export async function memberAvailability(
+  memberId: string,
+  salonId: string,
+  availabilities: Array<{
+    dayOfWeek: number;
+    startTime: Date;
+    endTime: Date;
+    isClosed: boolean;
+  }>
+) {
+  try {
+    // Delete existing availabilities for this member
+    await prisma.salonAvailability.deleteMany({
+      where: {
+        memberId: memberId,
+        salonId: salonId,
+      },
+    });
+
+    // Create new availabilities
+    const createdAvailabilities = await prisma.salonAvailability.createMany({
+      data: availabilities.map((availability) => ({
+        salonId,
+        memberId,
+        dayOfWeek: availability.dayOfWeek,
+        startTime: availability.startTime,
+        endTime: availability.endTime,
+        isClosed: availability.isClosed,
+      })),
+    });
+
+    revalidatePath(`/salon/${salonId}/staff-management`);
+    return createdAvailabilities;
+  } catch (error) {
+    console.error("Error updating member availability:", error);
+    throw error;
+  }
+}
+
+export async function assignMemberSpecialties(
+  memberId: string,
+  salonId: string,
+  specialties: { id: string; name: string; specialty: boolean }[]
+) {
+  const selectedSpecialties = specialties
+    .filter((s) => s.specialty)
+    .map((s) => s.id);
+
+  const updatedMember = await prisma.member.update({
+    where: { id: memberId },
+    data: {
+      specialties: {
+        connect: selectedSpecialties.map((serviceId) => ({ id: serviceId })),
+      },
+    },
+  });
+
+  return updatedMember;
+
+  revalidatePath(`/salon/${salonId}/staff-management`);
+}
+export async function updateUserCurrentInfo(values: {
+  name?: string;
+  phone?: string;
+  email?: string;
+}) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/authentication");
+  }
+
+  const userId = session?.user.id as string;
+
+  if (Object.values(values).some((value) => value !== undefined)) {
+    const result = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        ...values,
+      },
+    });
+
+    revalidatePath(`/profile/${userId}`);
+
+    return result;
+  }
+}
+
+export async function updateUserInfo(
+  userId: string,
+  salonId: string,
+  values: {
+    name?: string;
+    phone?: string;
+    email?: string;
+  }
+) {
+  if (Object.values(values).some((value) => value !== undefined)) {
+    const result = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        ...values,
+      },
+    });
+
+    revalidatePath(`/salon/${salonId}/staff-management`);
+    revalidatePath(`/worker/${salonId}`);
+
+    return result;
+  }
+}
 
 export const listUsers = async (pageSize: number, currentPage: number) => {
   const users = await auth.api.listUsers({

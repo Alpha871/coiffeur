@@ -235,12 +235,14 @@ exports.Prisma.AppointmentScalarFieldEnum = {
   id: 'id',
   salonId: 'salonId',
   serviceId: 'serviceId',
-  MemberId: 'MemberId',
+  memberId: 'memberId',
   customerId: 'customerId',
   startsAt: 'startsAt',
   endsAt: 'endsAt',
+  duration: 'duration',
+  notes: 'notes',
   status: 'status',
-  priceCents: 'priceCents',
+  price: 'price',
   rejectionReason: 'rejectionReason',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -308,8 +310,9 @@ exports.ServiceCategory = exports.$Enums.ServiceCategory = {
 
 exports.AppointmentStatus = exports.$Enums.AppointmentStatus = {
   PENDING: 'PENDING',
-  CONFIRMED: 'CONFIRMED',
+  APPROVED: 'APPROVED',
   CANCELLED: 'CANCELLED',
+  REJECTED: 'REJECTED',
   COMPLETED: 'COMPLETED'
 };
 

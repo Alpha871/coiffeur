@@ -1,22 +1,35 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { ServiceRow } from "./service-management-client";
+
+import { ServiceValues } from "@/lib/validations/service";
 
 export function useServiceColumns(
-  openEdit: (s: ServiceRow) => void,
-  deleteService: (s: ServiceRow) => void
-): ColumnDef<ServiceRow>[] {
+  openEdit: (s: ServiceValues) => void,
+  deleteService: (s: ServiceValues) => void
+): ColumnDef<ServiceValues>[] {
   return [
     {
       accessorKey: "title",
       header: "Service",
+      cell: ({ row }) => {
+        const title = row.original.title;
+        return <span>{title}</span>;
+      },
     },
     {
       accessorKey: "cat",
       header: "Category",
+      cell: ({ row }) => {
+        const category = row.original.category;
+        return <span>{category}</span>;
+      },
     },
     {
       accessorKey: "dur",
       header: "Duration",
+      cell: ({ row }) => {
+        const duration = row.original.durationMin;
+        return <span>{duration} min</span>;
+      },
     },
     {
       accessorKey: "image",
@@ -36,6 +49,10 @@ export function useServiceColumns(
     {
       accessorKey: "price",
       header: "Price",
+      cell: ({ row }) => {
+        const price = row.original.price;
+        return <span>${price}</span>;
+      },
     },
     {
       id: "actions",

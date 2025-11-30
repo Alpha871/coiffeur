@@ -43,10 +43,10 @@ export async function addService(
 
 export async function editService(
   serviceId: string,
-  name: string,
-  category: string,
-  durationMin: number,
-  price: number,
+  name?: string,
+  category?: string,
+  durationMin?: number,
+  price?: number,
   description?: string | null,
   image?: string
 ) {
@@ -56,17 +56,17 @@ export async function editService(
       service: {
         update: {
           name,
-          category: category.toUpperCase() as any,
+          category: category?.toUpperCase() as any,
           durationMin,
-          priceCents: price,
+          price,
           description,
           image,
         },
       },
     },
     include: {
-      service: true,
       salon: true,
+      service: true,
     },
   });
 
@@ -75,11 +75,12 @@ export async function editService(
   return updatedService;
 }
 
-export async function deleteService(serviceId: string) {
+export async function deleteServiceById(serviceId: string) {
   const deletedService = await prisma.salonService.delete({
     where: { id: serviceId },
     include: {
       salon: true,
+      service: true,
     },
   });
 

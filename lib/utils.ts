@@ -6,14 +6,20 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function stringToTime(timeString: string): Date {
-  const [hours, minutes] = timeString.split(":").map(Number);
-  const date = new Date("1970-01-01T00:00:00Z");
-  date.setHours(hours, minutes, 0, 0);
-  return date;
+export function randomValues() {
+  return Math.random() * 360;
 }
 
-// ✅ Updated: accepts optional strings
+export function stringToTime(
+  timeString: string,
+  baseDate: Date = new Date()
+): Date {
+  const [hours, minutes] = timeString.split(":").map(Number);
+  const date = new Date(baseDate);
+  date.setHours(hours, minutes, 0, 0);
+  return date.toISOString() as unknown as Date;
+}
+
 export function convertOpeningHoursToDatabase(
   openingHoursObj: Record<
     OpeningHoursDayKey,
@@ -124,9 +130,114 @@ export function convertOpeningHoursFromDatabase(
 
   return result;
 }
-// Helper function to convert Date to time string (HH:mm)
-function timeToString(date: Date): string {
+
+export function timeToString(date: Date): string {
   const hours = String(date.getHours()).padStart(2, "0");
   const minutes = String(date.getMinutes()).padStart(2, "0");
+
   return `${hours}:${minutes}`;
+}
+
+export const capitalize = (str: string) =>
+  str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
+export function changedValues<T>(
+  original: Partial<T>,
+  updated: Partial<T>
+): Partial<T> {
+  const changes: Partial<T> = {};
+  for (const key in updated) {
+    if (updated[key] !== original[key]) {
+      changes[key] = updated[key];
+    }
+  }
+  return changes;
+}
+
+export function compareHHMM(a: string, b: string): number {
+  const toMin = (t: string) => {
+    const [h, m] = t.split(":").map((x) => parseInt(x, 10));
+    return (h || 0) * 60 + (m || 0);
+  };
+  return toMin(a) - toMin(b);
+}
+
+export const DAY_ORDER = [
+  "mon",
+  "tue",
+  "wed",
+  "thu",
+  "fri",
+  "sat",
+  "sun",
+] as const;
+type DayKey = (typeof DAY_ORDER)[number];
+
+export const DAY_LABEL: Record<DayKey, string> = {
+  mon: "Monday",
+  tue: "Tuesday",
+  wed: "Wednesday",
+  thu: "Thursday",
+  fri: "Friday",
+  sat: "Saturday",
+  sun: "Sunday",
+};
+
+export const DEFAULT_START = "09:00";
+export const DEFAULT_END = "18:00";
+export const MIN_TIME = "06:00";
+export const MAX_TIME = "22:00";
+
+export function defaultSchedule() {
+  return {
+    mon: {
+      dayOfWeek: 0,
+      closed: true,
+      open: false,
+      start: DEFAULT_START,
+      end: DEFAULT_END,
+    },
+    tue: {
+      dayOfWeek: 1,
+      closed: true,
+      open: false,
+      start: DEFAULT_START,
+      end: DEFAULT_END,
+    },
+    wed: {
+      dayOfWeek: 2,
+      closed: true,
+      open: false,
+      start: DEFAULT_START,
+      end: DEFAULT_END,
+    },
+    thu: {
+      dayOfWeek: 3,
+      closed: true,
+      open: false,
+      start: DEFAULT_START,
+      end: DEFAULT_END,
+    },
+    fri: {
+      dayOfWeek: 4,
+      closed: true,
+      open: false,
+      start: DEFAULT_START,
+      end: DEFAULT_END,
+    },
+    sat: {
+      dayOfWeek: 5,
+      closed: true,
+      open: false,
+      start: DEFAULT_START,
+      end: DEFAULT_END,
+    },
+    sun: {
+      dayOfWeek: 6,
+      closed: false,
+      open: true,
+      start: DEFAULT_START,
+      end: DEFAULT_END,
+    },
+  };
 }
