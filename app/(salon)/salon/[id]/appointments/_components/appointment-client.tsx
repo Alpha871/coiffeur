@@ -77,32 +77,6 @@ function convertEventsToAppointments(events: CalendarEvent[]): Appointment[] {
     .map((event) => event.extendedProps!.appointment!);
 }
 
-function createNewAppointment(
-  clientName: string,
-  staffId: string,
-  service: string,
-  start: Date
-): Appointment {
-  const duration = 60; // Default duration in minutes
-  const end = addMinutes(start, duration);
-
-  return {
-    id: Math.random().toString(36).substr(2, 9),
-    customerName: clientName,
-    customerAvatar: null,
-    duration,
-    service,
-    startsAt: start,
-    endsAt: end,
-    status: AppointmentStatus.PENDING,
-    notes: null,
-    price: 0,
-    memberId: staffId,
-    memberAvatar: null,
-    memberName: "", // This can be filled in later
-  };
-}
-
 function updateAppointmentTimes(
   appointment: Appointment,
   newStart: Date,
@@ -261,38 +235,38 @@ export default function AppointmentClient({
   }, [appointments, selectedStatus, selectedStaff, searchQuery]);
 
   // Handle calendar event interactions
-  const handleDateSelect = useCallback(
-    (selectInfo: DateSelectArg) => {
-      const title = prompt(
-        "Enter appointment details (Client Name - Service):"
-      );
-      if (title) {
-        const [clientName, service] = title.split(" - ");
-        if (clientName && service) {
-          const newAppointment = createNewAppointment(
-            clientName.trim(),
-            selectedStaff !== "all" ? selectedStaff : members[0].id,
-            service.trim(),
-            selectInfo.start
-          );
+  // const handleDateSelect = useCallback(
+  //   (selectInfo: DateSelectArg) => {
+  //     const title = prompt(
+  //       "Enter appointment details (Client Name - Service):"
+  //     );
+  //     if (title) {
+  //       const [clientName, service] = title.split(" - ");
+  //       if (clientName && service) {
+  //         const newAppointment = createNewAppointment(
+  //           clientName.trim(),
+  //           selectedStaff !== "all" ? selectedStaff : members[0].id,
+  //           service.trim(),
+  //           selectInfo.start
+  //         );
 
-          // Check for conflicts
-          const conflicts = findAppointmentConflicts(
-            appointments,
-            newAppointment
-          );
-          if (conflicts.length > 0) {
-            alert("Time conflict detected! Please choose a different time.");
-            return;
-          }
+  //         // Check for conflicts
+  //         const conflicts = findAppointmentConflicts(
+  //           appointments,
+  //           newAppointment
+  //         );
+  //         if (conflicts.length > 0) {
+  //           alert("Time conflict detected! Please choose a different time.");
+  //           return;
+  //         }
 
-          setAppointments((prev) => [...prev, newAppointment]);
-        }
-      }
-      selectInfo.view.calendar.unselect();
-    },
-    [appointments, selectedStaff, members]
-  );
+  //         setAppointments((prev) => [...prev, newAppointment]);
+  //       }
+  //     }
+  //     selectInfo.view.calendar.unselect();
+  //   },
+  //   [appointments, selectedStaff, members]
+  // );
 
   const handleEventClick = useCallback((clickInfo: EventClickArg) => {
     const appointment = clickInfo.event.extendedProps?.appointment;
@@ -522,7 +496,7 @@ export default function AppointmentClient({
                       startTime: "09:00",
                       endTime: "18:00",
                     }}
-                    select={handleDateSelect}
+                    // select={handleDateSelect}
                     eventClick={handleEventClick}
                     eventDrop={handleEventDrop}
                     eventContent={(eventInfo) => {

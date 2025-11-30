@@ -2,7 +2,7 @@ import { takeFirstLastLetters } from "@/utils/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { appointment } from "@/lib/validations/appointment";
+import { Appointment, AppointmentView } from "@/lib/validations/appointment";
 import { format } from "date-fns";
 import { AppointmentStatus } from "@/generated/prisma";
 import { toast } from "sonner";
@@ -18,7 +18,7 @@ import { Spinner } from "../ui/spinner";
 function AppointmentDetail({
   selectedAppointment,
 }: {
-  selectedAppointment: appointment | undefined;
+  selectedAppointment: AppointmentView | undefined;
 }) {
   const { id: salonId } = useParams();
   const [isPending, startTransition] = useTransition();

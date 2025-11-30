@@ -192,7 +192,7 @@ export default function StatusCard({ salon }: StatusCardProps) {
               setIsModalOpen={setIsModalOpen}
               type="edit"
               defaultValues={{
-                name: salon.name,
+                salonName: salon.name,
                 address: salon.address,
                 phone: salon.phone,
                 email: salon.email,

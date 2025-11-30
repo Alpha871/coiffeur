@@ -1,5 +1,18 @@
-import { $Enums } from "@/generated/prisma/wasm";
+import { $Enums, AppointmentStatus } from "@/generated/prisma/wasm";
 import z from "zod";
+
+export type AppointmentView = {
+  id: string;
+  startsAt: Date;
+  endsAt: Date;
+  notes: string | null;
+  status: AppointmentStatus;
+  service: string;
+  customerName: string;
+  customerAvatar: string | null;
+  duration: number;
+  price: number;
+};
 
 export type appointmentDetails = {
   id: string;

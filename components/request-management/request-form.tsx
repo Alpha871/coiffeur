@@ -19,7 +19,7 @@ import {
 } from "@/lib/validations/request-salon";
 import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
-import { convertOpeningHoursToDatabase } from "@/lib/utils";
+import { changedValues, convertOpeningHoursToDatabase } from "@/lib/utils";
 import { organization, useSession } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { Salon } from "@/oop/domain/salon";
@@ -35,60 +35,10 @@ import { Loader } from "lucide-react";
 export type FormValues = z.infer<typeof requestSchema>;
 
 interface RequestSalonFormProps {
-  salonId: string;
-  defaultValues?: {
-    name?: string;
-    address?: string;
-    phone?: string;
-    email?: string;
-    description?: string;
-    openingHours?: Record<
-      OpeningHoursDayKey,
-      {
-        dayOfWeek: number;
-        start?: string;
-        end?: string;
-        closed?: boolean;
-      }
-    >;
-  };
+  salonId?: string;
+  defaultValues?: Partial<FormValues>;
   type?: "edit" | "request";
   setIsModalOpen?: (isOpen: boolean) => void;
-}
-
-function getChangedFields(
-  salonId: string,
-  currentValues: any, //FormValues,
-  originalValues: RequestSalonFormProps["defaultValues"]
-): Partial<FormValues> {
-  const changedFields: Partial<FormValues> = {};
-
-  // Compare basic fields
-  if (currentValues.salonName !== originalValues?.name) {
-    changedFields.salonName = currentValues.salonName;
-  }
-  if (currentValues.address !== originalValues?.address) {
-    changedFields.address = currentValues.address;
-  }
-  if (currentValues.phone !== originalValues?.phone) {
-    changedFields.phone = currentValues.phone;
-  }
-  if (currentValues.email !== originalValues?.email) {
-    changedFields.email = currentValues.email;
-  }
-  if (currentValues.description !== originalValues?.description) {
-    changedFields.description = currentValues.description;
-  }
-
-  // Compare opening hours
-  if (
-    JSON.stringify(currentValues.openingHours) !==
-    JSON.stringify(originalValues?.openingHours)
-  ) {
-    changedFields.openingHours = currentValues.openingHours;
-  }
-
-  return changedFields;
 }
 
 function RequestSalonForm({
@@ -105,7 +55,7 @@ function RequestSalonForm({
   const form = useForm<FormValues>({
     resolver: zodResolver(requestSchema),
     defaultValues: {
-      salonName: defaultValues?.name ?? "",
+      salonName: defaultValues?.salonName ?? "",
       address: defaultValues?.address ?? "",
       phone: defaultValues?.phone ?? "",
       email: defaultValues?.email ?? "",
@@ -130,13 +80,21 @@ function RequestSalonForm({
     setIsLoading(true);
 
     const openingHours = convertOpeningHoursToDatabase(values.openingHours);
-
-    const submittedValues = { ...values, openingHours: openingHours };
+    const baseline: Partial<FormValues> = {
+      salonName: defaultValues?.salonName,
+      address: defaultValues?.address,
+      phone: defaultValues?.phone,
+      email: defaultValues?.email,
+      description: defaultValues?.description,
+      openingHours: defaultValues?.openingHours, // may be undefined, which is fine in Partial<FormValues>
+    };
+    const submittedValues = { ...values };
 
     if (type === "edit") {
-      const changedFields = getChangedFields(submittedValues, defaultValues);
-
-      console.log({ changedFields });
+      const changedFields = changedValues<Partial<FormValues>>(
+        baseline,
+        submittedValues
+      );
 
       if (Object.keys(changedFields).length === 0) {
         toast.info("No changes detected");
@@ -145,7 +103,11 @@ function RequestSalonForm({
       }
 
       try {
-        // Send only changed fields to backend
+        if (!salonId) {
+          toast.error("Salon ID is missing");
+          setIsLoading(false);
+          return;
+        }
         await updateSalon(salonId, changedFields);
         toast.success("Salon updated successfully!");
         router.refresh();
@@ -181,7 +143,7 @@ function RequestSalonForm({
         submittedValues.phone,
         submittedValues.email,
         submittedValues.description || "",
-        submittedValues.openingHours
+        openingHours
       );
 
       if (!salonData.isComplete()) {

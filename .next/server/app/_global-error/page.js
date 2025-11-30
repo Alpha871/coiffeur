@@ -1,0 +1,13 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_global-error/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__3dcf676e._.js")
+R.c("server/chunks/ssr/Desktop_coiffeur_b1f5c5a4._.js")
+R.c("server/chunks/ssr/2ae5e_next_dist_69d4be19._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__586e10a8._.js")
+R.c("server/chunks/ssr/2ae5e_next_dist_compiled_@opentelemetry_api_index_0452d150.js")
+R.c("server/chunks/ssr/2ae5e_next_dist_90fe0320._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__026ae198._.js")
+R.c("server/chunks/ssr/2ae5e_next_dist_0caa1bfb._.js")
+R.c("server/chunks/ssr/Desktop_coiffeur_app_02167e89._.js")
+R.c("server/chunks/ssr/Desktop_coiffeur__next-internal_server_app__global-error_page_actions_54058406.js")
+R.m(75260)
+module.exports=R.m(75260).exports

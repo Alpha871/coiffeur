@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { SalonStaff } from "./book-appointment-client";
+import { SalonStaff } from "@/lib/validations/appointment";
 
 export function StaffCard({
   selected,

@@ -1,0 +1,35 @@
+{
+  "node": {
+    "400fabdd257999342fcbc0150b603a331fb214c3d0": {
+      "workers": {
+        "app/(salon)/request-salon/page": {
+          "moduleId": 7729,
+          "async": false,
+          "exportedName": "requestSalon",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/request-salon/page": "action-browser"
+      },
+      "exportedName": "requestSalon",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+    },
+    "6033c8a8408310795044fe39df26c0f94118256159": {
+      "workers": {
+        "app/(salon)/request-salon/page": {
+          "moduleId": 7729,
+          "async": false,
+          "exportedName": "updateSalon",
+          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/request-salon/page": "action-browser"
+      },
+      "exportedName": "updateSalon",
+      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+    }
+  },
+  "edge": {}
+}

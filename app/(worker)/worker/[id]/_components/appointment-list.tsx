@@ -2,7 +2,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { appointment } from "@/lib/validations/appointment";
+import { Appointment, AppointmentView } from "@/lib/validations/appointment";
+
 import { takeFirstLastLetters } from "@/utils/utils";
 import { format } from "date-fns";
 
@@ -12,7 +13,7 @@ export function AppointmentList({
   currentUserId,
   memberUserId,
 }: {
-  items: appointment[];
+  items: AppointmentView[];
   onViewDetails: (id: string) => void;
   currentUserId: string;
   memberUserId: string;

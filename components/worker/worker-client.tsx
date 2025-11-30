@@ -19,7 +19,7 @@ import {
 } from "@/oop/infrastructure/user-repository";
 import { takeFirstLastLetters } from "@/utils/utils";
 import { changedValues, DAY_ORDER, timeToString } from "@/lib/utils";
-import { appointment } from "@/lib/validations/appointment";
+import { Appointment, AppointmentView } from "@/lib/validations/appointment";
 
 import { useMemo } from "react";
 import AppointmentDetail from "../appointment/appointment-detail";
@@ -30,22 +30,13 @@ import { PersonalInfoForm } from "../management/personal-form";
 import { toast } from "sonner";
 import { PersonInfoFormValues } from "@/lib/validations/staff-management";
 
-export type Appointment = {
-  id: string;
-  name: string;
-  service: string;
-  when: string; // display string (e.g., "Today, 2:00 PM")
-  dateKey: string; // normalized date for filtering/sorting (YYYY-MM-DD)
-  avatar: string;
-};
-
 export default function WorkerPageClient({
   member,
   appointments,
   currentUserId,
 }: {
   member: MemberStylist;
-  appointments: appointment[];
+  appointments: AppointmentView[];
   currentUserId: string;
 }) {
   const { id: salonId } = useParams();
@@ -57,7 +48,7 @@ export default function WorkerPageClient({
   const [openRequestModel, setOpenRequestModel] = useState(false);
 
   const [selectedAppointment, setSelectedAppointment] = useState<
-    appointment | undefined
+    AppointmentView | undefined
   >();
   const [openDetailsModal, setOpenDetailsModal] = useState(false);
 
@@ -156,7 +147,6 @@ export default function WorkerPageClient({
           phone={member.user.phone || ""}
           email={member.user.email || ""}
           onSave={updatePersonalInfo}
-          type="employee"
         />
       </Modal>
       <Modal

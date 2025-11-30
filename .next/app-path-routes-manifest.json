@@ -1,0 +1,22 @@
+{
+  "/(admin)/admin-panel/page": "/admin-panel",
+  "/(client)/profil/[id]/page": "/profil/[id]",
+  "/(salon)/book-appointment/[id]/page": "/book-appointment/[id]",
+  "/(salon)/invites/[id]/page": "/invites/[id]",
+  "/(salon)/make-appointment/page": "/make-appointment",
+  "/(salon)/request-salon-management/[id]/page": "/request-salon-management/[id]",
+  "/(salon)/request-salon/page": "/request-salon",
+  "/(salon)/salon/[id]/appointments/page": "/salon/[id]/appointments",
+  "/(salon)/salon/[id]/dashboard/page": "/salon/[id]/dashboard",
+  "/(salon)/salon/[id]/services/page": "/salon/[id]/services",
+  "/(salon)/salon/[id]/staff-management/page": "/salon/[id]/staff-management",
+  "/(salon)/salons/page": "/salons",
+  "/(worker)/worker/[id]/page": "/worker/[id]",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/auth/[...all]/route": "/api/auth/[...all]",
+  "/api/salon/route": "/api/salon",
+  "/authentication/page": "/authentication",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/"
+}

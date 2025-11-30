@@ -17,12 +17,12 @@ export default function SalonAuth() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const session = useSession();
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/";
+  // const searchParams = useSearchParams();
+  // const callbackUrl = searchParams.get("callbackUrl") || "/";
 
-  if (session && session.data?.user) {
-    redirect(callbackUrl);
-  }
+  // if (session && session.data?.user) {
+  //   redirect(callbackUrl);
+  // }
 
   const signInWithGoogle = async () => {
     const response = await signIn.social({

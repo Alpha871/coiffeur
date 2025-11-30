@@ -1,0 +1,17 @@
+{
+  "status": 307,
+  "headers": {
+    "location": "/authentication",
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(salon)/layout,_N_T_/(salon)/request-salon/layout,_N_T_/(salon)/request-salon/page,_N_T_/request-salon"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHNhbG9uKQ/request-salon/__PAGE__",
+    "/!KHNhbG9uKQ/request-salon",
+    "/!KHNhbG9uKQ",
+    "/_index"
+  ]
+}

@@ -15,7 +15,6 @@ import { useState } from "react";
 import {
   DeleteSalonById,
   getCompleteSalons,
-  SalonType,
 } from "@/oop/infrastructure/salon-repository";
 import Modal from "../common/modal";
 
@@ -227,7 +226,7 @@ function BarberTabClient({ barberShops }: BarberTabProps) {
               <section>
                 <h4 className="mb-2 text-base font-semibold">Services</h4>
                 <div className="flex flex-wrap gap-2">
-                  {selectedShop.services?.map((service) => (
+                  {selectedShop.salonServices?.map((service) => (
                     <Badge
                       key={service.id}
                       variant="outline"

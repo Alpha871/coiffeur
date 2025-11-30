@@ -328,7 +328,6 @@ export async function updateBookedAppointment(
       price: data.price,
     }).filter(([_, value]) => value !== undefined)
   );
-  console.log({ updatedValues });
 
   const appointment = await prisma.appointment.update({
     where: {
@@ -338,8 +337,6 @@ export async function updateBookedAppointment(
       ...updatedValues,
     },
   });
-
-  console.log("salon id", salonId);
 
   revalidatePath(`/book-appointment/${data.salonId}`);
   revalidatePath(`/profil/${userId}`);
