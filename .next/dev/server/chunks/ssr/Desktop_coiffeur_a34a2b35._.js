@@ -288,9 +288,6 @@ async function updateBookedAppointment(appointmentId, data, salonId) {
         duration: data.duration,
         price: data.price
     }).filter(([_, value])=>value !== undefined));
-    console.log({
-        updatedValues
-    });
     const appointment = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].appointment.update({
         where: {
             id: appointmentId
@@ -299,7 +296,6 @@ async function updateBookedAppointment(appointmentId, data, salonId) {
             ...updatedValues
         }
     });
-    console.log("salon id", salonId);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(`/book-appointment/${data.salonId}`);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(`/profil/${userId}`);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$cache$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["revalidatePath"])(`/salon/${salonId}/appointments`);
@@ -411,12 +407,12 @@ __turbopack_context__.s([
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateSalon"],
     "60c3e51dd5d1ef5e6e42f6cbbad7453157d3fea558",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$appointment$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["RejectAppointment"],
-    "60f112225e045f57296243a5d56be5454294412d42",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateStaffMemberHours"],
     "60f57bf9adb3c026da40413504bb0cde5f1671ffb1",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateSalonOpeningHours"],
     "7002b1bd7af5201e00fabf9aeedf6723487be86e23",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$appointment$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateBookedAppointment"],
+    "70f112225e045f57296243a5d56be5454294412d42",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateStaffMemberHours"],
     "7ff44cb26f52c26134eb419f313b49673ed601eec6",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateSalonOrganizationId"]
 ]);

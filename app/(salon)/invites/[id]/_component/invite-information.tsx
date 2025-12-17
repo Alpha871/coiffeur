@@ -36,11 +36,11 @@ export function InviteInformation({
 
   return (
     <div className="flex gap-4">
-      <BetterAuthActionButton className="flex-grow" action={acceptInvite}>
+      <BetterAuthActionButton className="grow" action={acceptInvite}>
         Accept
       </BetterAuthActionButton>
       <BetterAuthActionButton
-        className="flex-grow"
+        className="grow"
         variant="destructive"
         action={rejectInvite}
       >

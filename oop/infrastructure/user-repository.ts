@@ -53,9 +53,42 @@ export async function getUserById(id: string) {
 
   return user;
 }
+export async function getMemberByUserId(id: string) {
+  const member = await prisma.member.findFirst({
+    where: {
+      userId: id,
+    },
+    include: {
+      user: true,
+      specialties: {
+        include: {
+          service: true,
+        },
+      },
+      availabilities: true,
+      organization: {
+        include: {
+          salon: true,
+        },
+      },
+      appointments: {
+        include: {
+          service: true,
+          customer: {
+            include: {
+              user: true,
+            },
+          },
+        },
+      },
+    },
+  });
+
+  return member;
+}
 
 export async function getMemberById(id: string) {
-  const member = await prisma.member.findUnique({
+  const member = await prisma.member.findFirst({
     where: {
       id: id,
     },
@@ -88,23 +121,23 @@ export async function getMemberById(id: string) {
   return member;
 }
 
-export async function getMemberByUserId(userId: string) {
-  const member = await prisma.member.findFirst({
-    where: {
-      userId: userId,
-    },
-    include: {
-      specialties: true,
-      organization: {
-        include: {
-          salon: true,
-        },
-      },
-    },
-  });
+// export async function getMemberByUserId(userId: string) {
+//   const member = await prisma.member.findFirst({
+//     where: {
+//       userId: userId,
+//     },
+//     include: {
+//       specialties: true,
+//       organization: {
+//         include: {
+//           salon: true,
+//         },
+//       },
+//     },
+//   });
 
-  return member;
-}
+//   return member;
+// }
 
 export async function memberAvailability(
   memberId: string,

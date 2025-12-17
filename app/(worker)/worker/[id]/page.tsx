@@ -3,9 +3,13 @@ import { Suspense } from "react";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { getMemberById } from "@/oop/infrastructure/user-repository";
+import {
+  getMemberById,
+  getMemberByUserId,
+} from "@/oop/infrastructure/user-repository";
 
 import WorkerPageClient from "@/components/worker/worker-client";
+import Link from "next/link";
 
 async function page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -17,13 +21,15 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
     return redirect("/authentication");
   }
 
-  const member = await getMemberById(id);
+  const member = await getMemberByUserId(session.user.id);
 
-  if (!member || member.id !== id) {
+  console.log("member", member);
+
+  if (!member || member.userId !== id) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-display">
         <p>Access Denied</p>
-        <link href="/">Go to Home</link>
+        <Link href="/">Go to Home</Link>
       </div>
     );
   }

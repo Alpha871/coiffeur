@@ -269,21 +269,6 @@ function AppointmentForm({
           if (result.success) {
             toast.success("Appointment updated successfully!");
 
-            // id: string;
-            //   startsAt: Date;
-            //   endsAt: Date;
-            //   notes: string | null;
-            //   status: $Enums.AppointmentStatus;
-            //   service: string;
-            //   serviceId: string;
-            //   customerName: string;
-            //   customerAvatar: string | null;
-            //   duration: number;
-            //   price: number;
-            //   memberId: string;
-            //   memberAvatar: string | null;
-            //   memberName: string;
-
             form.reset({ ...values }, { keepDefaultValues: true });
             const resultData: Appointment = {
               id: result.appointment.id,

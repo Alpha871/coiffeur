@@ -42,7 +42,8 @@ async function removeMember(memberIdOrEmail, organizationId) {
             body: {
                 memberIdOrEmail,
                 organizationId
-            }
+            },
+            headers: await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$headers$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["headers"])()
         });
         return data;
     } catch (error) {
@@ -234,10 +235,10 @@ __turbopack_context__.s([
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$service$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["removeMember"],
     "60bb0a5e4bec5dc35029d680037d778523b0f2608e",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateSalon"],
-    "60f112225e045f57296243a5d56be5454294412d42",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateStaffMemberHours"],
     "60f57bf9adb3c026da40413504bb0cde5f1671ffb1",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateSalonOpeningHours"],
+    "70f112225e045f57296243a5d56be5454294412d42",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$salon$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateStaffMemberHours"],
     "7fa701fc2cfdca59138aab40051abaffe0c454c913",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$service$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["addService"],
     "7fd985c4f22988d953491a104a33e76fec1471e1fc",

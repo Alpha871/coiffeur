@@ -148,13 +148,15 @@ export function ApptCardInfo({
           {(status === AppointmentStatus.APPROVED ||
             status === AppointmentStatus.PENDING) && (
             <div className="w-full flex gap-2 items-center justify-end">
-              <Button
-                className="bg-primary text-white hover:bg-primary/90 p-1"
-                onClick={() => setRescheduleModalOpen(true)}
-                disabled={isPending || pendingAction === "reschedule"}
-              >
-                <CalendarClock className="mr-2 h-4 w-4" /> Reschedule
-              </Button>
+              {status !== AppointmentStatus.APPROVED && (
+                <Button
+                  className="bg-primary text-white hover:bg-primary/90 p-1"
+                  onClick={() => setRescheduleModalOpen(true)}
+                  disabled={isPending || pendingAction === "reschedule"}
+                >
+                  <CalendarClock className="mr-2 h-4 w-4" /> Reschedule
+                </Button>
+              )}
               <Button
                 className=" bg-red-500 text-white hover:bg-red-600 p-1"
                 onClick={() => setCancelModalOpen(true)}

@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { Staff } from "./staff-management-client";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { ChevronRight } from "lucide-react";
 

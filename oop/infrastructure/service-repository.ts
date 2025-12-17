@@ -26,6 +26,7 @@ export async function removeMember(
         memberIdOrEmail,
         organizationId,
       },
+      headers: await headers(),
     });
 
     return data;

@@ -176,12 +176,12 @@ async function BookAppointment({ params }) {
             salonStaff: salonStaff
         }, void 0, false, {
             fileName: "[project]/Desktop/coiffeur/app/(salon)/book-appointment/[id]/page.tsx",
-            lineNumber: 69,
+            lineNumber: 68,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/coiffeur/app/(salon)/book-appointment/[id]/page.tsx",
-        lineNumber: 68,
+        lineNumber: 67,
         columnNumber: 5
     }, this);
 }

@@ -5,12 +5,15 @@ import { getAllAppointments } from "@/oop/infrastructure/appointment-repository"
 
 async function page() {
   // const await = null; // Placeholder to keep this an async function
-  const appointments = await getAllAppointments();
+  const appointments = (await getAllAppointments()).filter(
+    (apt) => apt.status == "APPROVED" || apt.status == "COMPLETED"
+  );
 
   const topAppointments = appointments
     .sort(
       (a, b) => new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime()
     )
+
     .slice(0, 3)
     .map((appointment) => ({
       id: appointment.id,
@@ -27,7 +30,6 @@ async function page() {
       memberName: appointment.member.user.name,
       memberAvatar: appointment.member.user.image,
     }));
-
   const bestAppointments = appointments.reduce((acc, appointment) => {
     const memberId = appointment.memberId;
     const existing = acc.find((item) => item.memberId === memberId);

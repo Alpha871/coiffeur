@@ -1,4 +1,11 @@
 {
-  "/(salon)/salon/[id]/staff-management/page": "app/(salon)/salon/[id]/staff-management/page.js",
-  "/api/auth/[...all]/route": "app/api/auth/[...all]/route.js"
+  "/(admin)/admin-panel/page": "app/(admin)/admin-panel/page.js",
+  "/(client)/profil/[id]/page": "app/(client)/profil/[id]/page.js",
+  "/(salon)/request-salon-management/[id]/page": "app/(salon)/request-salon-management/[id]/page.js",
+  "/(salon)/request-salon/page": "app/(salon)/request-salon/page.js",
+  "/(salon)/salon/[id]/dashboard/page": "app/(salon)/salon/[id]/dashboard/page.js",
+  "/(salon)/salon/[id]/services/page": "app/(salon)/salon/[id]/services/page.js",
+  "/api/auth/[...all]/route": "app/api/auth/[...all]/route.js",
+  "/authentication/page": "app/authentication/page.js",
+  "/page": "app/page.js"
 }

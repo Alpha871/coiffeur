@@ -91,10 +91,10 @@ async function getUserById(id) {
     });
     return user;
 }
-async function getMemberById(id) {
-    const member = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].member.findUnique({
+async function getMemberByUserId(id) {
+    const member = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].member.findFirst({
         where: {
-            id: id
+            userId: id
         },
         include: {
             user: true,
@@ -123,16 +123,32 @@ async function getMemberById(id) {
     });
     return member;
 }
-async function getMemberByUserId(userId) {
+async function getMemberById(id) {
     const member = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].member.findFirst({
         where: {
-            userId: userId
+            id: id
         },
         include: {
-            specialties: true,
+            user: true,
+            specialties: {
+                include: {
+                    service: true
+                }
+            },
+            availabilities: true,
             organization: {
                 include: {
                     salon: true
+                }
+            },
+            appointments: {
+                include: {
+                    service: true,
+                    customer: {
+                        include: {
+                            user: true
+                        }
+                    }
                 }
             }
         }
@@ -393,8 +409,8 @@ async function cancelInvitation(invitationId) {
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$action$2d$validate$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ensureServerEntryExports"])([
     getAppointmentsByMemberId,
     getUserById,
-    getMemberById,
     getMemberByUserId,
+    getMemberById,
     memberAvailability,
     assignMemberSpecialties,
     updateUserCurrentInfo,
@@ -411,8 +427,8 @@ async function cancelInvitation(invitationId) {
 ]);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAppointmentsByMemberId, "0046c48b90c7121650f0a94bda6672e26b8454868d", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getUserById, "40ad71ffeff4924df53736eeae62ff59c4350cbbe1", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getMemberById, "40c49e01770d2d97ad78694d6cef36f20591291414", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getMemberByUserId, "40030d0818cfa1a6c8eea5a1146f5841ef421a79a1", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getMemberById, "40c49e01770d2d97ad78694d6cef36f20591291414", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(memberAvailability, "70f4049aacf531257f6f984963e51f73034fd9e59d", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(assignMemberSpecialties, "7003fc9a27fccff9c1bc0caa4687c78243bf4142c0", null);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(updateUserCurrentInfo, "40f5dfa862d1a4242803bb932fa76988736817272c", null);
@@ -470,7 +486,8 @@ async function removeMember(memberIdOrEmail, organizationId) {
             body: {
                 memberIdOrEmail,
                 organizationId
-            }
+            },
+            headers: await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$headers$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["headers"])()
         });
         return data;
     } catch (error) {

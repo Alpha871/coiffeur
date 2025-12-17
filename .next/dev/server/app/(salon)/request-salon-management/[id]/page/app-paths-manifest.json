@@ -1,0 +1,3 @@
+{
+  "/(salon)/request-salon-management/[id]/page": "app/(salon)/request-salon-management/[id]/page.js"
+}
