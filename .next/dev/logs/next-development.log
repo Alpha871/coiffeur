@@ -1,23 +1,5 @@
-[00:00:00.617] Server  LOG      ✓ Ready in 496ms
-[00:02:12.164] Server  WARN    2025-12-17T06:58:35.606Z WARN [Better Auth]: [Prisma Adapter] - Transactions are not supported. Executing operations sequentially.
-[00:03:00.737] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:37.522] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:54.267] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:18.377] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:49.969] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:11.456] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:36.818] Server  ERROR   2025-12-17T07:03:00.254Z ERROR [Better Auth]: User not found {}
-[00:07:28.040] Server  ERROR   2025-12-17T07:03:51.476Z ERROR [Better Auth]: Invalid password
-[00:07:40.099] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:30.815] Server  LOG     page session {}
-[00:08:36.373] Server  LOG     page session {}
-[00:08:37.142] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:50.427] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:09:18.957] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:09:31.319] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:09:45.969] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:10:33.810] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:10:57.647] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:11:55.184] Browser LOG     {"services":[]}
-[00:11:55.184] Browser LOG     [2;38;2;124;124;124m%s[0m {"services":[]}
-[00:12:09.477] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:00.575] Server  LOG      ✓ Ready in 429ms
+[00:00:48.289] Browser LOG     Selected  all
+[00:00:48.290] Browser LOG     [2;38;2;124;124;124m%s[0m Selected  all
+[00:00:57.969] Browser LOG     {"services":[{"category":"Haircut","createdAt":"2025-12-17T07:09:50.885Z","description":"This is haircut","durationMin":15,"id":"cmj9o8sk200098o3qqyjb4ykt","image":"https://images.unsplash.com/photo-1500517484800-e4676bd66290?auto=format&fit=crop&w=1200&q=80","price":20,"title":"Hair","updatedAt":"2025-12-17T07:09:50.885Z"}]}
+[00:00:57.969] Browser LOG     [2;38;2;124;124;124m%s[0m {"services":[{"category":"Haircut","createdAt":"2025-12-17T07:09:50.885Z","description":"This is haircut","durationMin":15,"id":"cmj9o8sk200098o3qqyjb4ykt","image":"https://images.unsplash.com/photo-1500517484800-e4676bd66290?auto=format&fit=crop&w=1200&q=80","price":20,"title":"Hair","updatedAt":"2025-12-17T07:09:50.885Z"}]}
