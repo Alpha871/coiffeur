@@ -56,8 +56,9 @@ export default function WorkerPageClient({
   const filteredUpcoming = useMemo(() => {
     const upcoming = appointments.filter(
       (a) =>
-        a.status === AppointmentStatus.APPROVED ||
-        a.status === AppointmentStatus.PENDING
+        (a.status === AppointmentStatus.APPROVED ||
+          a.status === AppointmentStatus.PENDING) &&
+        a.startsAt >= new Date()
     );
     if (!normalizedQuery) return upcoming;
     return upcoming.filter((a) =>
