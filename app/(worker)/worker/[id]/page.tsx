@@ -3,10 +3,7 @@ import { Suspense } from "react";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import {
-  getMemberById,
-  getMemberByUserId,
-} from "@/oop/infrastructure/user-repository";
+import { getMemberByUserId } from "@/oop/infrastructure/user-repository";
 
 import WorkerPageClient from "@/components/worker/worker-client";
 import Link from "next/link";
@@ -23,9 +20,7 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
 
   const member = await getMemberByUserId(session.user.id);
 
-  console.log("member", member);
-
-  if (!member || member.userId !== id) {
+  if (!member || member.id !== id) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-display">
         <p>Access Denied</p>

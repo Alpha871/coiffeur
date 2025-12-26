@@ -1,7 +1,7 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/authentication/page.js")
 R.c("server/chunks/ssr/2ae5e_next_dist_628bd21d._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__021a6484._.js")
-R.c("server/chunks/ssr/2ae5e_0dd790bf._.js")
+R.c("server/chunks/ssr/2ae5e_e6056f6d._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__e8a2741f._.js")
 R.c("server/chunks/ssr/Desktop_coiffeur_app_02167e89._.js")
 R.c("server/chunks/ssr/2ae5e_next_dist_client_components_builtin_global-error_4b93265d.js")

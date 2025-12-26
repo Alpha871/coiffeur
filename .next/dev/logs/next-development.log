@@ -1,7 +1,4 @@
-[00:00:00.813] Server  LOG      ✓ Ready in 632ms
-[00:09:38.924] Server  LOG        Reload env: .env
-[00:09:43.140] Server  LOG        Reload env: .env
-[00:09:54.590] Server  LOG        Reload env: .env
-[00:10:03.228] Server  LOG        Reload env: .env
-[00:21:11.114] Server  LOG      ✓ Compiled in 40ms
-[00:21:36.638] Server  LOG      ✓ Compiled in 34ms
+[00:00:02.396] Server  LOG      ✓ Ready in 2.2s
+[00:00:30.360] Server  LOG     member {}
+[00:03:09.136] Server  LOG     member {}
+[00:04:34.986] Server  LOG     member {}

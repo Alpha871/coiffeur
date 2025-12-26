@@ -82,8 +82,7 @@ async function page({ params }) {
         return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/authentication");
     }
     const member = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$oop$2f$infrastructure$2f$user$2d$repository$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getMemberByUserId"])(session.user.id);
-    console.log("member", member);
-    if (!member || member.userId !== id) {
+    if (!member || member.id !== id) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "flex flex-col items-center justify-center min-h-screen bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-display",
             children: [
@@ -91,7 +90,7 @@ async function page({ params }) {
                     children: "Access Denied"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/coiffeur/app/(worker)/worker/[id]/page.tsx",
-                    lineNumber: 31,
+                    lineNumber: 26,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$coiffeur$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -99,13 +98,13 @@ async function page({ params }) {
                     children: "Go to Home"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/coiffeur/app/(worker)/worker/[id]/page.tsx",
-                    lineNumber: 32,
+                    lineNumber: 27,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/coiffeur/app/(worker)/worker/[id]/page.tsx",
-            lineNumber: 30,
+            lineNumber: 25,
             columnNumber: 7
         }, this);
     }
@@ -128,12 +127,12 @@ async function page({ params }) {
             currentUserId: session.user.id
         }, void 0, false, {
             fileName: "[project]/Desktop/coiffeur/app/(worker)/worker/[id]/page.tsx",
-            lineNumber: 51,
+            lineNumber: 46,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/coiffeur/app/(worker)/worker/[id]/page.tsx",
-        lineNumber: 50,
+        lineNumber: 45,
         columnNumber: 5
     }, this);
 }
