@@ -3,14 +3,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { CreationStatus } from "@/generated/prisma";
 import { auth } from "@/lib/auth";
-import { UserRole } from "@/oop/domain/person";
-import { getAllSalons } from "@/oop/infrastructure/salon-repository";
-import { listUsers } from "@/oop/infrastructure/user-repository";
+
+import { getAllSalons } from "@/actions/salon-actions";
+import { listUsers } from "@/actions/user-actions";
 import { takeFirstLastLetters } from "@/utils/utils";
 import { Loader2Icon, Search } from "lucide-react";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import Link from "next/link";
+import { userRole } from "@/lib/utils";
 
 export async function getAdminPanelDataAction() {
   const users = await listUsers(10, 1);
@@ -45,7 +46,7 @@ export default async function AdminPanel() {
 
   if (session === null) redirect("/authentication");
 
-  if (!session || session.user.role !== UserRole.ADMIN) {
+  if (!session || session.user.role !== userRole.admin) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <h1 className="text-2xl font-semibold">Access Denied</h1>

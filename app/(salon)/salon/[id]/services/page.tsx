@@ -1,4 +1,4 @@
-import { getAllSalonServices } from "@/oop/infrastructure/service-repository";
+import { getAllSalonServices } from "@/actions/service-actions";
 import { Suspense } from "react";
 import ManageServicesClient from "./_components/service-management-client";
 import { capitalize } from "@/lib/utils";

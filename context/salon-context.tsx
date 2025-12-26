@@ -1,4 +1,4 @@
-import { getSalonById } from "@/oop/infrastructure/salon-repository";
+import { getSalonById } from "@/actions/salon-actions";
 import { createContext, useContext, ReactNode, useState } from "react";
 
 type Salon = Awaited<ReturnType<typeof getSalonById>>;

@@ -1,349 +1,349 @@
 {
   "node": {
-    "002ddea9e5547d8303f3dd8ef4140a98b2deabd414": {
+    "00572afee97ae71a4d28f781dc8f269a3e9eb2162e": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
-          "async": false,
-          "exportedName": "getCompleteSalons",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
-        }
-      },
-      "layer": {
-        "app/(salon)/salon/[id]/services/page": "rsc"
-      },
-      "exportedName": "getCompleteSalons",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
-    },
-    "006c3ef04f9a257c3041ed78e513c262ed1fd9915f": {
-      "workers": {
-        "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
-          "async": false,
-          "exportedName": "getAllSalons",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
-        }
-      },
-      "layer": {
-        "app/(salon)/salon/[id]/services/page": "rsc"
-      },
-      "exportedName": "getAllSalons",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
-    },
-    "0081a9260977dbeaa377d8506f4e2ffe2e00215f4b": {
-      "workers": {
-        "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
           "exportedName": "getPendingSalonRequests",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
       "exportedName": "getPendingSalonRequests",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
     },
-    "00ff141f033976e90d0003a08d8409fc5fc27138e4": {
+    "00924e439d26c305ed0eb1a94fe49305c61b6816b6": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
-          "exportedName": "getAllSalonsForCurrentUser",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+          "exportedName": "getAllSalons",
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
-      "exportedName": "getAllSalonsForCurrentUser",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+      "exportedName": "getAllSalons",
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
     },
-    "00ffa27544faf0728916ece6c22962d572baba0560": {
+    "00bd19da518a0ffd9d8fbb535b7c4f64fba2093d1e": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
           "exportedName": "getSalonByUserId",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
       "exportedName": "getSalonByUserId",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
     },
-    "400fabdd257999342fcbc0150b603a331fb214c3d0": {
+    "00e6be1ebdb9f3c911754a35f9cd2aa518656d4edf": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
-          "exportedName": "requestSalon",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+          "exportedName": "getAllSalonsForCurrentUser",
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
-      "exportedName": "requestSalon",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+      "exportedName": "getAllSalonsForCurrentUser",
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
     },
-    "4084f913cdaa54fcbdd8e9cd0d3c7642b21a863375": {
+    "00e9c0511929015fcea54e1a1c8ed4bbc41a1b2253": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
-          "exportedName": "getSalonById",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+          "exportedName": "getCompleteSalons",
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
-      "exportedName": "getSalonById",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+      "exportedName": "getCompleteSalons",
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
     },
-    "409c47f8de124a75afab0a0241b6ec47ead4f2d3aa": {
+    "40072b2c61e80cf1114fc5c516c8c7c97ec3d1e0f7": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
-          "async": false,
-          "exportedName": "getSalonByIdwithUserId",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
-        }
-      },
-      "layer": {
-        "app/(salon)/salon/[id]/services/page": "rsc"
-      },
-      "exportedName": "getSalonByIdwithUserId",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
-    },
-    "40cf7be63228c6184d95daec3d7d383d7feef5b56f": {
-      "workers": {
-        "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
-          "async": false,
-          "exportedName": "approveSalonRequest",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
-        }
-      },
-      "layer": {
-        "app/(salon)/salon/[id]/services/page": "rsc"
-      },
-      "exportedName": "approveSalonRequest",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
-    },
-    "40eaf03851b90fe1e07d27f16c39db526e685ee311": {
-      "workers": {
-        "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
           "exportedName": "removeSalon",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
       "exportedName": "removeSalon",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
     },
-    "40fe962724c0d58de43fdea6bef6b2687723c6bd73": {
+    "40134b4794fc5c5f7ee3dec1f19e3bab343821ab1b": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
+          "async": false,
+          "exportedName": "getSalonById",
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/services/page": "rsc"
+      },
+      "exportedName": "getSalonById",
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
+    },
+    "4016345b7959b0d8bc16a7779efb1edbadd32f22a0": {
+      "workers": {
+        "app/(salon)/salon/[id]/services/page": {
+          "moduleId": 55721,
+          "async": false,
+          "exportedName": "requestSalon",
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/services/page": "rsc"
+      },
+      "exportedName": "requestSalon",
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
+    },
+    "4029fb578711430272235ad59a52948ac9a385ef14": {
+      "workers": {
+        "app/(salon)/salon/[id]/services/page": {
+          "moduleId": 55721,
+          "async": false,
+          "exportedName": "getSalonByIdwithUserId",
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/services/page": "rsc"
+      },
+      "exportedName": "getSalonByIdwithUserId",
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
+    },
+    "4033455481dce43065b5ba9da87e6558737ec89d81": {
+      "workers": {
+        "app/(salon)/salon/[id]/services/page": {
+          "moduleId": 55721,
           "async": false,
           "exportedName": "DeleteSalonById",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
       "exportedName": "DeleteSalonById",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
     },
-    "6033c8a8408310795044fe39df26c0f94118256159": {
+    "40c9bb8b85362fc4fad254d057814ab158e940e1e4": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
-          "exportedName": "updateSalon",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+          "exportedName": "approveSalonRequest",
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
-      "exportedName": "updateSalon",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+      "exportedName": "approveSalonRequest",
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
     },
-    "6033fe2fff519f55b4e3434218beae2418d3e29536": {
+    "6089e4a5635f13dc9d77e4511fb85f385a5384fbb9": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
-          "async": false,
-          "exportedName": "ActiveCurrentSalonOrganizationId",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
-        }
-      },
-      "layer": {
-        "app/(salon)/salon/[id]/services/page": "rsc"
-      },
-      "exportedName": "ActiveCurrentSalonOrganizationId",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
-    },
-    "60ece1a34def93a675c019f4e8c7342a58cdbd2fe1": {
-      "workers": {
-        "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
           "exportedName": "updateSalonOpeningHours",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
       "exportedName": "updateSalonOpeningHours",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
     },
-    "60f0b886fdd103bc02992d702c3651d63edb55e0ff": {
+    "609ab0f07ebd885dc4ef69932df9021111483022c8": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
           "exportedName": "rejectSalonRequest",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
       "exportedName": "rejectSalonRequest",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
     },
-    "700efaaa84113620b0bdabc5bdcf5d3e6371103a17": {
+    "60b950c12a82e86bc190c539d2dbca91b3fc57e678": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
+          "async": false,
+          "exportedName": "ActiveCurrentSalonOrganizationId",
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/services/page": "rsc"
+      },
+      "exportedName": "ActiveCurrentSalonOrganizationId",
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
+    },
+    "60eb7ab7780d954f0372011c2d06b3e93e34bc16c2": {
+      "workers": {
+        "app/(salon)/salon/[id]/services/page": {
+          "moduleId": 55721,
+          "async": false,
+          "exportedName": "updateSalon",
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/services/page": "rsc"
+      },
+      "exportedName": "updateSalon",
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
+    },
+    "701df0e94269e608e7443b7c9c6324f08891d85608": {
+      "workers": {
+        "app/(salon)/salon/[id]/services/page": {
+          "moduleId": 55721,
           "async": false,
           "exportedName": "updateStaffMemberHours",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
       "exportedName": "updateStaffMemberHours",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
     },
-    "7fc8b98055bb21bdcaa180db00c9d993b06c5aac5b": {
+    "7faf5b50759f064ca1883fbb5d55ea081b65795043": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
           "exportedName": "updateSalonOrganizationId",
-          "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+          "filename": "Desktop/coiffeur/actions/salon-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
       "exportedName": "updateSalonOrganizationId",
-      "filename": "Desktop/coiffeur/oop/infrastructure/salon-repository.ts"
+      "filename": "Desktop/coiffeur/actions/salon-actions.ts"
     },
-    "40351b34294e1169d6f3b335487c01216d3d65f703": {
+    "400c9cb9f40a2ead1639ca698797fec74312bac4c1": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
           "exportedName": "getSalonServiceById",
-          "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
+          "filename": "Desktop/coiffeur/actions/service-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
       "exportedName": "getSalonServiceById",
-      "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
+      "filename": "Desktop/coiffeur/actions/service-actions.ts"
     },
-    "4040b2e29d5e57d6099a230699352246b65db4fc9d": {
+    "405d24ca633478150ed5c33507ff521cd6b8c1e219": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
-          "async": false,
-          "exportedName": "deleteServiceById",
-          "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
-        }
-      },
-      "layer": {
-        "app/(salon)/salon/[id]/services/page": "action-browser"
-      },
-      "exportedName": "deleteServiceById",
-      "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
-    },
-    "40d7d6cf93573949e4836df76d68ec3ed803b12045": {
-      "workers": {
-        "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
           "exportedName": "getAllSalonServices",
-          "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
+          "filename": "Desktop/coiffeur/actions/service-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
       "exportedName": "getAllSalonServices",
-      "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
+      "filename": "Desktop/coiffeur/actions/service-actions.ts"
     },
-    "60ac6a06a7d05432f09ada7baecb2663bf3d872878": {
+    "40e00749a5f115817314a0dbe66577762a2c3c6060": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
+          "async": false,
+          "exportedName": "deleteServiceById",
+          "filename": "Desktop/coiffeur/actions/service-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(salon)/salon/[id]/services/page": "action-browser"
+      },
+      "exportedName": "deleteServiceById",
+      "filename": "Desktop/coiffeur/actions/service-actions.ts"
+    },
+    "6048b737e0b147da7630bd5b5986ec75da29f5a848": {
+      "workers": {
+        "app/(salon)/salon/[id]/services/page": {
+          "moduleId": 55721,
           "async": false,
           "exportedName": "removeMember",
-          "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
+          "filename": "Desktop/coiffeur/actions/service-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "rsc"
       },
       "exportedName": "removeMember",
-      "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
+      "filename": "Desktop/coiffeur/actions/service-actions.ts"
     },
-    "7f8d48c6fb1607a44c2588e1df49c495fd1a219829": {
+    "7f78c640b1553f13bbdf875ea1c898c513f85267ce": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
           "exportedName": "editService",
-          "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
+          "filename": "Desktop/coiffeur/actions/service-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "action-browser"
       },
       "exportedName": "editService",
-      "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
+      "filename": "Desktop/coiffeur/actions/service-actions.ts"
     },
-    "7fa507ba0b19f358057ddb3e2e97db446f7c39fa13": {
+    "7fddb5e5778b9bcc729735694dc7c5bb218e70a1fd": {
       "workers": {
         "app/(salon)/salon/[id]/services/page": {
-          "moduleId": 38637,
+          "moduleId": 55721,
           "async": false,
           "exportedName": "addService",
-          "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
+          "filename": "Desktop/coiffeur/actions/service-actions.ts"
         }
       },
       "layer": {
         "app/(salon)/salon/[id]/services/page": "action-browser"
       },
       "exportedName": "addService",
-      "filename": "Desktop/coiffeur/oop/infrastructure/service-repository.ts"
+      "filename": "Desktop/coiffeur/actions/service-actions.ts"
     }
   },
   "edge": {}

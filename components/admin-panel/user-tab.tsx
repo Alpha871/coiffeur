@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import UserTabClient from "./user-tab-client";
-import { listUsers } from "@/oop/infrastructure/user-repository";
+import { listUsers } from "@/actions/user-actions";
 
 async function UserTab() {
   const users = await listUsers(10, 1);

@@ -21,15 +21,12 @@ import {
   appointmentSchema,
 } from "@/lib/validations/appointment";
 import { useEffect, useMemo, useState, useTransition } from "react";
-import {
-  getMemberById,
-  MemberStylist,
-} from "@/oop/infrastructure/user-repository";
+import { getMemberById, MemberStylist } from "@/actions/user-actions";
 import { AppointmentStatus } from "@/generated/prisma";
 import { toast } from "sonner";
 
 import { Spinner } from "../ui/spinner";
-import { rescheduleAppointment } from "@/oop/infrastructure/appointment-repository";
+import { rescheduleAppointment } from "@/actions/appointment-actions";
 
 interface RescheduleProps {
   appointmentId: string;

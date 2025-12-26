@@ -22,7 +22,7 @@ import { redirect, useRouter } from "next/navigation";
 import {
   getSalonByIdwithUserId,
   updateSalonOrganizationId,
-} from "@/oop/infrastructure/salon-repository";
+} from "@/actions/salon-actions";
 import { useConfirm } from "@/hooks/use-confirm";
 import { format } from "date-fns";
 import Modal from "../common/modal";

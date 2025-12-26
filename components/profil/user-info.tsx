@@ -13,7 +13,7 @@ import { signOut } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 import { takeFirstLastLetters } from "@/utils/utils";
 import Link from "next/link";
-import { UserRole } from "@/oop/domain/person";
+import { userRole } from "@/lib/utils";
 
 function UserInfo({
   user,
@@ -32,11 +32,11 @@ function UserInfo({
   };
 
   const profileLink =
-    user.role === UserRole.USER
+    user.role === userRole.user
       ? `/profil/${user.id}`
-      : user.role === UserRole.ADMIN
+      : user.role === userRole.admin
       ? `/admin-panel`
-      : user.role === UserRole.EMPLOYEE
+      : user.role === userRole.employee
       ? `#`
       : "#";
 

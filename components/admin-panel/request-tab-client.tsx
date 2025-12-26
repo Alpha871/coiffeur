@@ -9,7 +9,7 @@ import {
   approveSalonRequest,
   getPendingSalonRequests,
   rejectSalonRequest,
-} from "@/oop/infrastructure/salon-repository";
+} from "@/actions/salon-actions";
 
 import { useState, useTransition } from "react";
 import { toast } from "sonner";

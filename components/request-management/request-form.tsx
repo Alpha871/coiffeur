@@ -13,20 +13,14 @@ import {
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  OpeningHoursDayKey,
-  requestSchema,
-} from "@/lib/validations/request-salon";
+import { requestSchema } from "@/lib/validations/request-salon";
 import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
 import { changedValues, convertOpeningHoursToDatabase } from "@/lib/utils";
 import { organization, useSession } from "@/lib/auth-client";
 import { toast } from "sonner";
-import { Salon } from "@/oop/domain/salon";
-import {
-  requestSalon,
-  updateSalon,
-} from "@/oop/infrastructure/salon-repository";
+
+import { requestSalon, updateSalon } from "@/actions/salon-actions";
 import { openingHoursConfig } from "@/utils/constant";
 import { Label } from "../ui/label";
 import z from "zod";
@@ -137,20 +131,14 @@ function RequestSalonForm({
     }
 
     try {
-      const salonData = new Salon(
-        submittedValues.salonName,
-        submittedValues.address,
-        submittedValues.phone,
-        submittedValues.email,
-        submittedValues.description || "",
-        openingHours
-      );
-
-      if (!salonData.isComplete()) {
-        throw new Error("Please fill in all required fields correctly.");
-      }
-
-      const newSalon = await requestSalon(salonData.toJSON());
+      const newSalon = await requestSalon({
+        name: values.salonName,
+        address: values.address,
+        phone: values.phone,
+        email: values.email,
+        description: values.description,
+        openingHours,
+      });
 
       if (!newSalon) {
         throw new Error("Failed to request salon");

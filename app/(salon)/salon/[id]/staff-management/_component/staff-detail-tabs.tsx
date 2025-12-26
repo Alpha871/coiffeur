@@ -16,12 +16,12 @@ import {
 import {
   assignMemberSpecialties,
   updateUserInfo,
-} from "@/oop/infrastructure/user-repository";
+} from "@/actions/user-actions";
 import { redirect, useParams } from "next/navigation";
 import { toast } from "sonner";
 import { useTransition } from "react";
-import { removeMember } from "@/oop/infrastructure/service-repository";
-import { removeSalon } from "@/oop/infrastructure/salon-repository";
+import { removeMember } from "@/actions/service-actions";
+import { removeSalon } from "@/actions/salon-actions";
 
 export function StaffDetailTabs({
   active,

@@ -127,12 +127,6 @@
       "namedRegex": "^/admin\\-panel(?:/)?$"
     },
     {
-      "page": "/api/salon",
-      "regex": "^/api/salon(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/api/salon(?:/)?$"
-    },
-    {
       "page": "/authentication",
       "regex": "^/authentication(?:/)?$",
       "routeKeys": {},

@@ -10,7 +10,7 @@ import {
   ApproveAppointment,
   CancelAppointment,
   RejectAppointment,
-} from "@/oop/infrastructure/appointment-repository";
+} from "@/actions/appointment-actions";
 import { useParams } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Spinner } from "../ui/spinner";

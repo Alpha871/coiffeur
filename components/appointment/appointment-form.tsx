@@ -42,7 +42,7 @@ import {
   CompleteAppointment,
   RejectAppointment,
   updateBookedAppointment,
-} from "@/oop/infrastructure/appointment-repository";
+} from "@/actions/appointment-actions";
 import { toast } from "sonner";
 import { Spinner } from "../ui/spinner";
 import Modal from "../common/modal";

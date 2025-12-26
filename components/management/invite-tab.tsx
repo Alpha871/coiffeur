@@ -12,10 +12,7 @@ import { authClient } from "@/lib/auth-client";
 import { BetterAuthActionButton } from "../common/beter-auth-action-button";
 import { CreateInviteButton } from "./create-invitation-button";
 
-import {
-  cancelInvitation,
-  getInvitations,
-} from "@/oop/infrastructure/user-repository";
+import { cancelInvitation, getInvitations } from "@/actions/user-actions";
 import { InvitationStatus } from "better-auth/plugins";
 import { PendingInvites } from "./staff-management-client";
 

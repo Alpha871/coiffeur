@@ -24,7 +24,7 @@ import {
 import { useState, useTransition } from "react";
 import { Spinner } from "../ui/spinner";
 import Modal from "../common/modal";
-import { removeSalon } from "@/oop/infrastructure/salon-repository";
+import { removeSalon } from "@/actions/salon-actions";
 
 type PersonalInfoFormProps = {
   staffId: string;

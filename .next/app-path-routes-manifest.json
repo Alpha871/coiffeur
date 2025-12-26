@@ -15,7 +15,6 @@
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
   "/api/auth/[...all]/route": "/api/auth/[...all]",
-  "/api/salon/route": "/api/salon",
   "/authentication/page": "/authentication",
   "/favicon.ico/route": "/favicon.ico",
   "/page": "/"

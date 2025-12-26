@@ -1,11 +1,33 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import type { OpeningHoursDayKey } from "@/oop/domain/salon";
 import { AppointmentStatus } from "@/generated/prisma";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export enum userRole {
+  admin = "admin",
+  organization = "organization",
+  user = "user",
+  employee = "employee",
+}
+
+export type OpeningHoursDayKey =
+  | "mon"
+  | "tue"
+  | "wed"
+  | "thu"
+  | "fri"
+  | "sat"
+  | "sun";
+
+export type OpeningHoursDay = {
+  dayOfWeek: number;
+  startTime: Date;
+  endTime: Date;
+  isClosed: boolean;
+};
 
 export const STATUS_COLORS: Record<
   AppointmentStatus,

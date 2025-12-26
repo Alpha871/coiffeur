@@ -12,10 +12,7 @@ import {
 } from "../ui/table";
 import { Badge } from "../ui/badge";
 import { useState } from "react";
-import {
-  DeleteSalonById,
-  getCompleteSalons,
-} from "@/oop/infrastructure/salon-repository";
+import { DeleteSalonById, getCompleteSalons } from "@/actions/salon-actions";
 import Modal from "../common/modal";
 
 import { toast } from "sonner";

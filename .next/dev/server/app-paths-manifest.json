@@ -1,6 +1,0 @@
-{
-  "/(worker)/worker/[id]/page": "app/(worker)/worker/[id]/page.js",
-  "/api/auth/[...all]/route": "app/api/auth/[...all]/route.js",
-  "/authentication/page": "app/authentication/page.js",
-  "/page": "app/page.js"
-}

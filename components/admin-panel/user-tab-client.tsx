@@ -20,9 +20,8 @@ import {
   handleRevokeSessions,
   handleUnbanUser,
   ListUsersType,
-} from "@/oop/infrastructure/user-repository";
+} from "@/actions/user-actions";
 
-import { UserRole } from "@/oop/domain/person";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -44,6 +43,7 @@ import {
 import { useSession } from "@/lib/auth-client";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
+import { userRole } from "@/lib/utils";
 
 interface UserTabProps {
   users: ListUsersType;
@@ -149,9 +149,9 @@ function UserTabClient({ users }: UserTabProps) {
                 <TableCell>
                   <Badge
                     variant={
-                      user.role === UserRole.ADMIN
+                      user.role === userRole.admin
                         ? "default"
-                        : user.role === UserRole.USER
+                        : user.role === userRole.user
                         ? "orange"
                         : "outline"
                     }

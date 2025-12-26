@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { getMemberByUserId } from "@/oop/infrastructure/user-repository";
+import { getMemberByUserId } from "@/actions/user-actions";
 
 import WorkerPageClient from "@/components/worker/worker-client";
 import Link from "next/link";

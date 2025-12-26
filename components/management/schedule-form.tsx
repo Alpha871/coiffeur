@@ -30,7 +30,7 @@ import {
   scheduleSchema,
 } from "@/lib/validations/staff-management";
 import { toast } from "sonner";
-import { updateStaffMemberHours } from "@/oop/infrastructure/salon-repository";
+import { updateStaffMemberHours } from "@/actions/salon-actions";
 
 type ScheduleFormProps = {
   schedule?: OpeningHours;

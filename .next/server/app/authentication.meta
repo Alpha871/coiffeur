@@ -9,6 +9,7 @@
     "/_full",
     "/authentication/__PAGE__",
     "/authentication",
-    "/_index"
+    "/_index",
+    "/_head"
   ]
 }

@@ -13,10 +13,7 @@ import Modal from "@/components/common/modal";
 import { RequestOffForm } from "@/components/worker/request-off-form";
 import { HeaderRow } from "../../app/(worker)/worker/[id]/_components/header-row";
 import { AppointmentList } from "../../app/(worker)/worker/[id]/_components/appointment-list";
-import {
-  MemberStylist,
-  updateUserInfo,
-} from "@/oop/infrastructure/user-repository";
+import { MemberStylist, updateUserInfo } from "@/actions/user-actions";
 import { takeFirstLastLetters } from "@/utils/utils";
 import { changedValues, DAY_ORDER, timeToString } from "@/lib/utils";
 import { Appointment, AppointmentView } from "@/lib/validations/appointment";

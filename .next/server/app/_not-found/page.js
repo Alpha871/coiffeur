@@ -5,7 +5,7 @@ R.c("server/chunks/ssr/2ae5e_next_dist_esm_build_templates_app-page_02dfaf3c.js"
 R.c("server/chunks/ssr/[root-of-the-server]__586e10a8._.js")
 R.c("server/chunks/ssr/2ae5e_next_dist_compiled_@opentelemetry_api_index_0452d150.js")
 R.c("server/chunks/ssr/2ae5e_next_dist_90fe0320._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__026ae198._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__a8b0bfe7._.js")
 R.c("server/chunks/ssr/2ae5e_next_dist_0caa1bfb._.js")
 R.c("server/chunks/ssr/Desktop_coiffeur_app_02167e89._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__d9fd9d7a._.js")

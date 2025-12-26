@@ -22,10 +22,7 @@ import { Camera } from "lucide-react";
 import { userSchema } from "@/lib/validations/user";
 import { useState } from "react";
 import { toast } from "sonner";
-import {
-  updateUserCurrentInfo,
-  updateUserInfo,
-} from "@/oop/infrastructure/user-repository";
+import { updateUserCurrentInfo, updateUserInfo } from "@/actions/user-actions";
 import { Spinner } from "../ui/spinner";
 
 export type UserFormValues = z.infer<typeof userSchema>;

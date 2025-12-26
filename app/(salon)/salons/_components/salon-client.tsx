@@ -1,22 +1,18 @@
 "use client";
 
-import { Search, SlidersHorizontal, ArrowUpDown, Star } from "lucide-react";
+import { Search, SlidersHorizontal, ArrowUpDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
-import Link from "next/link";
+
 import { SmartCarousel } from "@/components/common/smart-carousel";
 import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { useSession } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
-import { SalonListItem } from "@/oop/infrastructure/salon-repository";
+
+import { SalonListItem } from "@/actions/salon-actions";
 import { SalonItem } from "./salon-item";
 
 type Salon = {
@@ -27,45 +23,6 @@ type Salon = {
   rating: number;
   tags: string[];
 };
-
-const salons: Salon[] = [
-  {
-    id: "modern-cut",
-    name: "The Modern Cut",
-    address: "123 Main St, Anytown",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAr5JSynD1r-LHv1Zj1ZYg-fnDkl12d2uC9FM0bZOnuYGHRU2_9v9-SCwh2tt3nN8aAHDJ7uyyE_6UFns4nlX0px3KEH0a8po93wW37QVEmXq1vQP7hTAdKbR8NWapsVnzFqixyh2ZYEXnzzBymi5ntTog9I6kBBxcZNv1fz-n1oFKLhfvhWLfGwOVFsVw1SYHmyJM1V_v-YWn9KLNQI9SqFAz_JVU8t9hWEb54EEoGSNUnpdjeUqmYwUuU7gAmSovKVzFjnvgfiwQ",
-    rating: 4.8,
-    tags: ["Haircut", "Beard Trim", "Shave"],
-  },
-  {
-    id: "chic-shears",
-    name: "Chic Shears",
-    address: "456 Oak Ave, Sometown",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDaXYkTtVzFz8Pp6wAhjTT-oy5WuEvJC3a2Gx0RBsoAggSEntXpYlOdYwwtdlaVFbljLKMHmcxqob_rW4novTRfa1dUJKKHC0Ov892n6BiED2uoolo3g9L4sCXDQelZwE_AMZb6hpwWHcOCdvxEHm7oVGpS0ht-h4nEqMpWLVd2cwH5HhbKzx3pCRsdckRERwQlqxC6jm8lJsqfHXpG7LmXs08CyQFkmcfYTaQPoyVP0nwa4PsO4eT03HKvZmkxNmmG2Lft0i2fNIo",
-    rating: 4.9,
-    tags: ["Styling", "Coloring", "Extensions"],
-  },
-  {
-    id: "dapper-den",
-    name: "The Dapper Den",
-    address: "789 Pine Ln, Villagetown",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBEf8YJVvYAvgJmlp5zvWV1LWJyDP_2D0WYv4nnEVM3ofITDrkuUKouQRqLaca6rS2lniRemh5XExKikoUWn3xOZUTJLXMlPTF1_VnJ612bBn8b-QBG5jxhZiCmwXpNR2qMW0z8J520RQP6Ri2Bns22ZiXsjQZk4fChqs9wczf9jVCif3Pp10ULhrF_yCv9qlUOOxSOuPac-Rw2BjLrrMcrnzbdaD9H6dxQPvqF_ZopoGIHGopjt9F6IMQjvO4mPKVIzkDX8jJj1aY",
-    rating: 4.7,
-    tags: ["Classic Cut", "Hot Towel Shave"],
-  },
-  {
-    id: "curl-up-dye",
-    name: "Curl Up & Dye",
-    address: "101 Maple Rd, Cityville",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDhL--XWbawHCNwtkXYpXNtnkvbW4hItw2MUIzB4_M4S6jYtn8krnMWDQOlYWmgNZxpFg3fTRRbIae9WVT1onmVEdYV2wfLqVZELD8nUMzmp4BLgFrcDyIJVVr0ZM8aGoF3x4adPOqzrVo4Diwi1o23BR0XPrRVGJ9Lu3lkKBUVN2YSFVMmOYAmRYwgPIOa5t_DlDyG5XDg6KF6vcGLUA1D4A_5EyF-YzGcORciFCpOChRpR0KMQ3AR678EA0uVz7jkOoA7flg0Uxc",
-    rating: 5.0,
-    tags: ["Perm", "Balayage", "Keratin"],
-  },
-];
 
 export default function SalonPageClient({ salons }: { salons: SalonListItem }) {
   const salonItems: Salon[] = salons.map((salon, index) => ({
